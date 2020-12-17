@@ -19,6 +19,13 @@
 		<mapping class="dev.shrews.Review"></mapping>
 		<mapping class="dev.shrews.UserTag"></mapping>
 		<mapping class="dev.shrews.User"></mapping>
+		<mapping class="dev.shrews.Friendships"></mapping>
+		<mapping class="dev.shrews.Media"></mapping>
+		<mapping class="dev.shrews.Messages"></mapping>
+		<mapping class="dev.shrews.User_Media_Comments"></mapping>
+		<mapping class="dev.shrews.User_Review_Comments"></mapping>
+		<mapping class="dev.shrews.Shelf"></mapping>
+		<mapping class="dev.shrews.ShelfAssignment"></mapping>
 		
 	</session-factory>
 </hibernate-configuration>
