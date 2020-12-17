@@ -1,7 +1,5 @@
 package dev.shrews.beans;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,21 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="reviews")
-public class Review {
+@Table(name="user_tags")
+public class UserTag {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name="review_date")
-	private LocalDate date;
-	
-	private Integer rating;
+	@Column(name="tag_name")
+	private String tagName;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
@@ -42,20 +37,12 @@ public class Review {
 		this.id = id;
 	}
 
-	public LocalDate getDate() {
-		return date;
+	public String getTagName() {
+		return tagName;
 	}
 
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	public Integer getRating() {
-		return rating;
-	}
-
-	public void setRating(Integer rating) {
-		this.rating = rating;
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
 	}
 
 	public User getUser() {
