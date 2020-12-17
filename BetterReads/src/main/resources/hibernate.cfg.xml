@@ -17,6 +17,8 @@
 		<!-- tell hibernate where to find our mappings -->
 		<mapping class="dev.shrews.Genre"></mapping>
 		<mapping class="dev.shrews.Review"></mapping>
+		<mapping class="dev.shrews.UserTag"></mapping>
+		<mapping class="dev.shrews.User"></mapping>
 		
 	</session-factory>
 </hibernate-configuration>
