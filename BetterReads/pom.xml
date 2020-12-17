@@ -3,4 +3,82 @@
   <groupId>dev.shrews</groupId>
   <artifactId>BetterReads</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-framework-bom</artifactId>
+  			<version>5.1.5.RELEASE</version>
+  			<type>pom</type>
+  			<scope>import</scope>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+  <dependencies>
+    <!-- spring dependencies -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-webmvc</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context-support</artifactId>
+  	</dependency>
+  	<!-- JUnit dependency -->
+	<dependency>
+  		<groupId>org.junit.jupiter</groupId>
+  		<artifactId>junit-jupiter-engine</artifactId>
+  		<version>5.7.0-M1</version>
+  		<scope>test</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.mockito</groupId>
+    	<artifactId>mockito-core</artifactId>
+    	<version>3.0.0</version>
+    	<scope>test</scope>
+  	</dependency>
+  	<dependency>
+    	<groupId>org.mockito</groupId>
+    	<artifactId>mockito-junit-jupiter</artifactId>
+    	<version>3.0.0</version>
+    	<scope>test</scope>
+	</dependency>
+  	<dependency>
+	    <groupId>org.postgresql</groupId>
+	    <artifactId>postgresql</artifactId>
+	    <version>42.2.14</version>
+	</dependency>
+  	<dependency>
+		<groupId>io.javalin</groupId>
+		<artifactId>javalin</artifactId>
+		<version>3.10.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-simple</artifactId>
+		<version>1.7.30</version>
+	</dependency>
+	<!-- our jackson libraries: allow us to map JSON -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-annotations</artifactId>
+		<version>2.9.3</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-core</artifactId>
+		<version>2.9.3</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.9.3</version>
+	</dependency>
+	<!-- hibernate dependency -->
+ 	<dependency>
+ 	 	<artifactId>hibernate-core</artifactId>
+  		<groupId>org.hibernate</groupId>
+  		<version>5.4.25.Final</version>
+  	</dependency>
+  </dependencies>
 </project>
