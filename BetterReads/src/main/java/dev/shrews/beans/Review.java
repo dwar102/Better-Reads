@@ -73,7 +73,5 @@ public class Review {
 	public void setMedia(Media media) {
 		this.media = media;
 	}
-	
-	
 
 }
