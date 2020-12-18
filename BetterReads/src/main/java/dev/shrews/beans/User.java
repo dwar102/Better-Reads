@@ -17,6 +17,8 @@ public class User {
 	private String username;
 	
 	private String pass;
+	
+	private String salt;
 
 	public Integer getId() {
 		return id;
@@ -40,5 +42,13 @@ public class User {
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 }
