@@ -10,28 +10,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="media")
-public class Media {
-	
+@Table(name="media_types")
+public class MediaType {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	private String creator;
+	private String name;
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="media_type_id")
-	private MediaType mediaType;
-	
-	public Media(Integer id, String creator, MediaType mediaType) {
+	@JoinColumn(name="genre_id")
+	private Genre genre;
+	public MediaType(Integer id, String name, Genre genre) {
 		super();
 		this.id = id;
-		this.creator = creator;
-		this.mediaType = mediaType;
+		this.name = name;
+		this.genre = genre;
 	}
-	public Media() {
+	public MediaType() {
 		super();
-		this.id = 0;
-		this.creator = "";
-		this.mediaType = new MediaType();
+		this.id =  0;
+		this.name = "";
+		this.genre = new Genre();
 	}
 	public Integer getId() {
 		return id;
@@ -39,25 +38,25 @@ public class Media {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getCreator() {
-		return creator;
+	public String getName() {
+		return name;
 	}
-	public void setCreator(String creator) {
-		this.creator = creator;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public MediaType getMediaType() {
-		return mediaType;
+	public Genre getGenre() {
+		return genre;
 	}
-	public void setMediaType(MediaType mediaType) {
-		this.mediaType = mediaType;
+	public void setGenre(Genre genre) {
+		this.genre = genre;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((creator == null) ? 0 : creator.hashCode());
+		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((mediaType == null) ? 0 : mediaType.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 	@Override
@@ -68,28 +67,29 @@ public class Media {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Media other = (Media) obj;
-		if (creator == null) {
-			if (other.creator != null)
+		MediaType other = (MediaType) obj;
+		if (genre == null) {
+			if (other.genre != null)
 				return false;
-		} else if (!creator.equals(other.creator))
+		} else if (!genre.equals(other.genre))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (mediaType == null) {
-			if (other.mediaType != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!mediaType.equals(other.mediaType))
+		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Media [id=" + id + ", creator=" + creator + ", mediaType=" + mediaType + "]";
+		return "MediaType [id=" + id + ", name=" + name + ", genre=" + genre + "]";
 	}
+	
 	
 	
 
