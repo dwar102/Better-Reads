@@ -16,4 +16,6 @@ public interface UserService {
 	public Set<User> getUsers();
 	public User getUserById(Integer id);
 	public User getUserByName(String username);
+	void deleteUser(User u);
+	void updateUser(User u);
 }
