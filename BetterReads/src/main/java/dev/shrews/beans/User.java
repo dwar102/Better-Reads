@@ -14,6 +14,8 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
+	private String salt;
+	
 	private String username;
 	
 	private String pass;
@@ -37,7 +39,14 @@ public class User {
 	public String getPass() {
 		return pass;
 	}
+	public String getSalt() {
+		return salt;
+	}
 
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
