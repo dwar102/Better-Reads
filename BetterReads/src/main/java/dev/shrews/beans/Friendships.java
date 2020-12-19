@@ -15,8 +15,8 @@ import javax.persistence.Table;
 public class Friendships {
 public Friendships() {
 		friendship_id = 0;
-		user_id = 0;
-		friend_id = 0;
+		user_id = null;
+		friend_id = null;
 		message = "";
 	}
 @Override
@@ -71,16 +71,16 @@ public Integer getFriendship_id() {
 	public void setFriendship_id(Integer friendship_id) {
 		this.friendship_id = friendship_id;
 	}
-	public Integer getUser_id() {
+	public User getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(Integer user_id) {
+	public void setUser_id(User user_id) {
 		this.user_id = user_id;
 	}
-	public Integer getFriend_id() {
+	public User getFriend_id() {
 		return friend_id;
 	}
-	public void setFriend_id(Integer friend_id) {
+	public void setFriend_id(User friend_id) {
 		this.friend_id = friend_id;
 	}
 	public String getMessage() {
@@ -94,10 +94,10 @@ public Integer getFriendship_id() {
 private Integer friendship_id;
 @ManyToOne(fetch=FetchType.EAGER)
 @JoinColumn(name="user_id")
-private Integer user_id;
+private User user_id;
 @ManyToOne(fetch=FetchType.EAGER)
 @JoinColumn(name="friend_id")
-private Integer friend_id;
+private User friend_id;
 @Column(name="message")
 private String message;
 }
