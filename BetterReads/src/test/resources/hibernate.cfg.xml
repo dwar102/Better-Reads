@@ -15,17 +15,17 @@
 		<property name="use_sql_comments">true</property>
 		
 		<!-- tell hibernate where to find our mappings -->
-		<mapping class="dev.shrews.Genre"></mapping>
-		<mapping class="dev.shrews.Review"></mapping>
-		<mapping class="dev.shrews.UserTag"></mapping>
-		<mapping class="dev.shrews.User"></mapping>
-		<mapping class="dev.shrews.Friendships"></mapping>
-		<mapping class="dev.shrews.Media"></mapping>
-		<mapping class="dev.shrews.Messages"></mapping>
-		<mapping class="dev.shrews.User_Media_Comments"></mapping>
-		<mapping class="dev.shrews.User_Review_Comments"></mapping>
-		<mapping class="dev.shrews.Shelf"></mapping>
-		<mapping class="dev.shrews.ShelfAssignment"></mapping>
+		<mapping class="dev.shrews.beans.Genre"></mapping>
+		<mapping class="dev.shrews.beans.Review"></mapping>
+		<mapping class="dev.shrews.beans.UserTag"></mapping>
+		<mapping class="dev.shrews.beans.User"></mapping>
+		<mapping class="dev.shrews.beans.Friendships"></mapping>
+		<mapping class="dev.shrews.beans.Media"></mapping>
+		<mapping class="dev.shrews.beans.Messages"></mapping>
+		<mapping class="dev.shrews.beans.User_Media_Comments"></mapping>
+		<mapping class="dev.shrews.beans.User_Review_Comments"></mapping>
+		<mapping class="dev.shrews.beans.Shelf"></mapping>
+		<mapping class="dev.shrews.beans.ShelfAssignment"></mapping>
 		
 	</session-factory>
 </hibernate-configuration>
