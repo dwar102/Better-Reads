@@ -26,7 +26,7 @@ public class UserTag {
 	private User user;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@Column(name="media_id")
+	@JoinColumn(name="media_id")
 	private Media media;
 
 	public Integer getId() {
