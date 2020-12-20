@@ -119,9 +119,11 @@ public Messages() {
 private Integer message_id;
 @Column(name="message_date")
 private LocalDateTime message_date;
+
 @ManyToOne(fetch=FetchType.EAGER)
-@JoinColumn(name="message_id")
+@JoinColumn(name="parent_message_id")
 private Messages parent;
+
 @ManyToOne(fetch=FetchType.EAGER)
 @JoinColumn(name="sender_id")
 private User sender;

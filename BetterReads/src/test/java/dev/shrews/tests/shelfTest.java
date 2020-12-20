@@ -61,8 +61,5 @@ public class shelfTest {
 		catch(Exception e){
 			e.printStackTrace();
 		}
-
-		
-
 	}
 }

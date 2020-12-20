@@ -112,8 +112,13 @@ public class User_Media_Comments {
 	private Integer comment_id;
 	@Column(name="comment_date")
 	private LocalDateTime comment_date;
-	@Column(name="media_id")
+	
+	
+	@ManyToOne(fetch=FetchType.EAGER) 
+	@JoinColumn(name="media_id")
 	private Media media;
+	
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="parent_comment_id")
 	private User_Media_Comments parent;
