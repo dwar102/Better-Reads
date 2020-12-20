@@ -2,6 +2,8 @@ package dev.shrews.beans;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,13 +21,15 @@ public class Shelf {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="shelf_id")
 	private Integer id;
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="users_id")
+	@JoinColumn(name="user_id")
 	private User user;
+	@Column(name="shelf_name")
 	private String name;
-	@OneToMany
-	@JoinColumn(name = "shelf_assignment_id")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "shelf_assignment_id")//
 	private Set<ShelfAssignment> shelfAssignments;
 	public Shelf(Integer id, User user, String name, Set<ShelfAssignment> shelfAssignments) {
 		super();

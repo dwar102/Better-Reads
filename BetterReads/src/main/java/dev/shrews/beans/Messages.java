@@ -123,7 +123,6 @@ private LocalDateTime message_date;
 
 @ManyToOne(fetch=FetchType.EAGER)
 @JoinColumn(name="parent_message_id")
-
 private Messages parent;
 
 @ManyToOne(fetch=FetchType.EAGER)

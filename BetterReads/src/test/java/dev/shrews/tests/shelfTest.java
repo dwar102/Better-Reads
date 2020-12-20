@@ -54,9 +54,13 @@ public class shelfTest {
 		ShelfToAdd.setShelfAssignments(assgns);
 		try {
 			//try to add to database now
-			Shelf newShelf = shelfServ.addShelf(ShelfToAdd);
-			if(newShelf != null)
-			assertEquals(newShelf.getName(), ShelfToAdd.getName());
+			//Shelf newShelf = shelfServ.addShelf(ShelfToAdd);
+			Shelf shelfForId = new Shelf();
+			shelfForId.setId(1);
+			Shelf sh = shelfServ.getShelf(shelfForId);
+			System.out.println(sh);
+//			if(newShelf != null)
+//			assertEquals(newShelf.getName(), ShelfToAdd.getName());
 		}
 		catch(Exception e){
 			e.printStackTrace();

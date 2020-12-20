@@ -1,5 +1,6 @@
 package dev.shrews.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,10 +16,11 @@ public class Media {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="media_id")
 	private Integer id;
 	private String creator;
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="media_type_id")
+	@JoinColumn(name="media_type")
 	private MediaType mediaType;
 	
 	public Media(Integer id, String creator, MediaType mediaType) {
