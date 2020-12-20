@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="messages")
@@ -20,7 +21,7 @@ public class Messages {
 public Messages() {
 		message_id = 0;
 		message_date = LocalDateTime.now();
-		parent = new Messages();
+		parent = null;
 		sender = new User();
 		recipient = new User();
 		message = "";
@@ -122,6 +123,7 @@ private LocalDateTime message_date;
 
 @ManyToOne(fetch=FetchType.EAGER)
 @JoinColumn(name="parent_message_id")
+
 private Messages parent;
 
 @ManyToOne(fetch=FetchType.EAGER)
