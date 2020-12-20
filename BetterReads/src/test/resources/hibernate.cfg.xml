@@ -26,6 +26,8 @@
 		<mapping class="dev.shrews.beans.User_Review_Comments"></mapping>
 		<mapping class="dev.shrews.beans.Shelf"></mapping>
 		<mapping class="dev.shrews.beans.ShelfAssignment"></mapping>
+		<mapping class="dev.shrews.beans.MediaType"></mapping>
+		
 		
 	</session-factory>
 </hibernate-configuration>
