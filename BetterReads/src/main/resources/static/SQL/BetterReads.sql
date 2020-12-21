@@ -50,8 +50,8 @@ shelf_name varchar(100) NOT NULL
 ----------------------------------------------------
 CREATE TABLE reviews(
 review_id serial PRIMARY KEY,
-review_date date default current_date,
-rating numeric CHECK(rating >= 0 AND rating <= 10),
+review_date date DEFAULT current_date,
+rating integer CHECK(rating >= 0 AND rating <= 100),
 user_id integer REFERENCES users,
 media_id integer REFERENCES media NOT NULL,
 UNIQUE(user_id, media_id)
@@ -125,9 +125,13 @@ media_id integer REFERENCES media NOT NULL
 
 --------------------------------------------------------------
 -- Populating the database
-insert into user_tags values
-	(default, 'Complex', 1, 1),
-	(default, 'Complex', 1, 2),
-	(default, 'Complex', 1, 3),
-	(default, 'Complex', 1, 4);
 
+
+INSERT INTO user_tags VALUES
+	(DEFAULT, 'Complex', 1, 1),
+	(DEFAULT, 'Complex', 1, 2),
+	(DEFAULT, 'Complex', 1, 3),
+	(DEFAULT, 'Complex', 1, 4);
+
+INSERT INTO friendships VALUES
+	(DEFAULT, 1, 1, 'test');
