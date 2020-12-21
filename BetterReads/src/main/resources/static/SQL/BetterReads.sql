@@ -122,3 +122,12 @@ media_id integer REFERENCES media NOT NULL
 );
 
 
+
+--------------------------------------------------------------
+-- Populating the database
+insert into user_tags values
+	(default, 'Complex', 1, 1),
+	(default, 'Complex', 1, 2),
+	(default, 'Complex', 1, 3),
+	(default, 'Complex', 1, 4);
+
