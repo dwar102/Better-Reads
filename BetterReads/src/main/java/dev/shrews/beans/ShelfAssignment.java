@@ -3,6 +3,7 @@ package dev.shrews.beans;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,7 @@ public class ShelfAssignment {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="shelf_assignment_id")
 	private Integer id;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="shelf_id")
@@ -28,6 +30,7 @@ public class ShelfAssignment {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private User user;
+	@Column(name="shelf_assignment_date")
 	private LocalDateTime date;
 	
 	public ShelfAssignment() {

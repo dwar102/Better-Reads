@@ -15,8 +15,8 @@ import javax.persistence.Table;
 public class Friendships {
 public Friendships() {
 		friendship_id = 0;
-		user_id = null;
-		friend_id = null;
+		user_id = new User();
+		friend_id = new User();
 		message = "";
 	}
 @Override

@@ -1,5 +1,6 @@
 package dev.shrews.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,13 +13,14 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private Integer id;
+	
+	private String salt;
 	
 	private String username;
 	
 	private String pass;
-	
-	private String salt;
 
 	public Integer getId() {
 		return id;
@@ -39,16 +41,15 @@ public class User {
 	public String getPass() {
 		return pass;
 	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
-
 	public String getSalt() {
 		return salt;
 	}
 
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+	
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 }

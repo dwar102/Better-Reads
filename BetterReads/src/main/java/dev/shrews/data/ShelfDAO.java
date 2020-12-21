@@ -10,6 +10,7 @@ public interface ShelfDAO extends GenericDAO<Shelf> {
 		public Shelf addShelf(Shelf s);
 	//read
 		public Shelf getShelf(Shelf s);
+		public Shelf getShelfById(Integer id);
 	//update
 		public Shelf updateShelf(Shelf oldShelf, Shelf newShelf);
 	//delete

@@ -21,6 +21,7 @@
 		<mapping class="dev.shrews.beans.User"></mapping>
 		<mapping class="dev.shrews.beans.Friendships"></mapping>
 		<mapping class="dev.shrews.beans.Media"></mapping>
+		<mapping class="dev.shrews.beans.MediaType"></mapping>
 		<mapping class="dev.shrews.beans.Messages"></mapping>
 		<mapping class="dev.shrews.beans.User_Media_Comments"></mapping>
 		<mapping class="dev.shrews.beans.User_Review_Comments"></mapping>

@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 
 DROP TABLE IF EXISTS genres CASCADE;
 DROP TABLE IF EXISTS media_types CASCADE;
@@ -147,4 +145,3 @@ insert into media(media_id, title, creator, media_type) values(default, 'The Cit
 insert into users(user_id, username, pass, salt) values(default, 'kyle', 'S/6dS5fZL0iCryr6kk+dlQiEhO0=', '+4leCIBVJ2g=');
 
 insert into shelves(shelf_id, user_id, shelf_name) values(default, 1, 'Favorite Books');
->>>>>>> Stashed changes

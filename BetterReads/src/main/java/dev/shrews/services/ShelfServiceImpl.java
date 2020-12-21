@@ -19,8 +19,9 @@ ShelfDAO sd = new ShelfHibernate();
 
 	@Override
 	public Shelf getShelf(Shelf s) {
+		Shelf sh = sd.getShelfById(s.getId());
 		// TODO Auto-generated method stub
-		return null;
+		return sh;
 	}
 
 	@Override

@@ -112,11 +112,15 @@ public class User_Review_Comments {
 	private Integer comment_id;
 	@Column(name="comment_date")
 	private LocalDateTime comment_date;
-	@Column(name="review_id")
+	
+	@ManyToOne(fetch=FetchType.EAGER) 
+	@JoinColumn(name="review_id")
 	private Review review;
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="parent_comment_id")
 	private User_Review_Comments parent;
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private User user;

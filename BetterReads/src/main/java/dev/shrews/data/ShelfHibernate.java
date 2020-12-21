@@ -48,7 +48,7 @@ public class ShelfHibernate implements ShelfDAO {
 		
 		Shelf shelf = new Shelf();
 		Session s = hu.getSession();
-		String query = "FROM Shelves where id = :id";
+		String query = "FROM Shelf where shelf_id = :id";
 		Query<Shelf> q = s.createQuery(query, Shelf.class);
 		q.setParameter("id", id);
 		shelf = q.getSingleResult();
