@@ -20,7 +20,8 @@ public class UserHibernate implements UserDAO {
 	public User add(User u) throws NonUniqueUsernameException {
 		Session s = hu.getSession();
 		Transaction tx = null;
-		try { tx = s.beginTransaction();
+		try { 
+			tx = s.beginTransaction();
 			s.save(u);
 			tx.commit();
 	} catch (Exception e) {
@@ -33,7 +34,7 @@ public class UserHibernate implements UserDAO {
 	}
 
 	@Override
-	public User getByUsrname(String username) {
+	public User getByUsername(String username) {
 		System.out.println("getBy reached" + "" + username);
 		
 		Session s = hu.getSession();
@@ -47,6 +48,37 @@ public class UserHibernate implements UserDAO {
 		System.out.println(u);
 		return u;
 		
+	}
+
+	@Override
+	public User getUserById(Integer id) {
+		Session s = hu.getSession();
+		User u = s.get(User.class, id);
+		s.close();
+		return u;
+	}
+
+	@Override
+	public void delete(User u) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.delete(u);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+		} finally {
+			s.close();
+		}
+
+	}
+
+	@Override
+	public Set<User> getUsers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
