@@ -16,6 +16,7 @@ public class UserTag {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="tag_id")
 	private Integer id;
 	
 	@Column(name="tag_name")
@@ -61,4 +62,11 @@ public class UserTag {
 		this.media = media;
 	}
 
+	@Override
+	public String toString() {
+		return "UserTag [id=" + id + ", tagName=" + tagName + ", user=" + user + ", media=" + media + "]";
+	}
+
+	
+	
 }
