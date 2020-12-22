@@ -2,7 +2,11 @@ package dev.shrews.services;
 
 import java.util.Set;
 
+import dev.shrews.beans.Media;
+import dev.shrews.beans.Review;
 import dev.shrews.beans.User;
+import dev.shrews.beans.User_Media_Comments;
+import dev.shrews.beans.User_Review_Comments;
 import dev.shrews.data.UserDAO;
 import dev.shrews.data.UserHibernate;
 import dev.shrews.exceptions.NonUniqueUsernameException;
@@ -43,5 +47,27 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUser(User u) {
 		//userDao.update(u);
+	}
+
+	@Override
+	public void placeReviewComment(User_Review_Comments c) {
+		userDAO.placeCommentForReview(c);
+		
+	}
+
+	@Override
+	public void placeMediaComment(User_Media_Comments c) {
+		userDAO.placeCommentForMedia(c);
+		
+	}
+
+	@Override
+	public Set<User_Review_Comments> getReviewComments(Integer id) {
+		return userDAO.getCommentsForReview(id);
+	}
+
+	@Override
+	public Set<User_Media_Comments> getMediaComments(Integer id) {
+		return userDAO.getCommentsForMedia(id);
 	}
 }

@@ -10,7 +10,7 @@ public interface ShelfService {
 //read
 	public Shelf getShelf(Shelf s);
 //update
-	public Shelf updateShelf(Shelf shelf);
+	public Shelf updateShelf(Shelf oldShelf, Shelf newShelf);
 //delete
 	public void deleteShelf(Shelf s);
 //list
