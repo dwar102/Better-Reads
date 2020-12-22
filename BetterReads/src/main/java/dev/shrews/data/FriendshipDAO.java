@@ -11,6 +11,7 @@ public interface FriendshipDAO extends GenericDAO<Friendships>{
 	//read 
 	public Friendships getById(Integer id);
 	public Set<Friendships> getAll();
+	public Set<Friendships> getByUserId(Integer id);
 	//update
 	public void update(Friendships f);
 	//delete
