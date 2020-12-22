@@ -37,6 +37,15 @@ public class shelfTest {
 	shelfForId.setId(1);
 	Shelf sh = shelfServ.getShelf(shelfForId);
 	assertTrue(sh.getName().equalsIgnoreCase("Favorite Books"));
+	sh.setName("Favorite Bookz");
+	shelfServ.updateShelf(sh);
+	Shelf sh1 = shelfServ.getShelf(shelfForId);
+	assertTrue(sh1.getName().equalsIgnoreCase("Favorite Bookz"));
+	sh1.setName("Favorite Books");
+	shelfServ.updateShelf(sh1);
+	sh = shelfServ.getShelf(shelfForId);
+	assertTrue(sh.getName().equalsIgnoreCase("Favorite Books"));
+	
 	}
 	
 	@Test public void testAddShelf() { //add a shelf to database 
