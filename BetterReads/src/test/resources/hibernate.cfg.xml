@@ -3,7 +3,7 @@
 <hibernate-configuration>
 	<session-factory>
 		<!-- set up connection info -->
-		<property name="hibernate.connection.driver.class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.connection.url">jdbc:postgresql://rev2011db1.coyq6ev33feq.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=better_reads</property>
 		<property name="hibernate.connection.username">postgres</property>
 		<property name="hibernate.connection.password">451984rev</property>
