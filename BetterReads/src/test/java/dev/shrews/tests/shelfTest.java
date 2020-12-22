@@ -2,6 +2,7 @@ package dev.shrews.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -20,11 +21,25 @@ import dev.shrews.data.*;
 
 public class shelfTest {
 
-	ShelfService shelfServ = new ShelfServiceImpl();
+	static ShelfService shelfServ = new ShelfServiceImpl();
 	Shelf ShelfToAdd = new Shelf();
-	@Test public void testShelfService() { //this test intended to 1. add a shelf to database 2. retrieve the item from the database
-		
-		//make a shelf object (and all the sub objects)
+	Shelf newShelf = null;
+
+	@Test public void testGetShelf(){//retrieve the item from the database
+	Shelf shelfForId = new Shelf();
+	shelfForId.setId(1);
+	Shelf sh = shelfServ.getShelf(shelfForId);
+	assertTrue(sh.getName().equalsIgnoreCase("Favorite Books"));
+	}
+	
+	@Test public void testUpdateShelf(){//update shelf
+	Shelf shelfForId = new Shelf();
+	shelfForId.setId(1);
+	Shelf sh = shelfServ.getShelf(shelfForId);
+	assertTrue(sh.getName().equalsIgnoreCase("Favorite Books"));
+	}
+	
+	@Test public void testAddShelf() { //add a shelf to database 
 		ShelfToAdd.setName("test shelf name");
 		//user here corresponds to actual database entry
 		User kyle = new User();
@@ -36,34 +51,45 @@ public class shelfTest {
 		
 		Set<ShelfAssignment> assgns = new HashSet<ShelfAssignment>();
 		ShelfAssignment sa = new ShelfAssignment();
-		for(int i = 0; i < 10; i++) {
-			sa.setDate(null);
-			Media media = new Media();
-			media.setCreator("test creator" + i);
-			MediaType mt = new MediaType();
-			Genre g = new Genre();
-			g.setName("test genre");
-			mt.setGenre(g);
-			mt.setName("test media type");
-			media.setMediaType(mt);
-			sa.setMedia(media);
-			sa.setShelf(ShelfToAdd);
-			sa.setUser(kyle);
-			assgns.add(sa);
-		}
+		
 		ShelfToAdd.setShelfAssignments(assgns);
 		try {
+			//try to get a list of all shelves and store count here
+			Integer countBeforeAdd = 0;
+			Integer countAfterAdd = 0;
+			Integer countAfterDelete = 0;
+			
+			Set<Shelf> shelves = new HashSet<Shelf>();
+			shelves = shelfServ.getShelves();
+			countBeforeAdd = shelves.size();
+			
 			//try to add to database now
-			//Shelf newShelf = shelfServ.addShelf(ShelfToAdd);
-			Shelf shelfForId = new Shelf();
-			shelfForId.setId(1);
-			Shelf sh = shelfServ.getShelf(shelfForId);
-			System.out.println(sh);
-//			if(newShelf != null)
-//			assertEquals(newShelf.getName(), ShelfToAdd.getName());
+			newShelf = shelfServ.addShelf(ShelfToAdd);
+			if(newShelf != null)
+			assertEquals(newShelf.getName(), ShelfToAdd.getName());
+			
+			//get all shelves again and compare the count to before
+			shelves = new HashSet<Shelf>();
+			shelves = shelfServ.getShelves();
+			countAfterAdd = shelves.size();
+			assertTrue(countBeforeAdd < countAfterAdd);
+			
+			//try to delete added shelf
+			assertTrue(newShelf != null);
+			shelfServ.deleteShelf(newShelf);
+			
+			//get all shelves again and compare the count to before
+			shelves = new HashSet<Shelf>();
+			shelves = shelfServ.getShelves();
+			
+			countAfterDelete = shelves.size();
+			assertTrue(countAfterAdd > countAfterDelete);
+			
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

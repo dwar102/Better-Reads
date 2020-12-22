@@ -12,10 +12,9 @@ public interface ShelfDAO extends GenericDAO<Shelf> {
 		public Shelf getShelf(Shelf s);
 		public Shelf getShelfById(Integer id);
 	//update
-		public Shelf updateShelf(Shelf oldShelf, Shelf newShelf);
+		public Shelf updateShelf(Shelf shelf);
 	//delete
 		public void deleteShelf(Shelf s);
 	//list
 		public Set<Shelf> getShelves();
-	
 }
