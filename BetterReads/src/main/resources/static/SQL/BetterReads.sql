@@ -126,17 +126,19 @@ media_id integer REFERENCES media NOT NULL
 --------------------------------------------------------------
 -- Populating the database
 
-INSERT INTO users(user_id, username, pass, salt) VALUES(default, 'kyle', 'S/6dS5fZL0iCryr6kk+dlQiEhO0=', '+4leCIBVJ2g=');
+INSERT INTO users(user_id, username, pass, salt) VALUES(DEFAULT, 'kyle', 'S/6dS5fZL0iCryr6kk+dlQiEhO0=', '+4leCIBVJ2g=');
 
+INSERT INTO friendships VALUES
+	(DEFAULT, 1, 1, 'test');
 	
-INSERT INTO genres(genre_id, genre_name) values(default, 'Science Fantasy');
+INSERT INTO genres(genre_id, genre_name) VALUES(DEFAULT, 'Science Fantasy');
 
-INSERT INTO media_types(media_type_id, name, genre_id) VALUES(default, 'Book', 1);
+INSERT INTO media_types(media_type_id, name, genre_id) VALUES (DEFAULT, 'Book', 1);
 
-INSERT INTO media(media_id, title, creator, media_type) VALUES(default, 'The Shadow of the Torturer', 'Gene Wolfe', 1);
-INSERT INTO media(media_id, title, creator, media_type) VALUES(default, 'The Claw of the Conciliator', 'Gene Wolfe', 1);
-INSERT INTO media(media_id, title, creator, media_type) VALUES(default, 'The Sword of the Lictor', 'Gene Wolfe', 1);
-INSERT INTO media(media_id, title, creator, media_type) VALUES(default, 'The Citadel of the Autarch', 'Gene Wolfe', 1);
+INSERT INTo media(media_id, title, creator, media_type) VALUES(DEFAULT, 'The Shadow of the Torturer', 'Gene Wolfe', 1);
+INSERT INTO media(media_id, title, creator, media_type) VALUES(DEFAULT, 'The Claw of the Conciliator', 'Gene Wolfe', 1);
+INSERT INTO media(media_id, title, creator, media_type) vALUES(DEFAULT, 'The Sword of the Lictor', 'Gene Wolfe', 1);
+INSERT INTO media(media_id, title, creator, media_type) VALUES(DEFAULT, 'The Citadel of the Autarch', 'Gene Wolfe', 1);
 
 INSERT INTO user_tags VALUES
 	(DEFAULT, 'Complex', 1, 1),

@@ -2,8 +2,6 @@ package dev.shrews.services;
 
 import java.util.Set;
 
-import dev.shrews.beans.Media;
-import dev.shrews.beans.Review;
 //import dev.shrews.beans.Media;
 import dev.shrews.beans.User;
 import dev.shrews.beans.User_Media_Comments;
@@ -22,8 +20,8 @@ public interface UserService {
 	public User getUserByName(String username);
 	public void deleteUser(User u);
 	public void updateUser(User u);
-	public void placeReviewComment(User_Review_Comments c);
-	public void placeMediaComment(User_Media_Comments c);
-	public Set<User_Review_Comments> getReviewComments(Integer id);
-	public Set<User_Media_Comments> getMediaComments(Integer id);
+	public Set<User_Review_Comments> getCommentsForReview(Integer id);
+	public Set<User_Media_Comments> getCommentsForMedia(Integer id);
+	public void placeCommentForReview(User_Review_Comments c);
+	public void placeCommentForMedia(User_Media_Comments c);
 }
