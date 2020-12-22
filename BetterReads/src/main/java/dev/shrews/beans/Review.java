@@ -19,11 +19,13 @@ public class Review {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="review_id")
 	private Integer id;
 	
 	@Column(name="review_date")
 	private LocalDate date;
-	
+
+	@Column(name="rating")
 	private Integer rating;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

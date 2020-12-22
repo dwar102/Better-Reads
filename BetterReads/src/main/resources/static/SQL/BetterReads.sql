@@ -37,7 +37,8 @@ media_type integer REFERENCES media_types
 CREATE TABLE users(
 user_id serial PRIMARY KEY,
 username varchar(50) UNIQUE NOT NULL,
-pass varchar(60) NOT NULL
+pass varchar(60) NOT NULL,
+salt varchar(30)
 );
 
 CREATE TABLE shelves(
@@ -51,7 +52,7 @@ shelf_name varchar(100) NOT NULL
 CREATE TABLE reviews(
 review_id serial PRIMARY KEY,
 review_date date DEFAULT current_date,
-rating integer CHECK(rating >= 0 AND rating <= 100),
+rating integer CHECK(rating >= 0), CHECK(rating <= 100),
 user_id integer REFERENCES users,
 media_id integer REFERENCES media NOT NULL,
 UNIQUE(user_id, media_id)
@@ -149,4 +150,10 @@ INSERT INTO user_tags VALUES
 INSERT INTO friendships VALUES
 	(DEFAULT, 1, 1, 'test');
 	
-INSERT INTO shelves(shelf_id, user_id, shelf_name) VALUES(default, 1, 'Favorite Books');
+INSERT INTO shelves(shelf_id, user_id, shelf_name) VALUES(default, 1, 'Favorite Books');	
+
+INSERT INTO reviews VALUES
+	--(DEFAULT, DEFAULT, 80, 1, 1), --removed for testing purposes
+	(DEFAULT, DEFAULT, 80, 1, 2),
+	(DEFAULT, DEFAULT, 85, 1, 3),
+	(DEFAULT, DEFAULT, 90, 1, 4);
