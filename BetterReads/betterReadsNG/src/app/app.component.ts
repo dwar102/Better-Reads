@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'betterReadsNG';
-
-  setLogin() {
-    console.log('user logged in');
-  }
 }

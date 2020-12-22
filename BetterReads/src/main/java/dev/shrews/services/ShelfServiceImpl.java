@@ -11,8 +11,10 @@ ShelfDAO sd = new ShelfHibernate();
 
 	@Override
 	public Shelf addShelf(Shelf s) {
+		
 		Shelf newShelf = sd.addShelf(s);
 		return newShelf;
+		
 	}
 
 	@Override
@@ -23,17 +25,21 @@ ShelfDAO sd = new ShelfHibernate();
 	}
 
 	@Override
-	public Shelf updateShelf(Shelf shelf) {
-		return sd.updateShelf(shelf);
+	public Shelf updateShelf(Shelf oldShelf, Shelf newShelf) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public void deleteShelf(Shelf s) {
-		sd.deleteShelf(s);
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public Set<Shelf> getShelves() {
-		return sd.getShelves();
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 }
