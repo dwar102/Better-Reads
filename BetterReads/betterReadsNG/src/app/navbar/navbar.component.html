@@ -1,0 +1,17 @@
+<div>
+    <a href="home"><strong>Better Reads</strong></a>
+    <ng-container *ngIf="!loggedUser; else loggedIn">
+        <form>
+            <label for="user">Username: </label>
+            <input id="user" name="user" type="text" [(ngModel)]="user" />
+            <label for="pass"> Password: </label>
+            <input id="pass" name="pass" type="password" [(ngModel)]="pass" />
+            <button type="button" id="loginBtn" (click)="logIn()">Log In</button>
+        </form>
+    </ng-container>
+    <ng-template #loggedIn>
+        <span>
+            <button type="button" id="loginBtn" (click)="logOut()">Log Out</button>
+        </span>
+    </ng-template>
+</div>>
