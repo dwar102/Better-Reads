@@ -52,6 +52,19 @@ public class FriendshipHibernate implements FriendshipDAO{
 	}
 
 	@Override
+	public Set<Friendships> getByUserId(Integer id) {
+		Session s = hu.getSession();
+		String query = "FROM Friendships where user_id.id = :id";
+		Query<Friendships> q = s.createQuery(query, Friendships.class);
+		q.setParameter("id", id);
+		List<Friendships> genreList = q.getResultList();
+		Set<Friendships> genreSet = new HashSet<>();
+		genreSet.addAll(genreList);
+		s.close();
+		return genreSet;
+	}
+
+	@Override
 	public void update(Friendships f) {
 		Session s = hu.getSession();
 		Transaction tx = null;

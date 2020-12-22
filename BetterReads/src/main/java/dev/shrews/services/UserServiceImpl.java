@@ -2,8 +2,6 @@ package dev.shrews.services;
 
 import java.util.Set;
 
-import dev.shrews.beans.Media;
-import dev.shrews.beans.Review;
 import dev.shrews.beans.User;
 import dev.shrews.beans.User_Media_Comments;
 import dev.shrews.beans.User_Review_Comments;
@@ -50,24 +48,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void placeReviewComment(User_Review_Comments c) {
-		userDAO.placeCommentForReview(c);
-		
-	}
-
-	@Override
-	public void placeMediaComment(User_Media_Comments c) {
-		userDAO.placeCommentForMedia(c);
-		
-	}
-
-	@Override
-	public Set<User_Review_Comments> getReviewComments(Integer id) {
+	public Set<User_Review_Comments> getCommentsForReview(Integer id) {
 		return userDAO.getCommentsForReview(id);
 	}
 
 	@Override
-	public Set<User_Media_Comments> getMediaComments(Integer id) {
+	public Set<User_Media_Comments> getCommentsForMedia(Integer id) {
 		return userDAO.getCommentsForMedia(id);
+	}
+
+	@Override
+	public void placeCommentForReview(User_Review_Comments c) {
+		userDAO.placeCommentForReview(c);
+	}
+
+	@Override
+	public void placeCommentForMedia(User_Media_Comments c) {
+		userDAO.placeCommentForMedia(c);
 	}
 }
