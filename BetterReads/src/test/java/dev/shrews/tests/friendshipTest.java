@@ -27,26 +27,34 @@ class friendshipTest {
 	@Order(1)
 	void testGetById() {
 		Friendships f = friendshipDao.getById(1);
-		System.out.println(f);
+		//System.out.println(f);
 		assertTrue(f != null);
-		System.out.println(f);
+		//System.out.println(f);
 	}
 
 	@Test
 	@Order(2)
 	void testGetAll() {
 		Set<Friendships> fs = friendshipDao.getAll();
-		System.out.println(fs);
+		//System.out.println(fs);
 		assertTrue(fs.size() > 0);
 	}
 
 	@Test
 	@Order(3)
+	void testGetByUserId() {
+		Set<Friendships> fs = friendshipDao.getByUserId(1);
+		System.out.println(fs);
+		assertTrue(fs.size() > 0);
+	}
+
+	@Test
+	@Order(4)
 	void testAddAndDelete() {
 		Friendships f = new Friendships();
 		f.setMessage("Test");
 		f = friendshipDao.addFriendship(f);
-		System.out.println(f);
+		//System.out.println(f);
 		assertTrue(f.getFriendship_id() != 0);
 		Integer id = f.getFriendship_id();
 		friendshipDao.delete(f);
