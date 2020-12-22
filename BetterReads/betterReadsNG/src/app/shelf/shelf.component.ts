@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, EventEmitter, Output } from '@angular/core';
+import { User } from '../models/user';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shelf',
   templateUrl: './shelf.component.html',
   styleUrls: ['./shelf.component.styl']
 })
-export class ShelfComponent implements OnInit {
+export class ShelfComponent implements OnInit, OnChanges {
+  @Output() logInEvent: EventEmitter<any> = new EventEmitter();
+  count: number;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void{
+    console.log("count is: {{this.count}}");
   }
-
+  ngOnInit(): void {
+    this.count = 0;
+  }
 }
