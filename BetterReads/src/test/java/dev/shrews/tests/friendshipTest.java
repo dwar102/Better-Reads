@@ -54,7 +54,7 @@ class friendshipTest {
 		Friendships f = new Friendships();
 		f.setMessage("Test");
 		f = friendshipDao.addFriendship(f);
-		System.out.println(f);
+		//System.out.println(f);
 		assertTrue(f.getFriendship_id() != 0);
 		Integer id = f.getFriendship_id();
 		friendshipDao.delete(f);

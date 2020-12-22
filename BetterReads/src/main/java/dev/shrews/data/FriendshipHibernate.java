@@ -44,11 +44,26 @@ public class FriendshipHibernate implements FriendshipDAO{
 		Session s = hu.getSession();
 		String query = "FROM Friendships";
 		Query<Friendships> q = s.createQuery(query, Friendships.class);
-		List<Friendships> genreList = q.getResultList();
-		Set<Friendships> genreSet = new HashSet<>();
-		genreSet.addAll(genreList);
+		List<Friendships> friendList = q.getResultList();
+		Set<Friendships> friendSet = new HashSet<>();
+		friendSet.addAll(friendList);
 		s.close();
-		return genreSet;
+		return friendSet;
+	}
+
+	@Override
+	public Set<Friendships> getByUserId(Integer id) {
+		Session s = hu.getSession();
+		String query = "FROM Friendships where user_id.id= :id";
+		System.out.println(query);
+		Query<Friendships> q = s.createQuery(query, Friendships.class);
+		System.out.println(q);
+		q.setParameter("id",  id);
+		List<Friendships> friendList = q.getResultList();
+		Set<Friendships> friendSet = new HashSet<>();
+		friendSet.addAll(friendList);
+		s.close();
+		return friendSet;
 	}
 
 	@Override

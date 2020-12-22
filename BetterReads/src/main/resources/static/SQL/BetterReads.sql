@@ -146,4 +146,7 @@ INSERT INTO user_tags VALUES
 	(DEFAULT, 'Complex', 1, 3),
 	(DEFAULT, 'Complex', 1, 4);
 
-INSERT INTO shelves(shelf_id, user_id, shelf_name) VALUES(DEFAULT, 1, 'Favorite Books');
+INSERT INTO friendships VALUES
+	(DEFAULT, 1, 1, 'test');
+	
+INSERT INTO shelves(shelf_id, user_id, shelf_name) VALUES(default, 1, 'Favorite Books');
