@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.hibernate.Session;
 
+import dev.shrews.beans.Friendships;
 import dev.shrews.beans.Shelf;
 import dev.shrews.beans.User;
 import dev.shrews.utils.HibernateUtil;
@@ -23,9 +24,9 @@ public class ShelfHibernate implements ShelfDAO {
 		Transaction tx = null;
 		try {
 			tx = s.beginTransaction();
-			s.save(s);
+			s.save(shelf);
 			tx.commit();
-			return shelf;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			if (tx != null)
@@ -34,7 +35,7 @@ public class ShelfHibernate implements ShelfDAO {
 		} finally {
 			s.close();
 		}
-		return null;
+		return shelf;
 	}
 
 	@Override
@@ -58,21 +59,47 @@ public class ShelfHibernate implements ShelfDAO {
 
 
 	@Override
-	public Shelf updateShelf(Shelf oldShelf, Shelf newShelf) {
-		// TODO Auto-generated method stub
+	public Shelf updateShelf(Shelf shelf) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.update(shelf);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+		} finally {
+			s.close();
+		}
 		return null;
 	}
 
 	@Override
-	public void deleteShelf(Shelf s) {
-		// TODO Auto-generated method stub
-
+	public void deleteShelf(Shelf shelf) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.delete(shelf);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+		} finally {
+			s.close();
+		}
 	}
 
 	@Override
 	public Set<Shelf> getShelves() {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = hu.getSession();
+		String query = "FROM Shelf";
+		Query<Shelf> q = s.createQuery(query, Shelf.class);
+		List<Shelf> shelvesList = q.getResultList();
+		Set<Shelf> shelvesSet = new HashSet<>();
+		shelvesSet.addAll(shelvesList);
+		s.close();
+		return shelvesSet;
 	}
-
 }
