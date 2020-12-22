@@ -66,4 +66,14 @@ public class UserServiceImpl implements UserService {
 	public void placeCommentForMedia(User_Media_Comments c) {
 		userDAO.placeCommentForMedia(c);
 	}
+	@Override
+	public void delete(User_Review_Comments c) {
+		userDAO.delete(c);
+		
+	}
+
+	@Override
+	public void delete(User_Media_Comments c) {
+		userDAO.delete(c);
+	}
 }
