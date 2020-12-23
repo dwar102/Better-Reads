@@ -6,17 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
 @Entity
 @Table(name="User_Review_Comments")
-@Component
 public class User_Review_Comments {
 	public Integer getComment_id() {
 		return comment_id;
@@ -112,34 +107,18 @@ public class User_Review_Comments {
 			return false;
 		return true;
 	}
-	
-	public User_Review_Comments() {
-		comment_id = 0;
-		comment_date = LocalDateTime.now();
-		review = new Review();
-		parent = null;
-		user = new User();
-		message = "";
-	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer comment_id;
 	@Column(name="comment_date")
 	private LocalDateTime comment_date;
-	
-	@ManyToOne(fetch=FetchType.EAGER) 
-	@JoinColumn(name="review_id")
-	@Autowired
+	@Column(name="review_id")
 	private Review review;
-	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="parent_comment_id")
-	@Autowired
 	private User_Review_Comments parent;
-	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
-	@Autowired
 	private User user;
 	@Column(name="message")
 	private String message;

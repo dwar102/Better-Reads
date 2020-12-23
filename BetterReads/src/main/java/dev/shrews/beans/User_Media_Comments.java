@@ -6,27 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
 @Entity
 @Table(name="user_media_comments")
-@Component
 public class User_Media_Comments {
-	
-	public User_Media_Comments() {
-		comment_id = 0;
-		comment_date = LocalDateTime.now();
-		media = new Media();
-		parent = null;
-		user = new User();
-		message = "";
-	}
 	public Integer getComment_id() {
 		return comment_id;
 	}
@@ -126,21 +112,13 @@ public class User_Media_Comments {
 	private Integer comment_id;
 	@Column(name="comment_date")
 	private LocalDateTime comment_date;
-	
-	
-	@ManyToOne(fetch=FetchType.EAGER) 
-	@JoinColumn(name="media_id")
-	@Autowired
+	@Column(name="media_id")
 	private Media media;
-	
-	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="parent_comment_id")
-	@Autowired
 	private User_Media_Comments parent;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
-	@Autowired
 	private User user;
 	@Column(name="message")
 	private String message;

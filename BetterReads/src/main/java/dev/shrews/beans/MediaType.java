@@ -1,6 +1,5 @@
 package dev.shrews.beans;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,32 +9,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 @Entity
 @Table(name="media_types")
-@Component
 public class MediaType {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="media_type_id")
 	private Integer id;
 	private String name;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="genre_id")
-	@Autowired
 	private Genre genre;
-	
-	@Autowired
 	public MediaType(Integer id, String name, Genre genre) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.genre = genre;
 	}
-	
 	public MediaType() {
 		super();
 		this.id =  0;

@@ -3,12 +3,6 @@
   <groupId>dev.shrews</groupId>
   <artifactId>BetterReads</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <properties>
-  	<maven.compiler.source>1.8</maven.compiler.source>
-  	<maven.compiler.target>1.8</maven.compiler.target>
-  	<failOnMissingWebXml>false</failOnMissingWebXml>
-  </properties>
   <dependencyManagement>
   	<dependencies>
   		<dependency>
@@ -20,27 +14,7 @@
   		</dependency>
   	</dependencies>
   </dependencyManagement>
-  	<dependencies>
-  	<!-- spring core dependency: the ioc container -->
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-core</artifactId>
-  	</dependency>
-  	<!-- spring beans (spring bean lifecycle methods) -->
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-beans</artifactId>
-  	</dependency>
-  	<!-- spring context (application context) -->
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-context</artifactId>
-  	</dependency>
-  	<!-- spring context support (helper module for the application context) -->
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-context-support</artifactId>
-  	</dependency>
+  <dependencies>
     <!-- spring dependencies -->
   	<dependency>
   		<groupId>org.springframework</groupId>
@@ -106,10 +80,5 @@
   		<groupId>org.hibernate</groupId>
   		<version>5.4.25.Final</version>
   	</dependency>
-  	<dependency>
-		<groupId>org.apache.tomcat</groupId>
-		<artifactId>tomcat-catalina</artifactId>
-		<version>9.0.27</version>
-	</dependency>
   </dependencies>
 </project>

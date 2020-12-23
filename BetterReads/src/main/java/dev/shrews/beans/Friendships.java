@@ -10,28 +10,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 @Entity
 @Table(name="friendships")
-@Component
 public class Friendships {
-	
-	public Friendships() {
+public Friendships() {
 		friendship_id = 0;
-		user_id = new User();
-		friend_id = new User();
+		user_id = 0;
+		friend_id = 0;
 		message = "";
 	}
-	
-	@Override
+@Override
 	public String toString() {
 		return "friendships [friendship_id=" + friendship_id + ", user_id=" + user_id + ", friend_id=" + friend_id
 				+ ", message=" + message + "]";
 	}
-	
-	@Override
+@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -41,7 +34,6 @@ public class Friendships {
 		result = prime * result + ((user_id == null) ? 0 : user_id.hashCode());
 		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -73,23 +65,22 @@ public class Friendships {
 			return false;
 		return true;
 	}
-	
-	public Integer getFriendship_id() {
+public Integer getFriendship_id() {
 		return friendship_id;
 	}
 	public void setFriendship_id(Integer friendship_id) {
 		this.friendship_id = friendship_id;
 	}
-	public User getUser_id() {
+	public Integer getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(User user_id) {
+	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
-	public User getFriend_id() {
+	public Integer getFriend_id() {
 		return friend_id;
 	}
-	public void setFriend_id(User friend_id) {
+	public void setFriend_id(Integer friend_id) {
 		this.friend_id = friend_id;
 	}
 	public String getMessage() {
@@ -103,12 +94,10 @@ public class Friendships {
 private Integer friendship_id;
 @ManyToOne(fetch=FetchType.EAGER)
 @JoinColumn(name="user_id")
-@Autowired
-private User user_id;
+private Integer user_id;
 @ManyToOne(fetch=FetchType.EAGER)
 @JoinColumn(name="friend_id")
-@Autowired
-private User friend_id;
+private Integer friend_id;
 @Column(name="message")
 private String message;
 }

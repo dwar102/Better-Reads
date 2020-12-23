@@ -7,16 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
-
 @Entity
 @Table(name="genres")
-@Component
 public class Genre {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="genre_id")
 	private Integer id;
 	
 	@Column(name="genre_name")
@@ -33,10 +29,6 @@ public class Genre {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	@Override
-	public String toString() {
-		return "Genre [id=" + id + ", name=" + name + "]";
 	}
 	
 	
