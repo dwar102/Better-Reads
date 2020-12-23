@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.user = '';
     this.pass = '';
+    this.logIn();
   }
 
   ngOnChanges() {
