@@ -10,10 +10,12 @@ import dev.shrews.data.MessagesDAO;
 import dev.shrews.data.MessagesHibernate;
 @Service
 public class MessagesServiceImpl implements MessagesService {
+
+	private MessagesDAO messageDAO;
+	
 	@Autowired
-	private MessagesDAO messageDAO; 
-	public MessagesServiceImpl() {
-		messageDAO = new MessagesHibernate();
+	public MessagesServiceImpl(MessagesDAO m) {
+		messageDAO = m;
 	}
 	@Override
 	public Messages addMessages(Messages m) {
