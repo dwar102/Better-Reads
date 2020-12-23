@@ -7,10 +7,12 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import dev.shrews.beans.Genre;
 import dev.shrews.utils.HibernateUtil;
 
+@Repository
 public class GenreHibernate implements GenreDAO{
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
 

@@ -13,6 +13,7 @@ import org.hibernate.Session;
 import dev.shrews.beans.Messages;
 import dev.shrews.beans.User;
 import dev.shrews.utils.HibernateUtil;
+
 @Repository
 public class MessagesHibernate implements MessagesDAO {
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
