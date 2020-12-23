@@ -18,7 +18,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class Friendships {
 	
-	@Autowired
 	public Friendships() {
 		friendship_id = 0;
 		user_id = new User();

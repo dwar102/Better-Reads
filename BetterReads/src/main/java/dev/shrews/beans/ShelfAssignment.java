@@ -40,7 +40,6 @@ public class ShelfAssignment {
 	@Column(name="shelf_assignment_date")
 	private LocalDateTime date;
 	
-	@Autowired
 	public ShelfAssignment() {
 		super();
 		this.id = 0;
