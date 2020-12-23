@@ -29,7 +29,7 @@ public class Media {
 	@Autowired
 	private MediaType mediaType;
 	
-	@Autowired
+	
 	public Media(Integer id, String creator, String title, MediaType mediaType) {
 		super();
 		this.id = id;
@@ -37,7 +37,7 @@ public class Media {
 		this.title = title;
 		this.mediaType = mediaType;
 	}
-	
+	@Autowired
 	public Media() {
 		super();
 		this.id = 0;

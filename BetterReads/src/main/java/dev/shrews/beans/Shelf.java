@@ -38,7 +38,6 @@ public class Shelf {
 	@Autowired
 	private Set<ShelfAssignment> shelfAssignments;
 	
-	@Autowired
 	public Shelf(Integer id, User user, String name, Set<ShelfAssignment> shelfAssignments) {
 		super();
 		this.id = id;
@@ -46,7 +45,8 @@ public class Shelf {
 		this.name = name;
 		this.shelfAssignments = shelfAssignments;
 	}
-	
+
+	@Autowired
 	public Shelf() {
 		super();
 		this.id = 0;

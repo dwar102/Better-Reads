@@ -39,7 +39,8 @@ public class ShelfAssignment {
 	private User user;
 	@Column(name="shelf_assignment_date")
 	private LocalDateTime date;
-	
+
+	@Autowired
 	public ShelfAssignment() {
 		super();
 		this.id = 0;
@@ -48,7 +49,6 @@ public class ShelfAssignment {
 		this.date = null;
 	}
 	
-	@Autowired
 	public ShelfAssignment(Integer id, Shelf shelf, Media media, User user, LocalDateTime date) {
 		super();
 		this.id = id;
