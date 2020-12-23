@@ -10,10 +10,11 @@ import dev.shrews.beans.User;
 import dev.shrews.utils.HibernateUtil;
 import java.util.HashSet;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 import org.hibernate.Transaction;
 import java.util.List;
 
-
+@Repository
 public class ShelfHibernate implements ShelfDAO {
 
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();

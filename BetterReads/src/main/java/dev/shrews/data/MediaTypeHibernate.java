@@ -7,10 +7,12 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import dev.shrews.beans.MediaType;
 import dev.shrews.utils.HibernateUtil;
 
+@Repository
 public class MediaTypeHibernate implements MediaTypeDAO{
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
 
