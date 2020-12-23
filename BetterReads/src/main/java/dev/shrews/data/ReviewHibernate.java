@@ -7,10 +7,13 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import dev.shrews.beans.Review;
 import dev.shrews.utils.HibernateUtil;
 
+
+@Repository
 public class ReviewHibernate implements ReviewDAO{
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
 

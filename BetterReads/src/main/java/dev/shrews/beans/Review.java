@@ -13,25 +13,33 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name="reviews")
+@Component
 public class Review {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="review_id")
 	private Integer id;
 	
 	@Column(name="review_date")
 	private LocalDate date;
-	
+
+	@Column(name="rating")
 	private Integer rating;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
+	@Autowired
 	private User user;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@Column(name="media_id")
+	@JoinColumn(name="media_id")
+	@Autowired
 	private Media media;
 
 	public Integer getId() {

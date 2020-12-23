@@ -1,6 +1,5 @@
 package dev.shrews.beans;
 
-import dev.shrews.beans.User;
 
 import java.time.LocalDateTime;
 
@@ -13,25 +12,31 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="messages")
+@Component
 public class Messages {
-public Messages() {
+	
+	public Messages() {
 		message_id = 0;
 		message_date = LocalDateTime.now();
-		parent = new Messages();
+		parent = null;
 		sender = new User();
 		recipient = new User();
 		message = "";
 	}
-@Override
+	@Override
 	public String toString() {
 		return "messages [message_id=" + message_id + ", message_date=" + message_date + ", parent_message_id="
 				+ parent + ", sender_id=" + sender + ", recipient_id=" + recipient + ", message="
 				+ message + "]";
 	}
-@Override
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -117,16 +122,27 @@ public Messages() {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 private Integer message_id;
+public Integer getMessage_id() {
+	return message_id;
+}
+public void setMessage_id(Integer message_id) {
+	this.message_id = message_id;
+}
 @Column(name="message_date")
 private LocalDateTime message_date;
+
 @ManyToOne(fetch=FetchType.EAGER)
-@JoinColumn(name="message_id")
+@JoinColumn(name="parent_message_id")
+@Autowired
 private Messages parent;
+
 @ManyToOne(fetch=FetchType.EAGER)
 @JoinColumn(name="sender_id")
+@Autowired
 private User sender;
 @ManyToOne(fetch=FetchType.EAGER)
 @JoinColumn(name="recipient_id")
+@Autowired
 private User recipient;
 @Column(name="message")
 private String message;
