@@ -65,7 +65,6 @@ public class UserController {
     
     @GetMapping
 	public ResponseEntity<User> checkLogin(HttpSession session) {
-    	System.out.println("here");
 		User loggedUser = (User) session.getAttribute("user");
 		if (loggedUser == null)
 			return ResponseEntity.badRequest().build();

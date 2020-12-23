@@ -8,6 +8,6 @@ export class UrlService {
   constructor() { }
 
   getUrl(): string {
-    return 'http://localhost:8080/';
+    return 'http://localhost:8080/BetterReads/';
   }
 }
