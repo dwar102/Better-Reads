@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
+import dev.shrews.beans.Genre;
 import dev.shrews.beans.Media;
 import dev.shrews.data.MediaDAO;
 import dev.shrews.data.MediaHibernate;
@@ -44,6 +45,9 @@ class mediaTest {
 	@Order(3)
 	void testAddAndDelete() {
 		Media m = new Media();
+		Genre g = m.getGenre();
+		//g.setId(1);
+		System.out.println(m);
 		m.setTitle("test");
 		m = mediaDao.addMedia(m);
 		System.out.println(m);
