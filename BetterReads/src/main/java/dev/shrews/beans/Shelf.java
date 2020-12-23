@@ -47,7 +47,6 @@ public class Shelf {
 		this.shelfAssignments = shelfAssignments;
 	}
 	
-	@Autowired
 	public Shelf() {
 		super();
 		this.id = 0;

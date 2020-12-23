@@ -36,7 +36,6 @@ public class MediaType {
 		this.genre = genre;
 	}
 	
-	@Autowired
 	public MediaType() {
 		super();
 		this.id =  0;

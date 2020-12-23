@@ -113,7 +113,6 @@ public class User_Review_Comments {
 		return true;
 	}
 	
-	@Autowired
 	public User_Review_Comments() {
 		comment_id = 0;
 		comment_date = LocalDateTime.now();

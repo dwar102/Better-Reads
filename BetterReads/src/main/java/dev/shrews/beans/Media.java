@@ -38,7 +38,6 @@ public class Media {
 		this.mediaType = mediaType;
 	}
 	
-	@Autowired
 	public Media() {
 		super();
 		this.id = 0;
