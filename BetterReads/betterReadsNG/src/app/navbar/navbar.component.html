@@ -12,6 +12,16 @@
     <ng-template #loggedIn>
         <span>
             <button type="button" id="loginBtn" (click)="logOut()">Log Out</button>
+            <div class="collapse navbar-collapse">    
+                <ul class="navbar-nav mr-auto">    
+                  <li class="nav-item active">    
+                    <a class="nav-link" routerLink="" routerLinkActive="active">Home</a>    
+                  </li>    
+                  <li class="nav-item">    
+                    <a class="nav-link " routerLink="shelf" routerLinkActive="active">Shelf</a>    
+                  </li>    
+              </ul>    
+            </div> 
         </span>
     </ng-template>
 </div>>
