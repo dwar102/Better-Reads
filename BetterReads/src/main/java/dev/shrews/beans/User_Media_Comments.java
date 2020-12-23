@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Table(name="user_media_comments")
 @Component
 public class User_Media_Comments {
-	
+	@Autowired
 	public User_Media_Comments() {
 		comment_id = 0;
 		comment_date = LocalDateTime.now();

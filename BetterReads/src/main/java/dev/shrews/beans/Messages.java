@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Table(name="messages")
 @Component
 public class Messages {
-	
+	@Autowired
 	public Messages() {
 		message_id = 0;
 		message_date = LocalDateTime.now();
