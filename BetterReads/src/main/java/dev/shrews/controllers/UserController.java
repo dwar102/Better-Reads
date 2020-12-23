@@ -24,7 +24,6 @@ import dev.shrews.beans.User;
 import dev.shrews.services.UserService;
 import dev.shrews.services.UserServiceImpl;
 import dev.shrews.exceptions.NonUniqueUsernameException;
-import io.javalin.http.Context;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200", allowCredentials="true")
@@ -66,6 +65,7 @@ public class UserController {
     
     @GetMapping
 	public ResponseEntity<User> checkLogin(HttpSession session) {
+    	System.out.println("here");
 		User loggedUser = (User) session.getAttribute("user");
 		if (loggedUser == null)
 			return ResponseEntity.badRequest().build();

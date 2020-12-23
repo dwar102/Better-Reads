@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
 	
 	private UserDAO userDAO;
 	@Autowired
-	public UserServiceImpl () {
-		userDAO = new UserHibernate();
+	public UserServiceImpl (UserDAO u) {
+		userDAO = u;
 	}
 
 	@Override

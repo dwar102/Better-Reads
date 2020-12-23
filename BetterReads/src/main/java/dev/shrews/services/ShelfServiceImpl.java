@@ -2,13 +2,22 @@ package dev.shrews.services;
 
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import dev.shrews.beans.Shelf;
 import dev.shrews.data.ShelfDAO;
 import dev.shrews.data.ShelfHibernate;
 
+@Service
 public class ShelfServiceImpl implements ShelfService {
-ShelfDAO sd = new ShelfHibernate();
-
+	ShelfDAO sd;
+	
+	@Autowired
+	public ShelfServiceImpl(ShelfDAO s) {
+		sd = s;
+	}
+	
 	@Override
 	public Shelf addShelf(Shelf s) {
 		Shelf newShelf = sd.addShelf(s);
