@@ -107,6 +107,14 @@ public class User_Review_Comments {
 			return false;
 		return true;
 	}
+	public User_Review_Comments() {
+		comment_id = 0;
+		comment_date = LocalDateTime.now();
+		review = new Review();
+		parent = null;
+		user = new User();
+		message = "";
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer comment_id;

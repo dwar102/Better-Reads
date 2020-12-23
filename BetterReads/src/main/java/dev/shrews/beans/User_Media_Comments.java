@@ -13,6 +13,14 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="user_media_comments")
 public class User_Media_Comments {
+	public User_Media_Comments() {
+		comment_id = 0;
+		comment_date = LocalDateTime.now();
+		media = new Media();
+		parent = null;
+		user = new User();
+		message = "";
+	}
 	public Integer getComment_id() {
 		return comment_id;
 	}
