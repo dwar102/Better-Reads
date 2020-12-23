@@ -10,8 +10,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name="media_types")
+@Component
 public class MediaType {
 
 	@Id
@@ -21,13 +25,18 @@ public class MediaType {
 	private String name;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="genre_id")
+	@Autowired
 	private Genre genre;
+	
+	@Autowired
 	public MediaType(Integer id, String name, Genre genre) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.genre = genre;
 	}
+	
+	@Autowired
 	public MediaType() {
 		super();
 		this.id =  0;

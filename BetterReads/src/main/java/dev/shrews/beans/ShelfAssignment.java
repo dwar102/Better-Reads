@@ -13,8 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name="shelf_assignments")
+@Component
 public class ShelfAssignment {
 
 	@Id
@@ -23,16 +27,20 @@ public class ShelfAssignment {
 	private Integer id;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="shelf_id")
+	@Autowired
 	private Shelf shelf;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="media_id")
+	@Autowired
 	private Media media;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
+	@Autowired
 	private User user;
 	@Column(name="shelf_assignment_date")
 	private LocalDateTime date;
 	
+	@Autowired
 	public ShelfAssignment() {
 		super();
 		this.id = 0;
@@ -40,6 +48,8 @@ public class ShelfAssignment {
 		this.media = new Media();
 		this.date = null;
 	}
+	
+	@Autowired
 	public ShelfAssignment(Integer id, Shelf shelf, Media media, User user, LocalDateTime date) {
 		super();
 		this.id = id;
