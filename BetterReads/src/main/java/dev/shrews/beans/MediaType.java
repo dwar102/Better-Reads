@@ -28,14 +28,14 @@ public class MediaType {
 	@Autowired
 	private Genre genre;
 	
-	@Autowired
 	public MediaType(Integer id, String name, Genre genre) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.genre = genre;
 	}
-	
+
+	@Autowired
 	public MediaType() {
 		super();
 		this.id =  0;
