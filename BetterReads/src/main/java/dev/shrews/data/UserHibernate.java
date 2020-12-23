@@ -12,7 +12,6 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.springframework.stereotype.Repository;
 
 import dev.shrews.beans.Media;
 import dev.shrews.beans.Review;
@@ -21,7 +20,7 @@ import dev.shrews.beans.User_Media_Comments;
 import dev.shrews.beans.User_Review_Comments;
 import dev.shrews.exceptions.NonUniqueUsernameException;
 import dev.shrews.utils.HibernateUtil;
-@Repository
+
 public class UserHibernate implements UserDAO {
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
 	@Override

@@ -2,17 +2,15 @@ package dev.shrews.services;
 
 import java.util.Set;
 
-import org.springframework.stereotype.Service;
-
 import dev.shrews.beans.User;
 import dev.shrews.beans.User_Media_Comments;
 import dev.shrews.beans.User_Review_Comments;
 import dev.shrews.data.UserDAO;
 import dev.shrews.data.UserHibernate;
 import dev.shrews.exceptions.NonUniqueUsernameException;
-@Service
+
 public class UserServiceImpl implements UserService {
-	@Autowired
+	
 	private UserDAO userDAO;
 	
 	public UserServiceImpl () {
