@@ -8,6 +8,17 @@ import java.util.Base64;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import dev.shrews.beans.User;
 import dev.shrews.services.UserService;
@@ -15,12 +26,20 @@ import dev.shrews.services.UserServiceImpl;
 import dev.shrews.exceptions.NonUniqueUsernameException;
 import io.javalin.http.Context;
 
+@RestController
+@CrossOrigin(origins="http://localhost:4200", allowCredentials="true")
+@RequestMapping(path="/users")
 public class UserController {
 
-	private static UserService userService = new UserServiceImpl();
+	private static UserService userService;
 	private static String algorithm = "PBKDF2WithHmacSHA1"; // hashing algorithm
 	private static int derivedKeyLength = 160; // for SHA1
     private static int iterations = 20000; // NIST specifies 10000
+    
+    @Autowired
+    public UserController(UserService u) {
+    	userService = u;
+    }
     
     /*public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
 	
@@ -45,55 +64,35 @@ public class UserController {
     System.out.println(passHash.length());
     }*/
     
-public static void logIn(Context ctx) throws NoSuchAlgorithmException, InvalidKeySpecException {
-		
-		System.out.println("Logging in");
-		String username = ctx.queryParam("user");
-		User p = userService.getUserByName(username);
-		
-		if (p != null) {
-			
-			String password = getHash(ctx.queryParam("pass"), p.getSalt());
-			
-			if (p.getPass().equals(password))
-			{
-				System.out.println("Logged in as " + p.getUsername());
-				ctx.status(200);
-				ctx.json(p);
-				ctx.sessionAttribute("user", p);
-			}
-			else
-			{
-				// password mismatch
-				ctx.status(400);
-			}
-		}
-		else
-		{
-			// username not found
-			ctx.status(404);
-		}
-		
+    @GetMapping
+	public ResponseEntity<User> checkLogin(HttpSession session) {
+		User loggedUser = (User) session.getAttribute("user");
+		if (loggedUser == null)
+			return ResponseEntity.badRequest().build();
+		return ResponseEntity.ok(loggedUser);
 	}
-
-    public static void registerUser(Context ctx) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    
+    @PutMapping
+    public ResponseEntity<User> logIn(HttpSession session, @RequestParam("user") String username,
+			@RequestParam("pass") String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+		
+    	User user = userService.getUserByName(username);
     	
-    	//TODO: make sure username an any additional information is passed and stored correctly before calling addUser
-    	String password = ctx.body();
-    	User newUser = new User();
+    	if (user != null) {
+    		if (user.getPass().equals(getHash(password, user.getSalt()))) {
+    			session.setAttribute("user", user);
+    			return ResponseEntity.ok(user);
+    		}
+    		return ResponseEntity.badRequest().build();
+    	}
+    	return ResponseEntity.notFound().build();
+	}
+    
+   /* @PostMapping
+    public ResponseEntity<User> registerUser(HttpSession session) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    	User user = new User();
     	
-    	registerHash(newUser, password);
-    	
-		try {
-			userService.addUser(newUser);
-		}
-		catch (NonUniqueUsernameException e) {
-			System.out.println("Username already taken :(");
-			ctx.status(409); // 409 = conflict
-		}
-		ctx.status(200);
-    	
-    }
+    }*/
     
     //Used to generate a unique salt and hashed password to store in database when a user registers an account
     public static void registerHash(User user, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
