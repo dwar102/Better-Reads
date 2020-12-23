@@ -10,12 +10,14 @@ import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { UrlService } from './url.service';
 import { FormsModule } from '@angular/forms';
+import { AddmediaComponent } from './addmedia/addmedia.component';
 
 @NgModule({
   declarations: [
     AppComponent,
 	  ShelfComponent,
-    NavbarComponent
+    NavbarComponent,
+    AddmediaComponent
   ],
   imports: [
     BrowserModule,

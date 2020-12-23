@@ -22,8 +22,7 @@ genre_name varchar(30)
 
 CREATE TABLE media_types(
 media_type_id serial PRIMARY KEY,
-name varchar(60) NOT NULL,
-genre_id integer REFERENCES genres
+name varchar(60) NOT NULL
 );
 
 
@@ -31,7 +30,9 @@ CREATE TABLE media(
 media_id serial PRIMARY KEY,
 title varchar(60) NOT NULL,
 creator varchar(60),
-media_type integer REFERENCES media_types
+media_type integer REFERENCES media_types,
+genre_id integer REFERENCES genres,
+publication_date date
 );
 
 CREATE TABLE users(
@@ -134,12 +135,13 @@ INSERT INTO friendships VALUES
 	
 INSERT INTO genres(genre_id, genre_name) VALUES(DEFAULT, 'Science Fantasy');
 
-INSERT INTO media_types(media_type_id, name, genre_id) VALUES (DEFAULT, 'Book', 1);
+INSERT INTO media_types(media_type_id, name) VALUES (DEFAULT, 'Book');
 
-INSERT INTo media(media_id, title, creator, media_type) VALUES(DEFAULT, 'The Shadow of the Torturer', 'Gene Wolfe', 1);
-INSERT INTO media(media_id, title, creator, media_type) VALUES(DEFAULT, 'The Claw of the Conciliator', 'Gene Wolfe', 1);
-INSERT INTO media(media_id, title, creator, media_type) vALUES(DEFAULT, 'The Sword of the Lictor', 'Gene Wolfe', 1);
-INSERT INTO media(media_id, title, creator, media_type) VALUES(DEFAULT, 'The Citadel of the Autarch', 'Gene Wolfe', 1);
+INSERT INTO media(media_id, title, creator, media_type, genre_id, publication_date) values
+	(DEFAULT, 'The Shadow of the Torturer', 'Gene Wolfe', 1, 1, '1980-05-01'),
+	(DEFAULT, 'The Claw of the Conciliator', 'Gene Wolfe', 1, 1, '1981-05-01'),
+	(DEFAULT, 'The Sword of the Lictor', 'Gene Wolfe', 1, 1, '1982-05-01'),
+	(DEFAULT, 'The Citadel of the Autarch', 'Gene Wolfe', 1, 1, '1983-05-01');
 
 INSERT INTO user_tags VALUES
 	(DEFAULT, 'Complex', 1, 1),
