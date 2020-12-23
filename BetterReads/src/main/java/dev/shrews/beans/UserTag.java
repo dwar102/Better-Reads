@@ -10,8 +10,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name="user_tags")
+@Component
 public class UserTag {
 	
 	@Id
@@ -24,10 +28,12 @@ public class UserTag {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
+	@Autowired
 	private User user;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="media_id")
+	@Autowired
 	private Media media;
 
 	public Integer getId() {

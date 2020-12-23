@@ -15,8 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name="shelves")
+@Component
 public class Shelf {
 
 	@Id
@@ -25,12 +29,16 @@ public class Shelf {
 	private Integer id;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
+	@Autowired
 	private User user;
 	@Column(name="shelf_name")
 	private String name;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "shelf_assignment_id")//
+	@Autowired
 	private Set<ShelfAssignment> shelfAssignments;
+	
+	@Autowired
 	public Shelf(Integer id, User user, String name, Set<ShelfAssignment> shelfAssignments) {
 		super();
 		this.id = id;
@@ -38,6 +46,8 @@ public class Shelf {
 		this.name = name;
 		this.shelfAssignments = shelfAssignments;
 	}
+	
+	@Autowired
 	public Shelf() {
 		super();
 		this.id = 0;
