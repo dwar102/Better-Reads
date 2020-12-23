@@ -46,11 +46,29 @@ public class userTest {
 	public void testAddandDelete() throws NonUniqueUsernameException { // testing hibernate connection; not using mockito
 		User u = new User();
 		u.setUsername("Peter");
-		u.setId(userSequenceMock);
 		u = userDao.add(u);
 		System.out.println(u);
 		assertTrue(u.getId() != 0);
 		userDao.delete(u);
 		}
+	@Test
+	public void testAddCommentandDelete() {
+		User_Media_Comments m = new User_Media_Comments();
+		User u = new User();
+		m.setUser(u);
+		m = userDao.placeCommentForMedia(m);
+		assertTrue(m.getComment_id() != 0);
+		userDao.delete(m);		
 	}
+	@Test
+	public void testAddReviewCommentandDelete() {
+		User_Review_Comments m = new User_Review_Comments();
+		User u = new User();
+		m.setUser(u);
+		m = userDao.placeCommentForReview(m);
+		assertTrue(m.getComment_id() != 0);
+		userDao.delete(m);		
+	}
+}
+
 
