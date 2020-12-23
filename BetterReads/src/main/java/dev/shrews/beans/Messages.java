@@ -118,6 +118,12 @@ public Messages() {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 private Integer message_id;
+public Integer getMessage_id() {
+	return message_id;
+}
+public void setMessage_id(Integer message_id) {
+	this.message_id = message_id;
+}
 @Column(name="message_date")
 private LocalDateTime message_date;
 

@@ -24,4 +24,6 @@ public interface UserService {
 	public Set<User_Media_Comments> getCommentsForMedia(Integer id);
 	public void placeCommentForReview(User_Review_Comments c);
 	public void placeCommentForMedia(User_Media_Comments c);
+	public void delete(User_Review_Comments c);
+	public void delete(User_Media_Comments c);
 }

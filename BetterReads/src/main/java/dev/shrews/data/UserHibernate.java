@@ -84,20 +84,48 @@ public class UserHibernate implements UserDAO {
 
 	@Override
 	public Set<User> getUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = hu.getSession();
+		String query = "FROM User";
+		Query<User> q = s.createQuery(query, User.class);
+		List<User> userList = q.getResultList();
+		Set<User> userSet = new HashSet<>();
+		userSet.addAll(userList);
+		s.close();
+		return userSet;
 	}
 
 	@Override
 	public User_Media_Comments placeCommentForMedia(User_Media_Comments c) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.save(c);
+			tx.commit();
+		} catch(Exception e) {
+			if (tx != null)
+				tx.rollback();
+		} finally {
+			s.close();
+		}
+		return c;
 	}
 
 	@Override
 	public User_Review_Comments placeCommentForReview(User_Review_Comments c) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.save(c);
+			tx.commit();
+		} catch(Exception e) {
+			if (tx != null)
+				tx.rollback();
+		} finally {
+			s.close();
+		}
+		return c;
 	}
 
 	@Override
@@ -126,6 +154,33 @@ public class UserHibernate implements UserDAO {
 		return rCommentSet;
 	}
 
-
+@Override
+public void delete(User_Review_Comments c) {
+	Session s = hu.getSession();
+	Transaction tx = null;
+	try {
+		tx = s.beginTransaction();
+		s.delete(c);
+		tx.commit();
+	} catch (Exception e) {
+		if (tx != null)
+			tx.rollback();
+	} finally {
+		s.close();
+	}
 }
-
+public void delete(User_Media_Comments c) {
+	Session s = hu.getSession();
+	Transaction tx = null;
+	try {
+		tx = s.beginTransaction();
+		s.delete(c);
+		tx.commit();
+	} catch (Exception e) {
+		if (tx != null)
+			tx.rollback();
+	} finally {
+		s.close();
+	}
+}
+}
