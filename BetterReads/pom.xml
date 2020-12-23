@@ -20,7 +20,27 @@
   		</dependency>
   	</dependencies>
   </dependencyManagement>
-  <dependencies>
+  	<dependencies>
+  	<!-- spring core dependency: the ioc container -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-core</artifactId>
+  	</dependency>
+  	<!-- spring beans (spring bean lifecycle methods) -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-beans</artifactId>
+  	</dependency>
+  	<!-- spring context (application context) -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context</artifactId>
+  	</dependency>
+  	<!-- spring context support (helper module for the application context) -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context-support</artifactId>
+  	</dependency>
     <!-- spring dependencies -->
   	<dependency>
   		<groupId>org.springframework</groupId>
