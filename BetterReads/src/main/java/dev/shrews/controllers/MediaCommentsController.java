@@ -38,7 +38,7 @@ public class MediaCommentsController {
         Media media = (Media) session.getAttribute("media");
         Integer id = media.getId();
         Set<User_Media_Comments> mediaComments = userServ.getCommentsForMedia(id);
-        if (media == null) 
+        if (mediaComments == null) 
             return ResponseEntity.badRequest().build();
         return ResponseEntity.ok(mediaComments);
     }
