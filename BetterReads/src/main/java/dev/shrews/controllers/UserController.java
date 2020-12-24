@@ -1,5 +1,6 @@
 package dev.shrews.controllers;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -16,9 +17,15 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import dev.shrews.beans.User;
 import dev.shrews.services.UserService;
@@ -87,11 +94,23 @@ public class UserController {
     	return ResponseEntity.notFound().build();
 	}
     
-   /* @PostMapping
-    public ResponseEntity<User> registerUser(HttpSession session) throws NoSuchAlgorithmException, InvalidKeySpecException {
-    	User user = new User();
+    @PostMapping()
+    public ResponseEntity<User> registerUser(HttpSession session, @RequestBody() String body) throws NoSuchAlgorithmException, InvalidKeySpecException, JsonParseException, JsonMappingException, IOException, NonUniqueUsernameException {
+    	ObjectMapper mapper = new ObjectMapper();
+    	ObjectNode node = mapper.readValue(body, ObjectNode.class);
+    	User registerUser = new User();
     	
-    }*/
+    	registerUser.setUsername(node.get("user").toString().replace("\"", ""));
+    	registerHash(registerUser, node.get("pass").toString().replace("\"", ""));
+    	
+    	User user = userService.addUser(registerUser);
+    	
+    	if (user != null) {
+    		return ResponseEntity.ok().build();
+    	} else {
+    		return ResponseEntity.badRequest().build();
+    	}
+    }
     
     //Used to generate a unique salt and hashed password to store in database when a user registers an account
     public static void registerHash(User user, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {

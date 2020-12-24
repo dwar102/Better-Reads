@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { UrlService } from './url.service';
 import { FormsModule } from '@angular/forms';
 import { AddmediaComponent } from './addmedia/addmedia.component';
+import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RatingWidgetComponent } from './rating-widget/rating-widget.component';
 
@@ -22,6 +23,8 @@ import { RatingWidgetComponent } from './rating-widget/rating-widget.component';
     AddmediaComponent,
     ProfileComponent,
     RatingWidgetComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

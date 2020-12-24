@@ -45,4 +45,8 @@ export class NavbarComponent implements OnInit, OnChanges {
     );
   }
 
+  signUp() {
+    this.router.navigateByUrl('register');
+  }
+
 }
