@@ -3,25 +3,25 @@ package dev.shrews.tests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+//import static org.mockito.Mockito.verify;
+//import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+//import org.mockito.InjectMocks;
+//import org.mockito.Mock;
+//import org.mockito.junit.jupiter.MockitoExtension;
 
 import dev.shrews.beans.*;
 import dev.shrews.services.*;
 import dev.shrews.data.*;
 
 public class shelfTest {
-
-	static ShelfService shelfServ = new ShelfServiceImpl();
+	private static ShelfDAO sd = new ShelfHibernate();
+	static ShelfService shelfServ = new ShelfServiceImpl(sd);
 	Shelf ShelfToAdd = new Shelf();
 	Shelf newShelf = null;
 
