@@ -11,13 +11,15 @@ import { CookieService } from 'ngx-cookie-service';
 import { UrlService } from './url.service';
 import { FormsModule } from '@angular/forms';
 import { AddmediaComponent } from './addmedia/addmedia.component';
+import { CommentsmediaComponent } from './commentsmedia/commentsmedia.component';
 
 @NgModule({
   declarations: [
     AppComponent,
 	  ShelfComponent,
     NavbarComponent,
-    AddmediaComponent
+    AddmediaComponent,
+    CommentsmediaComponent
   ],
   imports: [
     BrowserModule,
