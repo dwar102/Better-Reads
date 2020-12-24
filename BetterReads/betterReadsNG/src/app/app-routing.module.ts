@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
 import { ShelfComponent } from './shelf/shelf.component';
 
 const routes: Routes = [
-  {path:'shelf', component:ShelfComponent}
+  {path:'profile', component:ProfileComponent}
 ];
 
 @NgModule({
