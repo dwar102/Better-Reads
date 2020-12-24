@@ -12,6 +12,7 @@ import { UrlService } from './url.service';
 import { FormsModule } from '@angular/forms';
 import { AddmediaComponent } from './addmedia/addmedia.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RegisterComponent } from './register/register.component';
 	  ShelfComponent,
     NavbarComponent,
     AddmediaComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

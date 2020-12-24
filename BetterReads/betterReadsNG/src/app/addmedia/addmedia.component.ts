@@ -21,7 +21,8 @@ export class AddmediaComponent implements OnInit {
       if(this.newTitle){
         if(this.newMediatype){
           if(this.newGenre){
-              //this.mediaService.addMedia(newCreator, newGenre, newMediatype, newTitle);
+
+            // this.mediaService.addMedia(newCreator, newGenre, newMediatype, newTitle);
           }
           else{
             alert("You must enter a genre")
