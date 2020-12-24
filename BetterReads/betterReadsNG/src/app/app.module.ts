@@ -22,7 +22,7 @@ import { RatingWidgetComponent } from './rating-widget/rating-widget.component';
     NavbarComponent,
     AddmediaComponent,
     ProfileComponent,
-    RatingWidgetComponent
+    RatingWidgetComponent,
     RegisterComponent,
     ProfileComponent
   ],
