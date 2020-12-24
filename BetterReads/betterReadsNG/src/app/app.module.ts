@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { AddmediaComponent } from './addmedia/addmedia.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RatingWidgetComponent } from './rating-widget/rating-widget.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
 	  ShelfComponent,
     NavbarComponent,
     AddmediaComponent,
+    ProfileComponent,
+    RatingWidgetComponent,
     RegisterComponent,
     ProfileComponent
   ],
