@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Integer addUser(User u) throws NonUniqueUsernameException {
-		return userDAO.add(u).getId();
+	public User addUser(User u) throws NonUniqueUsernameException {
+		return userDAO.add(u);
 	}
 
 	@Override
