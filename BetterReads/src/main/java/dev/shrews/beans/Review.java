@@ -1,7 +1,9 @@
 package dev.shrews.beans;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,6 +24,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Review {
 	
+	public Review() {
+		id = 0;
+		date = LocalDate.now();
+		rating = 0;
+		user = new User();
+		media = new Media();
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="review_id")
@@ -32,12 +43,13 @@ public class Review {
 	@Column(name="rating")
 	private Integer rating;
 	
+	@Transient
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	@Autowired
 	private User user;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="media_id")
 	@Autowired
 	private Media media;

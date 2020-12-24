@@ -1,12 +1,5 @@
 package dev.shrews.beans;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -127,7 +120,7 @@ public class User_Review_Comments {
 	@Column(name="comment_date")
 	private LocalDateTime comment_date;
 	
-	@ManyToOne(fetch=FetchType.EAGER) 
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL) 
 	@JoinColumn(name="review_id")
 	@Autowired
 	private Review review;
@@ -137,7 +130,7 @@ public class User_Review_Comments {
 	@Autowired
 	private User_Review_Comments parent;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	@Autowired
 	private User user;
