@@ -16,14 +16,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.shrews.beans.*;
 import dev.shrews.services.UserService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200", allowCredentials = "true")
 @RequestMapping(path="/media/comments")
+@CrossOrigin(origins="http://localhost:4200", allowCredentials = "true")
+
 public class MediaCommentsController {
     private UserService userServ;
 
@@ -33,8 +35,10 @@ public class MediaCommentsController {
     }
 
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Set<User_Media_Comments>> getComments(HttpSession session, @RequestParam("id") Integer id)  {
+    @GetMapping(path="{id}")
+    @ResponseBody
+    public ResponseEntity<Set<User_Media_Comments>> getComments(HttpSession session, @PathVariable("id") Integer id)  {
+    	System.out.println("Reached");
         Set<User_Media_Comments> mediaComments = userServ.getCommentsForMedia(id);
         if (mediaComments != null) {
             return ResponseEntity.ok(mediaComments);

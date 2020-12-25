@@ -78,6 +78,8 @@ public class userTest {
 		m = userDao.placeCommentForReview(m);
 		assertTrue(m.getComment_id() != 0);	
 		userDao.delete(m);
+		User f = userDao.getUserById(1);
+		System.out.println(f.getUsername());
 	}
 }
 
