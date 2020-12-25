@@ -2,7 +2,6 @@ package dev.shrews.services;
 
 import java.util.Set;
 
-import org.eclipse.jetty.server.Authentication.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

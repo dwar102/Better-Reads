@@ -7,6 +7,7 @@
             <label for="pass"> Password: </label>
             <input id="pass" name="pass" type="password" [(ngModel)]="pass" />
             <button type="button" id="loginBtn" (click)="logIn()">Log In</button>
+            <button type="button" id="registerBtn" (click)="signUp()">Sign Up!</button>
         </form>
     </ng-container>
     <ng-template #loggedIn>
@@ -18,7 +19,7 @@
                     <a class="nav-link" routerLink="" routerLinkActive="active">Home</a>    
                   </li>    
                   <li class="nav-item">    
-                    <a class="nav-link " routerLink="shelf" routerLinkActive="active">Shelf</a>    
+                    <a class="nav-link " routerLink="profile" routerLinkActive="active">Profile</a>    
                   </li>    
               </ul>    
             </div> 

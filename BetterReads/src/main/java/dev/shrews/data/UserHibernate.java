@@ -132,6 +132,7 @@ public class UserHibernate implements UserDAO {
 	@Override
 	public Set<User_Media_Comments> getCommentsForMedia(Integer id) { // receive media.getId() at controller; db stores serial
 		Session s = hu.getSession();
+		System.out.println("getcomments reached");
 		String query = "FROM User_Media_Comments where media_id = :id";
 		Query<User_Media_Comments> q = s.createQuery(query, User_Media_Comments.class);
 		q.setParameter("id", id);

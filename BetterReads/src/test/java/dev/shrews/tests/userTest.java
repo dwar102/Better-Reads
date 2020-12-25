@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,12 +14,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import dev.shrews.beans.*;
 import dev.shrews.services.*;
 import dev.shrews.data.*;
 import dev.shrews.exceptions.NonUniqueUsernameException;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 public class userTest {
@@ -64,10 +69,15 @@ public class userTest {
 	public void testAddReviewCommentandDelete() {
 		User_Review_Comments m = new User_Review_Comments();
 		User u = new User();
+		Review r = new Review();
+		Media n = r.getMedia();
+		n.setId(0);
 		m.setUser(u);
+		m.setreview(r);
 		m = userDao.placeCommentForReview(m);
-		assertTrue(m.getComment_id() != 0);
-		userDao.delete(m);		
+		assertTrue(m.getComment_id() != 0);	
+		userDao.delete(m);
+		userDao.delete(u);
 	}
 }
 
