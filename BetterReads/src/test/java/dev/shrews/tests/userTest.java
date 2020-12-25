@@ -69,10 +69,15 @@ public class userTest {
 	public void testAddReviewCommentandDelete() {
 		User_Review_Comments m = new User_Review_Comments();
 		User u = new User();
+		Review r = new Review();
+		Media n = r.getMedia();
+		n.setId(0);
 		m.setUser(u);
+		m.setreview(r);
 		m = userDao.placeCommentForReview(m);
-		assertTrue(m.getComment_id() != 0);
-		userDao.delete(m);		
+		assertTrue(m.getComment_id() != 0);	
+		userDao.delete(m);
+		userDao.delete(u);
 	}
 }
 

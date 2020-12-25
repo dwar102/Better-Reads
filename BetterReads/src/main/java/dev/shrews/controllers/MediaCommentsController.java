@@ -33,13 +33,13 @@ public class MediaCommentsController {
     }
 
 
-    @GetMapping
-    public ResponseEntity<Set<User_Media_Comments>> getComments(HttpSession session) {
-        Media media = (Media) session.getAttribute("media");
-        Integer id = media.getId();
+    @GetMapping("/id")
+    public ResponseEntity<Set<User_Media_Comments>> getComments(HttpSession session, @RequestParam("id") Integer id)  {
         Set<User_Media_Comments> mediaComments = userServ.getCommentsForMedia(id);
-        if (mediaComments == null) 
-            return ResponseEntity.badRequest().build();
-        return ResponseEntity.ok(mediaComments);
+        if (mediaComments != null) {
+            return ResponseEntity.ok(mediaComments);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

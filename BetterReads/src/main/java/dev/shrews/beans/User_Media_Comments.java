@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="user_media_comments")
 @Component
+
 public class User_Media_Comments {
 	@Autowired
 	public User_Media_Comments() {
@@ -128,7 +129,7 @@ public class User_Media_Comments {
 	private LocalDateTime comment_date;
 	
 	
-	@ManyToOne(fetch=FetchType.EAGER) 
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL) 
 	@JoinColumn(name="media_id")
 	@Autowired
 	private Media media;
@@ -138,6 +139,7 @@ public class User_Media_Comments {
 	@JoinColumn(name="parent_comment_id")
 	@Autowired
 	private User_Media_Comments parent;
+	@Transient
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	@Autowired
