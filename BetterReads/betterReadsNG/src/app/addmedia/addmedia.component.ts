@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaService } from '../services/media.service';
 
 @Component({
   selector: 'app-addmedia',
@@ -6,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addmedia.component.styl']
 })
 export class AddmediaComponent implements OnInit {
-  newCreator: string;
-  newMediatype: string;
-  newGenre: string;
-  newTitle: string;
+  newCreator: String;
+  newMediatype: Number;
+  newGenre: Number;
+  newTitle: String;
 
-  constructor() { }
+  constructor(private mediaService: MediaService) { }
 
   ngOnInit(): void {
   }
@@ -21,7 +22,11 @@ export class AddmediaComponent implements OnInit {
       if(this.newTitle){
         if(this.newMediatype){
           if(this.newGenre){
-              this.mediaService.addMedia(newCreator, newGenre, newMediatype, newTitle);
+            console.log(this.newCreator)
+            console.log(this.newGenre)
+            console.log(this.newMediatype)
+            console.log(this.newTitle)
+              this.mediaService.addMedia(this.newCreator, this.newGenre, this.newMediatype, this.newTitle);
           }
           else{
             alert("You must enter a genre")
@@ -40,4 +45,12 @@ export class AddmediaComponent implements OnInit {
     }
   }
 
+ 
+  displayGenreValue(){
+    console.log(this.newGenre)
+  }
+
+  displayMediatypeValue(){
+    console.log(this.newMediatype)
+  }
 }

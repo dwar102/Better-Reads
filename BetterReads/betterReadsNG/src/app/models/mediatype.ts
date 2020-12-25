@@ -1,4 +1,4 @@
-export class Genre {
+export class MediaType {
     id: Number;
     name: String;
 }

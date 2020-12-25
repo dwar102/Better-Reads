@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS shelf_assignments CASCADE;
 ---------------------------------------------
 CREATE TABLE genres(
 genre_id serial PRIMARY KEY,
-genre_name varchar(30)
+genre_name varchar(30) NOT NULL
 );
 
 CREATE TABLE media_types(
