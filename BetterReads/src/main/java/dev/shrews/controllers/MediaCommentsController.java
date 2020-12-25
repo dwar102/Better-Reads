@@ -33,7 +33,7 @@ public class MediaCommentsController {
     }
 
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<Set<User_Media_Comments>> getComments(HttpSession session, @RequestParam("id") Integer id)  {
         Set<User_Media_Comments> mediaComments = userServ.getCommentsForMedia(id);
         if (mediaComments != null) {
