@@ -1,0 +1,34 @@
+<!-- ><p>addmedia works!</p> -->
+
+<div>
+    <h3>Fill out the following form to add new media</h3>
+    Media Type: <select [(ngModel)] = "newMediatype">
+        <option value=1>Book</option>
+        <option value=2>DVD</option>
+      </select> <br>
+    Genre: <select [(ngModel)] = "newGenre">
+        <option value=1>Science Fantasy</option>
+        <option value=2>Biography</option>
+        <option value=3>Science and Technology</option>
+        <option value=5>Poetry</option>
+        <option value=6>Non-Fiction</option>
+        <option value=7>Contemporary Fiction</option>
+        <option value=8>Historical Fiction</option>
+        <option value=9>Juvenile Fiction</option>
+        <option value=10>History</option>
+        <option value=11>Mystery</option>
+        <option value=12>Thriller</option>
+        <option value=13>Horror</option>
+      </select> <br>
+      <!-- <input name="genre" type="text" [(ngModel)] ="newGenre"><br> -->
+    Creator: <input name="creator" type="text" placeholder = "Enter the name of the creator" size = 50 [(ngModel)] ="newCreator"><br>
+    Title: <input name="title" type="text" placeholder = "Enter the title of the new media" size = 50 [(ngModel)] ="newTitle"><br>
+    Creator: <input name="date" type="date"  [(ngModel)] ="newDate"><br>
+    <br>
+    <button type="button" (click) = "addMedia()" id="submitBtn">Submit</button>
+    <!-- <button type="button" (click) = "displayGenreValue()" id="checkBtn">Genre</button> 
+    <br>
+    <button type="button" (click) = "displayMediatypeValue()" id="debugBtn">Mediatype</button>-->
+    
+    
+</div>
