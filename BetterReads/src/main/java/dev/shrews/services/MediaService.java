@@ -7,7 +7,7 @@ import dev.shrews.beans.Media;
 public interface MediaService {
 
 	//create
-	public Integer addMedia(Media m);
+	public Media addMedia(Media m);
 	//read
 	public Media getByMediaId(Integer id);
 	public Set<Media> getAll();

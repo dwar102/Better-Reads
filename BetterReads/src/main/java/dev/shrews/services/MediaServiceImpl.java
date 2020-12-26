@@ -20,8 +20,8 @@ public class MediaServiceImpl implements MediaService{
 	}
 
 	@Override
-	public Integer addMedia(Media m) {
-		return mediaDao.addMedia(m).getId();
+	public Media addMedia(Media m) {
+		return mediaDao.addMedia(m);
 	}
 
 	@Override

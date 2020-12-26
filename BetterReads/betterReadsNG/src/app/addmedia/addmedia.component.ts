@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaService } from '../services/media.service';
 
 @Component({
   selector: 'app-addmedia',
@@ -6,39 +7,57 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addmedia.component.styl']
 })
 export class AddmediaComponent implements OnInit {
-  newCreator: string;
-  newMediatype: string;
-  newGenre: string;
-  newTitle: string;
+  newCreator: String;
+  newMediatype: Number;
+  newGenre: Number;
+  newTitle: String;
+  newDate: Date;
 
-  constructor() { }
+  constructor(private mediaService: MediaService) { }
 
   ngOnInit(): void {
   }
 
   addMedia(){
-    if(this.newCreator){
-      if(this.newTitle){
-        if(this.newMediatype){
-          if(this.newGenre){
-
-            // this.mediaService.addMedia(newCreator, newGenre, newMediatype, newTitle);
+    if(this.newDate){
+      if(this.newCreator){
+        if(this.newTitle){
+          if(this.newMediatype){
+            if(this.newGenre){
+              console.log(this.newCreator)
+              console.log(this.newGenre)
+              console.log(this.newMediatype)
+              console.log(this.newTitle)
+                let x = this.mediaService.addMedia(this.newCreator, this.newDate, this.newGenre, this.newMediatype, this.newTitle);
+                console.log(x);
+            }
+            else{
+              alert("You must enter a genre")
+            }
           }
           else{
-            alert("You must enter a genre")
+            alert("You must enter a media type")
           }
         }
         else{
-          alert("You must enter a media type")
+          alert("You must enter a title")
         }
       }
       else{
-        alert("You must enter a title")
+        alert("You must enter a creator")
       }
     }
     else{
-      alert("You must enter a creator")
+      alert("You must enter a publication date")
     }
   }
 
+ 
+  displayGenreValue(){
+    console.log(this.newGenre)
+  }
+
+  displayMediatypeValue(){
+    console.log(this.newMediatype)
+  }
 }

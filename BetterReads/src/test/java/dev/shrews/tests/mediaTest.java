@@ -12,6 +12,7 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 import dev.shrews.beans.Genre;
 import dev.shrews.beans.Media;
+import dev.shrews.beans.MediaType;
 import dev.shrews.data.MediaDAO;
 import dev.shrews.data.MediaHibernate;
 
@@ -46,7 +47,11 @@ class mediaTest {
 	void testAddAndDelete() {
 		Media m = new Media();
 		Genre g = m.getGenre();
-		//g.setId(1);
+		g.setId(1);
+		MediaType mt = m.getMediaType();
+		mt.setId(1);
+		//mt.setName("Book");
+		m.setMediaType(mt);
 		System.out.println(m);
 		m.setTitle("test");
 		m = mediaDao.addMedia(m);
