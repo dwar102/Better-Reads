@@ -130,7 +130,7 @@ public class User_Review_Comments {
 	@Autowired
 	private User_Review_Comments parent;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	@Autowired
 	private User user;
