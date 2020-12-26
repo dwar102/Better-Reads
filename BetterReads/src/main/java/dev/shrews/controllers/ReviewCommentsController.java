@@ -23,27 +23,28 @@ import dev.shrews.beans.*;
 import dev.shrews.services.UserService;
 
 @RestController
-@RequestMapping(path="/media/comments")
+@RequestMapping(path="/reviews/comments")
 @CrossOrigin(origins="http://localhost:4200", allowCredentials = "true")
 
-public class MediaCommentsController {
+public class ReviewCommentsController {
     private UserService userServ;
 
     @Autowired
-    public MediaCommentsController(UserService u) {
+    public ReviewCommentsController(UserService u) {
         userServ = u;
     }
 
 
     @GetMapping(path="{id}")
     @ResponseBody
-    public ResponseEntity<Set<User_Media_Comments>> getComments(HttpSession session, @PathVariable("id") Integer id)  {
+    public ResponseEntity<Set<User_Review_Comments>> getComments(HttpSession session, @PathVariable("id") Integer id)  {
     	System.out.println("Reached");
-        Set<User_Media_Comments> mediaComments = userServ.getCommentsForMedia(id);
-        if (mediaComments != null) {
-            return ResponseEntity.ok(mediaComments);
+        Set<User_Review_Comments> reviewComments = userServ.getCommentsForReview(id);
+        if (reviewComments != null) {
+            return ResponseEntity.ok(reviewComments);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 }
+

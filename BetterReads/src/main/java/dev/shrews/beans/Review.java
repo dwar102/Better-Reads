@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 @Table(name="reviews")
 @Component
 public class Review {
-	
+
 	public Review() {
 		id = 0;
 		date = LocalDate.now();
@@ -43,8 +43,8 @@ public class Review {
 	@Column(name="rating")
 	private Integer rating;
 	
-	@Transient
-	@ManyToOne(fetch=FetchType.EAGER)
+
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	@Autowired
 	private User user;

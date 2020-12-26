@@ -73,11 +73,13 @@ public class userTest {
 		Media n = r.getMedia();
 		n.setId(0);
 		m.setUser(u);
+		u.setId(1);
 		m.setreview(r);
 		m = userDao.placeCommentForReview(m);
 		assertTrue(m.getComment_id() != 0);	
 		userDao.delete(m);
-		userDao.delete(u);
+		User f = userDao.getUserById(1);
+		System.out.println(f.getUsername());
 	}
 }
 
