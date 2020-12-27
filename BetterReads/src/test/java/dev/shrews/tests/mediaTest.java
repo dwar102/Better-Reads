@@ -2,6 +2,7 @@ package dev.shrews.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import dev.shrews.beans.Genre;
 import dev.shrews.beans.Media;
 import dev.shrews.beans.MediaType;
+import dev.shrews.beans.Review;
 import dev.shrews.data.MediaDAO;
 import dev.shrews.data.MediaHibernate;
 
@@ -62,5 +64,38 @@ class mediaTest {
 		Media m2 = mediaDao.getById(id);
 		assertTrue(m2 == null);
 	}
+
+	@Test
+	@Order(4)
+	void testGetNumRatingsById() {
+		Long nr = mediaDao.getNumRatingsById(2);
+		System.out.println(nr);
+		assertTrue(nr > 0);
+	}
+
+	@Test
+	@Order(5)
+	void testGetNAvgRatingsById() {
+		double avgr = mediaDao.getAvgRatingById(2);
+		System.out.println(avgr);
+		assertTrue(avgr > 0);
+	}
+
+	@Test
+	@Order(6)
+	void testGetNumTagsById() {
+		List<Integer> names = mediaDao.getNumTagsById(2);
+		System.out.println(names);
+		assertTrue(names.size() > 0);
+	}
+
+	@Test
+	@Order(7)
+	void testTagnamesById() {
+		List<String> names = mediaDao.getTagnamesById(2);
+		System.out.println(names);
+		assertTrue(names.size() > 0);
+	}
+
 
 }
