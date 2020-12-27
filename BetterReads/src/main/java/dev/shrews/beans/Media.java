@@ -43,22 +43,22 @@ public class Media {
 	private MediaType mediaType;
 	
 	
-	public Media(Integer id, String creator, String title, Genre genre, MediaType mediaType) {
+	public Media(Integer id, String creator, String title, Genre genre, MediaType mediaType, LocalDate date) {
 		super();
 		this.id = id;
 		this.creator = creator;
 		this.title = title;
 		this.mediaType = mediaType;
 		this.genre = genre;
+		this.date = LocalDate.now();
 	}
 	@Autowired
 	public Media() {
-		super();
 		this.id = 0;
 		this.creator = "";
 		this.title = "";
 		this.mediaType = new MediaType();
-		this.date = null;
+		this.date = LocalDate.now();
 		this.genre = new Genre();
 	}
 	public Integer getId() {
