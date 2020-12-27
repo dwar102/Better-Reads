@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { User } from '../models/user';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.styl']
 })
 export class ProfileComponent implements OnInit {
+  @Output() logInEvent: EventEmitter<any> = new EventEmitter();
+  @Input() public loggedUser: User; 
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log("logged user: " + this.loggedUser.username);
   }
-
 }

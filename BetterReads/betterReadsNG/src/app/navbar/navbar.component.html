@@ -18,11 +18,12 @@
                   <li class="nav-item active">    
                     <a class="nav-link" routerLink="" routerLinkActive="active">Home</a>    
                   </li>    
-                  <li class="nav-item">    
+                  <!-- <li class="nav-item">    
                     <a class="nav-link " routerLink="profile" routerLinkActive="active">Profile</a>    
-                  </li>    
+                  </li>     -->
               </ul>    
             </div> 
         </span>
+        <app-profile [loggedUser]="loggedUser"></app-profile>
     </ng-template>
-</div>>
+</div>
