@@ -1,7 +1,8 @@
 import { Component, OnChanges, OnInit, EventEmitter, Output } from '@angular/core';
-import { User } from '../models/user';
-import { UserService } from '../services/user.service';
+import { mediaComment} from '../models/mediacomment';
+import { CommentsmediaService } from '../services/commentsmedia.service';
 import { Router } from '@angular/router';
+import { Media } from '../models/media';
 
 @Component({
   selector: 'app-commentsmedia',
@@ -9,10 +10,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./commentsmedia.component.styl']
 })
 export class CommentsmediaComponent implements OnInit {
+  Comments: mediaComment[];
+  media: Media;
 
-  constructor() { }
+  constructor(private commentService:CommentsmediaService) { }
 
   ngOnInit(): void {
+    this.commentService.getMediaComments(this.media.id).subscribe(
+      resp => {
+        this.Comments = resp;
+      }
+    );
   }
 
 }
