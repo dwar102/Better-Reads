@@ -38,6 +38,7 @@ public class MediaController {
     @PostMapping("/add")
     public ResponseEntity<Media> addMedia(HttpSession session, @RequestParam("creator") String creator, @RequestParam("date") CharSequence date,
     		@RequestParam("genre") Integer gid, @RequestParam("mediatype") Integer mtid, @RequestParam("title") String title)  {
+    	System.out.println("enter /add handler");
     	MediaType mt = new MediaType();
     	mt.setId(mtid);
     	Genre g = new Genre();

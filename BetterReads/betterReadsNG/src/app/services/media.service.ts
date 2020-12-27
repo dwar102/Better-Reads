@@ -29,15 +29,13 @@ export class MediaService {
     media.genre = genre;
     media.mediaType = mediaType;
     media.publicationDate = newDate;
-    console.log(media);
+    // console.log(media);
 
     const addmediaurl = 'http://localhost:8080/BetterReads/media/add?' + 'creator=' + newCreator + '&date=' + newDate
                       +  '&genre=' + newGenre + '&mediatype=' + newMediaType + '&title=' + newTitle;
-    console.log(addmediaurl);
-
-    return this.http.post(addmediaurl, {headers:this.formHeaders, withCredentials:true}).pipe(
+    // console.log(addmediaurl);
+    return this.http.post(addmediaurl, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
       map(resp => resp as Media)
     );
   }
-
 }
