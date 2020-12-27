@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UrlService } from '../url.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { mediaComment } from '../models/mediacomment';
 
 
 @Injectable({
@@ -18,5 +19,14 @@ export class CommentsmediaService {
 
   constructor(private http: HttpClient, private urlService: UrlService, private cookieService: CookieService) {
     this.mediaCommentsUrl = this.urlService.getUrl() + 'media/comments/';
+   }
+
+   getMediaComments(id: Number): Observable<mediaComment[]> {
+     return this.http.get(this.mediaCommentsUrl + id, {withCredentials:true}).pipe(
+       map(resp => resp as mediaComment[])
+     );
+   }
+   placeMediaComment(mediacomment: Comment): Observable<object> {
+     return this.http.post(this.mediaCommentsUrl, Comment, {withCredentials:true}).pipe();
    }
 }

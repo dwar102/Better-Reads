@@ -1,8 +1,11 @@
-export class mediacomment {
-    id: number;
+import { Media } from "./media";
+import { User } from "./user";
+
+export class mediaComment {
+    id: Number;
     comment_date: Date;
-    media_id: number;
-    parent_id: number;
-    user_id: number;
-    message: string;
+    media: Media;
+    parent: mediaComment;
+    user: User;
+    message: String;
 }
