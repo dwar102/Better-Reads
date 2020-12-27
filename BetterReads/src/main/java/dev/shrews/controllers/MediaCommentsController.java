@@ -51,9 +51,10 @@ public class MediaCommentsController {
             return ResponseEntity.notFound().build();
         }
     }
-    @PostMapping(path="{id}")
-    public ResponseEntity<User_Media_Comments> addComment(HttpSession session, @RequestBody User_Media_Comments comment, @PathVariable("id") Integer id) {
+    @PostMapping
+    public ResponseEntity<User_Media_Comments> addComment(HttpSession session, @RequestBody User_Media_Comments comment) {
         System.out.println("Reached PutComment");
+        Integer id = comment.getMedia().getId();
         Media media = mediaServ.getByMediaId(id);
         if (media != null) {
             userServ.placeCommentForMedia(comment);
