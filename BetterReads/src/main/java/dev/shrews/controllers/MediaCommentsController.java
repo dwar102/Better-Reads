@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.shrews.beans.*;
+import dev.shrews.services.MediaService;
 import dev.shrews.services.UserService;
 
 @RestController
@@ -29,10 +30,14 @@ import dev.shrews.services.UserService;
 public class MediaCommentsController {
     private UserService userServ;
 
+    private MediaService mediaServ;
+    
     @Autowired
-    public MediaCommentsController(UserService u) {
+    public MediaCommentsController(UserService u, MediaService m) {
         userServ = u;
+        mediaServ = m;
     }
+
 
 
     @GetMapping(path="{id}")
@@ -42,6 +47,17 @@ public class MediaCommentsController {
         Set<User_Media_Comments> mediaComments = userServ.getCommentsForMedia(id);
         if (mediaComments != null) {
             return ResponseEntity.ok(mediaComments);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @PostMapping(path="{id}")
+    public ResponseEntity<User_Media_Comments> addComment(HttpSession session, @RequestBody User_Media_Comments comment, @PathVariable("id") Integer id) {
+        System.out.println("Reached PutComment");
+        Media media = mediaServ.getByMediaId(id);
+        if (media != null) {
+            userServ.placeCommentForMedia(comment);
+            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }

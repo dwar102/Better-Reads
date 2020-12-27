@@ -26,7 +26,7 @@ public class Media {
 	@Column(name="media_id")
 	private Integer id;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="genre_id")
 	@Autowired
 	private Genre genre;
@@ -37,28 +37,28 @@ public class Media {
 	@Column(name="publication_date")
 	private LocalDate date;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="media_type")
 	@Autowired
 	private MediaType mediaType;
 	
 	
-	public Media(Integer id, String creator, String title, Genre genre, MediaType mediaType) {
+	public Media(Integer id, String creator, String title, Genre genre, MediaType mediaType, LocalDate date) {
 		super();
 		this.id = id;
 		this.creator = creator;
 		this.title = title;
 		this.mediaType = mediaType;
 		this.genre = genre;
+		this.date = LocalDate.now();
 	}
 	@Autowired
 	public Media() {
-		super();
 		this.id = 0;
 		this.creator = "";
 		this.title = "";
 		this.mediaType = new MediaType();
-		this.date = null;
+		this.date = LocalDate.now();
 		this.genre = new Genre();
 	}
 	public Integer getId() {

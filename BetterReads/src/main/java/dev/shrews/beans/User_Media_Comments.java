@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 @Entity
@@ -19,10 +19,20 @@ import java.time.LocalDateTime;
 @Component
 
 public class User_Media_Comments {
+	public User_Media_Comments(Integer comment_id, LocalDate comment_date, Media media, User_Media_Comments parent,
+			User user, String message) {
+		super();
+		this.comment_id = comment_id;
+		this.comment_date = LocalDate.now();
+		this.media = media;
+		this.parent = parent;
+		this.user = user;
+		this.message = message;
+	}
 	@Autowired
 	public User_Media_Comments() {
 		comment_id = 0;
-		comment_date = LocalDateTime.now();
+		comment_date = LocalDate.now();
 		media = new Media();
 		parent = null;
 		user = new User();
@@ -34,10 +44,10 @@ public class User_Media_Comments {
 	public void setComment_id(Integer comment_id) {
 		this.comment_id = comment_id;
 	}
-	public LocalDateTime getComment_date() {
+	public LocalDate getComment_date() {
 		return comment_date;
 	}
-	public void setComment_date(LocalDateTime comment_date) {
+	public void setComment_date(LocalDate comment_date) {
 		this.comment_date = comment_date;
 	}
 	public Media getMedia() {
@@ -126,7 +136,7 @@ public class User_Media_Comments {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer comment_id;
 	@Column(name="comment_date")
-	private LocalDateTime comment_date;
+	private LocalDate comment_date;
 	
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL) 

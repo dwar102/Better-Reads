@@ -11,6 +11,12 @@
   </properties>
   <dependencyManagement>
   	<dependencies>
+  	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+<dependency>
+    <groupId>com.fasterxml.jackson.datatype</groupId>
+    <artifactId>jackson-datatype-jsr310</artifactId>
+    <version>2.12.0</version>
+</dependency>
   		<dependency>
   			<groupId>org.springframework</groupId>
   			<artifactId>spring-framework-bom</artifactId>
@@ -70,8 +76,9 @@
 	    	<artifactId>postgresql</artifactId>
 	    	<version>42.2.14</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
-<dependency>
+		<dependency>
     <groupId>com.sun.xml.bind</groupId>
     <artifactId>jaxb-core</artifactId>
     <version>2.3.0.1</version>
@@ -109,6 +116,7 @@
     <artifactId>javassist</artifactId>
     <version>3.25.0-GA</version>
 </dependency>
-		
-	</dependencies>
+
+
+  </dependencies>
 </project>
