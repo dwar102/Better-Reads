@@ -28,8 +28,10 @@ export class AddmediaComponent implements OnInit {
               console.log(this.newGenre)
               console.log(this.newMediatype)
               console.log(this.newTitle)
-                let x = this.mediaService.addMedia(this.newCreator, this.newDate, this.newGenre, this.newMediatype, this.newTitle);
-                console.log(x);
+                this.mediaService.addMedia(this.newCreator, this.newDate, this.newGenre, this.newMediatype, this.newTitle).subscribe(
+                    resp => {
+                    }
+                  );
             }
             else{
               alert("You must enter a genre")
