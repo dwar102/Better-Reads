@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -111,6 +112,12 @@ public class UserController {
     		return ResponseEntity.badRequest().build();
     	}
     }
+    
+    @DeleteMapping
+	public ResponseEntity<Void> logOut(HttpSession session) {
+		session.invalidate();
+		return ResponseEntity.ok().build();
+	}
     
     //Used to generate a unique salt and hashed password to store in database when a user registers an account
     public static void registerHash(User user, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
