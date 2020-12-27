@@ -26,7 +26,7 @@ public class Media {
 	@Column(name="media_id")
 	private Integer id;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinColumn(name="genre_id")
 	@Autowired
 	private Genre genre;
@@ -37,7 +37,7 @@ public class Media {
 	@Column(name="publication_date")
 	private LocalDate date;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinColumn(name="media_type")
 	@Autowired
 	private MediaType mediaType;

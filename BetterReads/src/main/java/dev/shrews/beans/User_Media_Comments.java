@@ -21,7 +21,6 @@ import java.time.LocalDate;
 public class User_Media_Comments {
 	public User_Media_Comments(Integer comment_id, LocalDate comment_date, Media media, User_Media_Comments parent,
 			User user, String message) {
-		super();
 		this.comment_id = comment_id;
 		this.comment_date = LocalDate.now();
 		this.media = media;
@@ -139,12 +138,12 @@ public class User_Media_Comments {
 	private LocalDate comment_date;
 	
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL) 
+	@ManyToOne(fetch=FetchType.EAGER) 
 	@JoinColumn(name="media_id")
 	@Autowired
 	private Media media;
 	
-	
+		
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="parent_comment_id")
 	@Autowired
