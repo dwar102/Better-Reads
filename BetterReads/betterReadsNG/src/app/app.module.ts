@@ -17,6 +17,7 @@ import { RatingWidgetComponent } from './rating-widget/rating-widget.component';
 import { MediaComponent } from './media/media.component';
 import { CommentsmediaComponent } from './commentsmedia/commentsmedia.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
+import { ViewmediaComponent } from './viewmedia/viewmedia.component';
 import { ViewmessagesComponent } from './viewmessages/viewmessages.component';
 import { WritemessageComponent } from './writemessage/writemessage.component';
 
@@ -33,6 +34,7 @@ import { WritemessageComponent } from './writemessage/writemessage.component';
     MediaComponent,
     CommentsmediaComponent,
     AddCommentComponent,
+    ViewmediaComponent,
     ViewmessagesComponent,
     WritemessageComponent
   ],

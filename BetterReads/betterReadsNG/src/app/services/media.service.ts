@@ -19,18 +19,7 @@ export class MediaService {
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   addMedia(newCreator: String, newDate: Date, newGenre: Number, newMediaType: Number, newTitle: String): Observable<Media>{
-    let genre = new Genre();
-    genre.id = newGenre;
-    let mediaType = new MediaType();
-    mediaType.id = newMediaType;
-    let media = new Media();
-    media.title = newTitle;
-    media.creator = newCreator;
-    media.genre = genre;
-    media.mediaType = mediaType;
-    media.publicationDate = newDate;
     // console.log(media);
-
     const addmediaurl = 'http://localhost:8080/BetterReads/media/add?' + 'creator=' + newCreator + '&date=' + newDate
                       +  '&genre=' + newGenre + '&mediatype=' + newMediaType + '&title=' + newTitle;
     // console.log(addmediaurl);
@@ -38,4 +27,42 @@ export class MediaService {
       map(resp => resp as Media)
     );
   }
+
+  getMedia(id: Number){
+    const viewurl = 'http://localhost:8080/BetterReads/media/' + id;
+    return this.http.get(viewurl, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+      map(resp => resp as Media)
+    );
+  }
+
+  getNumRatings(id: Number){
+    const url = 'http://localhost:8080/BetterReads/totalratings?media_id=' + id;
+    return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+      map(resp => resp as number)
+    );
+  }
+
+  getAvgRating(id: Number){
+    const url = 'http://localhost:8080/BetterReads/avgrating?media_id=' + id;
+    return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+      map(resp => resp as number)
+    );
+  }
+
+  getTagCount(id: Number){
+    const url = 'http://localhost:8080/BetterReads/tagcount?media_id=' + id;
+    return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+      map(resp => resp as number[])
+    );
+  }
+
+  getTagNames(id: Number){
+    const url = 'http://localhost:8080/BetterReads/tagnames?media_id=' + id;
+    return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+      map(resp => resp as String[])
+    );
+  }
+
+
+
 }
