@@ -1,1 +1,19 @@
-<p>commentsmedia works!</p>
+<div>
+    <h3>Comments</h3>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Date commented</th>
+            <th>Commenter</th>
+            <th></th>
+            <th>Reply to</th>
+        </tr>
+        <tr *ngFor="let Comment of Comments">
+            <td>{{ Comment.id }}</td>
+            <td>{{ Comment.comment_date }}</td>
+            <td>{{ Comment.user }}</td>
+            <td>{{ Comment.message }}</td>
+            <td>{{ Comment.parent  }}</td>
+        </tr>
+    </table>
+</div>
