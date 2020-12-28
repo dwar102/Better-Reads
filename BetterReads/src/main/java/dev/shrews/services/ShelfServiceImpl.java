@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.shrews.beans.Shelf;
+import dev.shrews.beans.User;
 import dev.shrews.data.ShelfDAO;
 import dev.shrews.data.ShelfHibernate;
 
@@ -44,5 +45,9 @@ public class ShelfServiceImpl implements ShelfService {
 	@Override
 	public Set<Shelf> getShelves() {
 		return sd.getShelves();
+	}
+	@Override
+	public Set<Shelf>getUserShelves(User loggedUser){
+		return sd.getUserShelves(loggedUser);
 	}
 }
