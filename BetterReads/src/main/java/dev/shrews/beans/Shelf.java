@@ -33,17 +33,16 @@ public class Shelf {
 	private User user;
 	@Column(name="shelf_name")
 	private String name;
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "shelf_assignment_id")//
-	@Autowired
-	private Set<ShelfAssignment> shelfAssignments;
+//	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "shelf_assignment_id")//
+//	@Autowired
+//	private Set<ShelfAssignment> shelfAssignments;
 	
-	public Shelf(Integer id, User user, String name, Set<ShelfAssignment> shelfAssignments) {
+	public Shelf(Integer id, User user, String name) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.name = name;
-		this.shelfAssignments = shelfAssignments;
 	}
 
 	@Autowired
@@ -71,15 +70,9 @@ public class Shelf {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Set<ShelfAssignment> getShelfAssignments() {
-		return shelfAssignments;
-	}
-	public void setShelfAssignments(Set<ShelfAssignment> shelfAssignments) {
-		this.shelfAssignments = shelfAssignments;
-	}
 	@Override
 	public String toString() {
-		return "Shelf [id=" + id + ", name=" + name + ", shelfAssignments=" + shelfAssignments + "]";
+		return "Shelf [id=" + id + ", name=" + name + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -87,7 +80,6 @@ public class Shelf {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((shelfAssignments == null) ? 0 : shelfAssignments.hashCode());
 		return result;
 	}
 	@Override
@@ -108,11 +100,6 @@ public class Shelf {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (shelfAssignments == null) {
-			if (other.shelfAssignments != null)
-				return false;
-		} else if (!shelfAssignments.equals(other.shelfAssignments))
 			return false;
 		return true;
 	}

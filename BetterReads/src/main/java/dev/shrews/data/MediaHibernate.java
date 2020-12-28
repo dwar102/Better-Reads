@@ -116,14 +116,14 @@ public class MediaHibernate implements MediaDAO{
 	}
 
 	@Override
-	public List<Integer> getNumTagsById(Integer id) {
+	public List<Long> getNumTagsById(Integer id) {
 		Session s = hu.getSession();
 		String query = "select count(tag_name) FROM Media m left join UserTag ut on m.id = ut.media.id where m.id = :id "
 					 + " group by tag_name order by tag_name";
 		
 		Query q = s.createQuery(query);
 		q.setParameter("id",  id);
-		List<Integer> tagList = q.getResultList();
+		List<Long> tagList = q.getResultList();
 		return tagList;
 	}
 

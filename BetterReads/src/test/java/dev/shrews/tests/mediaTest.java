@@ -84,7 +84,7 @@ class mediaTest {
 	@Test
 	@Order(6)
 	void testGetNumTagsById() {
-		List<Integer> names = mediaDao.getNumTagsById(2);
+		List<Long> names = mediaDao.getNumTagsById(2);
 		System.out.println(names);
 		assertTrue(names.size() > 0);
 	}
