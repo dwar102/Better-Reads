@@ -27,7 +27,7 @@ constructor(private commentService:CommentsmediaService, private router: Router)
     this.newComment.media.id= 2; // Hardcoded for testing, will be retrieved from button onClick in final state
     console.log(this.loggedUser);
     this.newComment.user = new User;
-    this.newComment.user.id = 62; // Not sure how to access this.loggedUser.id at the moment
+    this.newComment.user.id = this.loggedUser.id;
     this.commentService.placeMediaComment(this.newComment).subscribe();
   }    
 
