@@ -17,6 +17,7 @@ import { RatingWidgetComponent } from './rating-widget/rating-widget.component';
 import { MediaComponent } from './media/media.component';
 import { CommentsmediaComponent } from './commentsmedia/commentsmedia.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
+import { ViewmediaComponent } from './viewmedia/viewmedia.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
     ProfileComponent,
     MediaComponent,
     CommentsmediaComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    ViewmediaComponent
   ],
   imports: [
     BrowserModule,
