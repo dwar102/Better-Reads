@@ -26,7 +26,9 @@ export class CommentsmediaService {
        map(resp => resp as mediaComment[])
      );
    }
-   placeMediaComment(mediacomment: Comment): Observable<object> {
-     return this.http.post(this.mediaCommentsUrl, Comment, {withCredentials:true}).pipe();
+   placeMediaComment(Comment: mediaComment): Observable<object> {
+     return this.http.post(this.mediaCommentsUrl, Comment, {headers: this.regHeaders, withCredentials:true}).pipe(
+       map(resp => resp as mediaComment)
+     );
    }
 }

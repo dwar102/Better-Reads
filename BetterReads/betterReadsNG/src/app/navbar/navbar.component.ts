@@ -35,7 +35,9 @@ export class NavbarComponent implements OnInit, OnChanges {
       }
     );
   }
-
+  test() {
+    this.router.navigateByUrl('writeComment');
+  }
   logOut() {
     this.userService.logoutUser().subscribe(
       resp => {
