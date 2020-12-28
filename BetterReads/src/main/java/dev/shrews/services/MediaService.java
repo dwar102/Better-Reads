@@ -14,7 +14,7 @@ public interface MediaService {
 	public Long getNumRatingsById(Integer id);
 	public double getAvgRatingById(Integer id);
 	public List<String> getTagnamesById(Integer id);
-	public List<Integer> getTagCountById(Integer id);
+	public List<Long> getTagCountById(Integer id);
 	public Set<Media> getAll();
 	//update
 	void updateMedia(Media m);

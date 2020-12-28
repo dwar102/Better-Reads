@@ -61,7 +61,7 @@ public class MediaServiceImpl implements MediaService{
 	}
 
 	@Override
-	public List<Integer> getTagCountById(Integer id) {
+	public List<Long> getTagCountById(Integer id) {
 		return mediaDao.getNumTagsById(id);
 	}
 

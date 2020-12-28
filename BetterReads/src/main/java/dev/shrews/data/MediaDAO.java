@@ -15,7 +15,7 @@ public interface MediaDAO extends GenericDAO<Media>{
 	public Set<Media> getAll();
 	public Long getNumRatingsById(Integer id);
 	public double getAvgRatingById(Integer id);
-	public List<Integer> getNumTagsById(Integer id);
+	public List<Long> getNumTagsById(Integer id);
 	public List<String> getTagnamesById(Integer id);
 	//update
 	public void update(Media m);

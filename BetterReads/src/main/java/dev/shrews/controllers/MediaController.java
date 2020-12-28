@@ -1,6 +1,7 @@
 package dev.shrews.controllers;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -53,11 +54,59 @@ public class MediaController {
     	//System.out.println(m);
         try {
 			Media m2 = mediaServ.addMedia(m);
-	    	System.out.println("got here" + m);
+	    	//System.out.println("got here" + m);
 			return ResponseEntity.ok(m2);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(400).build();
 		}
+    }
+
+
+    @GetMapping("/totalratings")
+    public ResponseEntity<Long> getTotalRatings(HttpSession session, @RequestParam("media_id") Integer id)  {
+    	System.out.println("enter /totalratings handler");
+        try {
+    		return ResponseEntity.ok(mediaServ.getNumRatingsById(id));
+        }
+        catch(Exception e) {
+			return ResponseEntity.status(400).build();
+        }
+    }
+
+
+    @GetMapping("/avgrating")
+    public  ResponseEntity<Double> getAvgRating(HttpSession session, @RequestParam("media_id") Integer id)  {
+    	System.out.println("enter /totalratings handler");
+        try {
+    		return ResponseEntity.ok(mediaServ.getAvgRatingById(id));
+        }
+        catch(Exception e) {
+			return ResponseEntity.status(400).build();
+        }
+    }
+
+
+    @GetMapping("/tagnames")
+    public ResponseEntity<List<String>> getTagnames(HttpSession session, @RequestParam("media_id") Integer id)  {
+    	System.out.println("enter /tagnames handler");
+        try {
+    		return ResponseEntity.ok(mediaServ.getTagnamesById(id));
+        }
+        catch(Exception e) {
+			return ResponseEntity.status(400).build();
+        }
+    }
+
+
+    @GetMapping("/tagcount")
+    public ResponseEntity<List<Long>> getTagCount(HttpSession session, @RequestParam("media_id") Integer id)  {
+    	System.out.println("enter /tagcount handler");
+        try {
+    		return ResponseEntity.ok(mediaServ.getTagCountById(id));
+        }
+        catch(Exception e) {
+			return ResponseEntity.status(400).build();
+        }
     }
 }
