@@ -148,7 +148,6 @@ public class User_Media_Comments {
 	@JoinColumn(name="parent_comment_id")
 	@Autowired
 	private User_Media_Comments parent;
-	@Transient
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	@Autowired

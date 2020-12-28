@@ -4,12 +4,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import dev.shrews.beans.Media;
+import dev.shrews.beans.Review;
 import dev.shrews.utils.HibernateUtil;
 
 @Repository
@@ -83,6 +85,57 @@ public class MediaHibernate implements MediaDAO{
 		} finally {
 			s.close();
 		}
+	}
+
+	@Override
+	public Long getNumRatingsById(Integer id) {
+		Session s = hu.getSession();
+		String query = "select count(rating) FROM Review where media_id = :id";
+		Query q = s.createQuery(query);
+		q.setParameter("id",  id);
+		Long numRatings = (Long) q.getSingleResult();
+		s.close();
+		return numRatings;
+	}
+
+	@Override
+	public double getAvgRatingById(Integer id) {
+		Session s = hu.getSession();
+		String query = "select avg(rating) FROM Review where media_id = :id";
+		Query q = s.createQuery(query);
+		q.setParameter("id",  id);
+		try {
+			double numRatings = (double) q.getSingleResult();
+			s.close();
+			return numRatings;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return (Double) null;
+		}
+	}
+
+	@Override
+	public List<Long> getNumTagsById(Integer id) {
+		Session s = hu.getSession();
+		String query = "select count(tag_name) FROM Media m left join UserTag ut on m.id = ut.media.id where m.id = :id "
+					 + " group by tag_name order by tag_name";
+		
+		Query q = s.createQuery(query);
+		q.setParameter("id",  id);
+		List<Long> tagList = q.getResultList();
+		return tagList;
+	}
+
+	@Override
+	public List<String> getTagnamesById(Integer id) {
+		Session s = hu.getSession();
+		String query = "select distinct tagName FROM UserTag where media.id = :id "
+					 + " order by tag_name";
+		Query<String> q = s.createQuery(query, String.class);
+		q.setParameter("id",  id);
+		List<String> tagList = q.getResultList();
+		return tagList;
 	}
 
 }

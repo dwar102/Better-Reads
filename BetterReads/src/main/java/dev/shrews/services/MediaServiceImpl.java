@@ -1,5 +1,6 @@
 package dev.shrews.services;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,26 @@ public class MediaServiceImpl implements MediaService{
 	@Override
 	public void deleteMedia(Media m) {
 		mediaDao.delete(m);
+	}
+
+	@Override
+	public Long getNumRatingsById(Integer id) {
+		return mediaDao.getNumRatingsById(id);
+	}
+
+	@Override
+	public double getAvgRatingById(Integer id) {
+		return mediaDao.getAvgRatingById(id);
+	}
+
+	@Override
+	public List<String> getTagnamesById(Integer id) {
+		return mediaDao.getTagnamesById(id);
+	}
+
+	@Override
+	public List<Long> getTagCountById(Integer id) {
+		return mediaDao.getNumTagsById(id);
 	}
 
 }
