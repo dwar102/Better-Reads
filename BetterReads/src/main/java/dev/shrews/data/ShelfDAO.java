@@ -3,6 +3,7 @@ package dev.shrews.data;
 import java.util.Set;
 
 import dev.shrews.beans.Shelf;
+import dev.shrews.beans.User;
 
 public interface ShelfDAO extends GenericDAO<Shelf> {
 
@@ -17,4 +18,6 @@ public interface ShelfDAO extends GenericDAO<Shelf> {
 		public void deleteShelf(Shelf s);
 	//list
 		public Set<Shelf> getShelves();
+		Set<Shelf> getShelves(User loggedUser);
+		Set<Shelf> getUserShelves(User loggedUser);
 }

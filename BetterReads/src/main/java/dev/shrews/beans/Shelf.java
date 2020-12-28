@@ -33,8 +33,8 @@ public class Shelf {
 	private User user;
 	@Column(name="shelf_name")
 	private String name;
-//	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	@JoinColumn(name = "shelf_assignment_id")//
+//	@OneToMany(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "shelf_assignment_id")
 //	@Autowired
 //	private Set<ShelfAssignment> shelfAssignments;
 	
@@ -43,33 +43,32 @@ public class Shelf {
 		this.id = id;
 		this.user = user;
 		this.name = name;
-	}
+//		this.shelfAssignments = shelfAssignments;
 
-	@Autowired
-	public Shelf() {
-		super();
-		this.id = 0;
-		this.user = new User();
-		this.name = "";
-	}
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	@Override
 	public String toString() {
 		return "Shelf [id=" + id + ", name=" + name + "]";
@@ -104,7 +103,11 @@ public class Shelf {
 		return true;
 	}
 
-	
-
-
+	@Autowired
+	public Shelf() {
+		super();
+		this.id = 0;
+		this.user = new User();
+		this.name = "";
+	}
 }

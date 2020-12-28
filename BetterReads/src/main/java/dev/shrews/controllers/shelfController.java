@@ -1,5 +1,7 @@
 package dev.shrews.controllers;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -8,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,13 +36,29 @@ public class shelfController {
         shelfServ = u;
         mediaServ = m;
     }
-
+/*    @PutMapping
+    public ResponseEntity<User> logIn(HttpSession session, @RequestParam("user") String username,
+			@RequestParam("pass") String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+		
+    	User user = userService.getUserByName(username);
+    	
+    	if (user != null) {
+    		if (user.getPass().equals(getHash(password, user.getSalt()))) {
+    			session.setAttribute("user", user);
+    			return ResponseEntity.ok(user);
+    		}
+    		return ResponseEntity.badRequest().build();
+    	}
+    	return ResponseEntity.notFound().build();
+	}*/
     @GetMapping
     @ResponseBody
-	public ResponseEntity<Set<Shelf>> getShelves(HttpSession session) {
-		User loggedUser = (User) session.getAttribute("user");
-		Set<Shelf> shelves = shelfServ.getShelves();
-		if (loggedUser == null)
+	public ResponseEntity<Set<Shelf>> getShelves(HttpSession session, @RequestParam("user") String userId) {
+		//Integer loggedUserId = (Integer) session.getAttribute("user");
+		User loggedUser = new User();
+		loggedUser.setId(Integer.parseInt(userId));
+		Set<Shelf> shelves = shelfServ.getUserShelves(loggedUser);
+		if (userId == null)
 			return ResponseEntity.badRequest().build();
 		return ResponseEntity.ok(shelves);
 	}

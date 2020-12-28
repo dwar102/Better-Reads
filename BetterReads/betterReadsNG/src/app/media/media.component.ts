@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, Input  } from '@angular/core';
+import { Media } from '../models/media';
 import { User } from '../models/user';
 
 @Component({
@@ -8,6 +9,7 @@ import { User } from '../models/user';
 })
 export class MediaComponent implements OnInit {
   @Input() public loggedUser: User; 
+  @Input() public items: Media;
   constructor() { }
 
   ngOnInit(): void {

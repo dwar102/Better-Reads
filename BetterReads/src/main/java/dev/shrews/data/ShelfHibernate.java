@@ -93,7 +93,20 @@ public class ShelfHibernate implements ShelfDAO {
 	}
 
 	@Override
-	public Set<Shelf> getShelves() {
+	public Set<Shelf> getShelves(User loggedUser) {
+		Session s = hu.getSession();
+		String query = "FROM Shelf where user_id = :id";
+		Query<Shelf> q = s.createQuery(query, Shelf.class);
+		q.setParameter("id", loggedUser.getId());
+		List<Shelf> shelvesList = q.getResultList();
+		Set<Shelf> shelvesSet = new HashSet<>();
+		shelvesSet.addAll(shelvesList);
+		s.close();
+		return shelvesSet;
+	}
+	
+	@Override
+	public Set<Shelf> getUserShelves(User loggedUser) {
 		Session s = hu.getSession();
 		String query = "FROM Shelf";
 		Query<Shelf> q = s.createQuery(query, Shelf.class);
@@ -102,5 +115,11 @@ public class ShelfHibernate implements ShelfDAO {
 		shelvesSet.addAll(shelvesList);
 		s.close();
 		return shelvesSet;
+	}
+
+	@Override
+	public Set<Shelf> getShelves() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
