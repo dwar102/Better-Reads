@@ -44,16 +44,16 @@ public class MessageController {
     @ResponseBody
     public ResponseEntity<Set<Messages>> getMessages(HttpSession session, @PathVariable("id") Integer id)  {
     	System.out.println("Reached");
-        Set<Messages> mediaMessages = messageServ.getMessagesByUserId(id);
-        if (mediaMessages != null) {
-            return ResponseEntity.ok(mediaMessages);
+        Set<Messages> userMessages = messageServ.getMessagesByUserId(id);
+        if (userMessages != null) {
+            return ResponseEntity.ok(userMessages);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
     @PostMapping
-    public ResponseEntity<Messages> addComment(HttpSession session, @RequestBody Messages message) {
-        System.out.println("Reached PutComment");
+    public ResponseEntity<Messages> addMessage(HttpSession session, @RequestBody Messages message) {
+        System.out.println("Reached addMessage");
         Integer id = message.getRecipient().getId();
         User user = userServ.getUserById(id);
         if (user != null) {
