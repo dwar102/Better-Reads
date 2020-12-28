@@ -18,6 +18,8 @@ import { MediaComponent } from './media/media.component';
 import { CommentsmediaComponent } from './commentsmedia/commentsmedia.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { ViewmediaComponent } from './viewmedia/viewmedia.component';
+import { ViewmessagesComponent } from './viewmessages/viewmessages.component';
+import { WritemessageComponent } from './writemessage/writemessage.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ViewmediaComponent } from './viewmedia/viewmedia.component';
     MediaComponent,
     CommentsmediaComponent,
     AddCommentComponent,
-    ViewmediaComponent
+    ViewmediaComponent,
+    ViewmessagesComponent,
+    WritemessageComponent
   ],
   imports: [
     BrowserModule,

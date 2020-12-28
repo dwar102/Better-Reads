@@ -61,7 +61,7 @@ public class shelfTest {
 		Set<ShelfAssignment> assgns = new HashSet<ShelfAssignment>();
 		ShelfAssignment sa = new ShelfAssignment();
 		
-		ShelfToAdd.setShelfAssignments(assgns);
+//		ShelfToAdd.setShelfAssignments(assgns);
 		try {
 			//try to get a list of all shelves and store count here
 			Integer countBeforeAdd = 0;
