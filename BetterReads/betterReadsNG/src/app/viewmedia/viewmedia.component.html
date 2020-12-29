@@ -5,7 +5,7 @@
     <p> Total number of ratings: {{numRatings}} </p><br>
     <p> Publication date: {{media.date.month | json}} {{media.date.dayOfMonth | json}} {{media.date.year | json}} </p><br>
     <app-add-comment [loggedUser]="loggedUser"></app-add-comment>
-
+    <app-commentsmedia [mediaId]="mediaId"></app-commentsmedia>
 
 </ng-container>
 
