@@ -44,7 +44,7 @@ public class Shelf {
 		this.user = user;
 		this.name = name;
 //		this.shelfAssignments = shelfAssignments;
-
+	}
 	public Integer getId() {
 		return id;
 	}
