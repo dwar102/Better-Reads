@@ -12,7 +12,7 @@ import { User } from '../models/user';
 })
 export class CommentsmediaComponent implements OnInit {
   Comments: mediaComment[];
-  //media: Media;
+  @Input() mediaId: Number;
 
 
   constructor(private commentService:CommentsmediaService) { }
