@@ -1,11 +1,21 @@
 <ng-container>
-    <h3> <strong>{{media.title}}</strong></h3>> <br>
-    <p> By {{media.creator}} </p> <br>
-    <p> Average rating: {{avgRating}} </p><br>
-    <p> Total number of ratings: {{numRatings}} </p><br>
-    <p> Publication date: {{media.date.month| json}} {{media.date.dayOfMonth | json}} </p><br>
-
-
+    <h3> <strong>{{media.title}}</strong></h3> <br> 
+    <p> By {{media.creator}} </p>
+    <p> Average rating: {{avgRating}} </p>
+    <p> Total number of ratings: {{numRatings}} </p>
+    <p> First published on {{(media.date.month| json).replace("\"", "").replace("\"", "") | titlecase}} {{media.date.dayOfMonth | json}}, {{media.date.year | json}}  </p><br>
+    <ng-container *ngFor="let name of tagNames; index as i">
+            <p>
+                Tagged as "{{tagNames[i]}}" by {{tagCounts[i]}} users
+            </p>
+    
+    </ng-container>
+    <br>
+    <br>
+    <ng-container >
+     Tag as: <input name="tag" type="text" placeholder = "Tag" size = 30 [(ngModel)] ="newTag"><br>
+    <button type="button" (click) = "addTag()" id="submitBtn">Add Tag</button>
+    </ng-container>
 </ng-container>
 
 

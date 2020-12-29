@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Media } from '../models/media';
 import { MediaService } from '../services/media.service';
+import { UsertagService } from '../services/usertag.service';
 
 @Component({
   selector: 'app-viewmedia',
@@ -16,8 +17,9 @@ export class ViewmediaComponent implements OnInit {
   public tagCounts: Number[];
   public tagNames: String[];
   public media: Media;
+  public newTag: String;
 
-  constructor(private mediaService: MediaService) { }
+  constructor(private mediaService: MediaService, private userTagService: UsertagService) { }
 
   ngOnInit(): void {
     this.viewMedia();
@@ -25,7 +27,7 @@ export class ViewmediaComponent implements OnInit {
 
   async viewMedia(){
     this.mediaService.getMedia(this.mediaId).subscribe( resp => {this.media = resp; console.log(this.media); 
-      console.log(this.media.date);});
+      console.log(this.media);});
     await this.mediaService.getNumRatings(this.mediaId).subscribe( async resp => {this.numRatings = await resp});
     this.mediaService.getAvgRating(this.mediaId).subscribe( resp => {this.avgRating = resp; 
       console.log(resp); 
@@ -37,8 +39,16 @@ export class ViewmediaComponent implements OnInit {
    // await console.log(this.numRatings)
   }
 
+  addTag(){
+    //console.log(this.replaceSpaces(this.newTag));
+    this.userTagService.addTag(this.replaceSpaces(this.newTag), this.mediaId, 1).subscribe(
+      resp => {
+      }
+    );
+  }
 
-
-
+  replaceSpaces(str: String){
+    return str.split(" ").join("%20");
+  }
 
 }
