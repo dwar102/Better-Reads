@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.shrews.beans.Media;
 import dev.shrews.beans.Shelf;
 import dev.shrews.beans.User;
 import dev.shrews.services.MediaService;
@@ -24,13 +26,13 @@ import dev.shrews.services.ShelfServiceImpl;
 import dev.shrews.services.UserService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200", allowCredentials="true")
+@CrossOrigin(allowCredentials="true")
 @RequestMapping(path="/shelves")
 public class shelfController {
     private ShelfService shelfServ;
 
     private MediaService mediaServ;
-    
+
     @Autowired
     public shelfController(ShelfService u, MediaService m) {
         shelfServ = u;
@@ -50,7 +52,7 @@ public class shelfController {
     		return ResponseEntity.badRequest().build();
     	}
     	return ResponseEntity.notFound().build();
-	}*/
+	}*/ 	
     @GetMapping
     @ResponseBody
 	public ResponseEntity<Set<Shelf>> getShelves(HttpSession session, @RequestParam("user") String userId) {
@@ -62,7 +64,18 @@ public class shelfController {
 			return ResponseEntity.badRequest().build();
 		return ResponseEntity.ok(shelves);
 	}
-	
+	//BetterReads/shelves/assignments/?shelf=1
+    @GetMapping("/assignments")
+    @ResponseBody
+	public ResponseEntity<Set<Media>> getShelfAssignments(HttpSession session, @RequestParam("shelf") String shelfId) {
+		//Integer loggedUserId = (Integer) session.getAttribute("user");
+		Shelf s = new Shelf();
+		s.setId(Integer.parseInt(shelfId));
+		Set<Media> shelfAssignments = shelfServ.getShelfAssignments(s);
+		if (shelfId == null)
+			return ResponseEntity.badRequest().build();
+		return ResponseEntity.ok(shelfAssignments);
+	}  
 	
 public static Shelf addShelf() {
 	Shelf newShelf = new Shelf();

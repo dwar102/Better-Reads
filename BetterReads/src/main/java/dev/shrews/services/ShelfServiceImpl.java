@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.shrews.beans.Shelf;
+import dev.shrews.beans.ShelfAssignment;
 import dev.shrews.beans.User;
 import dev.shrews.data.ShelfDAO;
 import dev.shrews.data.ShelfHibernate;
@@ -13,10 +14,12 @@ import dev.shrews.data.ShelfHibernate;
 @Service
 public class ShelfServiceImpl implements ShelfService {
 	ShelfDAO sd;
+	ShelfAssignmentDAO = sad;
 	
 	@Autowired
-	public ShelfServiceImpl(ShelfDAO s) {
+	public ShelfServiceImpl(ShelfDAO s, ShelfAssignmentDAO sad) {
 		sd = s;
+		
 	}
 	
 	@Override
@@ -49,5 +52,9 @@ public class ShelfServiceImpl implements ShelfService {
 	@Override
 	public Set<Shelf>getUserShelves(User loggedUser){
 		return sd.getUserShelves(loggedUser);
+	}
+	
+	public Set<ShelfAssignment> getShelfAssignments(Shelf s){
+		
 	}
 }

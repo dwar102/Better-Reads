@@ -36,28 +36,28 @@ export class MediaService {
   }
 
   getNumRatings(id: Number){
-    const url = 'http://localhost:8080/BetterReads/totalratings?media_id=' + id;
+    const url = 'http://localhost:8080/BetterReads/media/totalratings?media_id=' + id;
     return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
       map(resp => resp as number)
     );
   }
 
   getAvgRating(id: Number){
-    const url = 'http://localhost:8080/BetterReads/avgrating?media_id=' + id;
+    const url = 'http://localhost:8080/BetterReads/media/avgrating?media_id=' + id;
     return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
       map(resp => resp as number)
     );
   }
 
   getTagCount(id: Number){
-    const url = 'http://localhost:8080/BetterReads/tagcount?media_id=' + id;
+    const url = 'http://localhost:8080/BetterReads/media/tagcount?media_id=' + id;
     return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
       map(resp => resp as number[])
     );
   }
 
   getTagNames(id: Number){
-    const url = 'http://localhost:8080/BetterReads/tagnames?media_id=' + id;
+    const url = 'http://localhost:8080/BetterReads/media/tagnames?media_id=' + id;
     return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
       map(resp => resp as String[])
     );
