@@ -21,5 +21,6 @@ public interface MediaDAO extends GenericDAO<Media>{
 	public void update(Media m);
 	//delete
 	public void delete(Media m);
-
+	public Media getByTitle(String title);
+	public Set<Media> getByAuthor(String author);
 }
