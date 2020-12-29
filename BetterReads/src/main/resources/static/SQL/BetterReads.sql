@@ -159,3 +159,8 @@ INSERT INTO reviews VALUES
 	(DEFAULT, DEFAULT, 80, 1, 2),
 	(DEFAULT, DEFAULT, 85, 1, 3),
 	(DEFAULT, DEFAULT, 90, 1, 4);
+
+insert into shelf_assignments(shelf_assignment_id, shelf_assignment_date, user_id, shelf_id, media_id) values(default, null, 1, 1, 1);
+insert into shelf_assignments(shelf_assignment_id, shelf_assignment_date, user_id, shelf_id, media_id) values(default, null, 1, 1, 2);
+insert into shelf_assignments(shelf_assignment_id, shelf_assignment_date, user_id, shelf_id, media_id) values(default, null, 1, 1, 3);
+insert into shelf_assignments(shelf_assignment_id, shelf_assignment_date, user_id, shelf_id, media_id) values(default, null, 1, 1, 4);

@@ -3,6 +3,8 @@ package dev.shrews.services;
 import java.util.Set;
 
 import dev.shrews.beans.Shelf;
+import dev.shrews.beans.ShelfAssignment;
+import dev.shrews.beans.User;
 
 public interface ShelfService {
 //create
@@ -15,4 +17,5 @@ public interface ShelfService {
 	public void deleteShelf(Shelf s);
 //list
 	public Set<Shelf> getShelves();
+	public Set<Shelf>getUserShelves(User loggedUser);
 }
