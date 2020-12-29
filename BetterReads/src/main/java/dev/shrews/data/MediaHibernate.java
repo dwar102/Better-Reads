@@ -4,6 +4,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import dev.shrews.beans.Media;
 import dev.shrews.beans.Review;
+import dev.shrews.beans.User;
 import dev.shrews.utils.HibernateUtil;
 
 @Repository
@@ -41,6 +47,24 @@ public class MediaHibernate implements MediaDAO{
 		Media m = s.get(Media.class, id);
 		s.close();
 		return m;
+	}
+	
+	public Media getByTitle(String title) {
+		Session s = hu.getSession();
+		CriteriaBuilder cb = s.getCriteriaBuilder();
+		CriteriaQuery<Media> criteria = cb.createQuery(Media.class);
+		Root<Media> root = criteria.from(Media.class);
+		
+		Predicate predicateForTitle = cb.equal(root.get("title"), title);
+		criteria.select(root).where(predicateForTitle);
+		Media m = s.createQuery(criteria).getSingleResult();
+		System.out.println(m);
+		return m;
+	}
+	
+	public Set<Media> getByAuthor(String author) {
+		return new HashSet<Media>();
+		
 	}
 
 	@Override
