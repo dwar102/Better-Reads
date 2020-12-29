@@ -3,7 +3,7 @@
     <p> By {{media.creator}} </p>
     <p> Average rating: {{avgRating}} </p>
     <p> Total number of ratings: {{numRatings}} </p>
-    <p> First published on {{(media.date.month| json).replace("\"", "").replace("\"", "") | titlecase}} {{media.date.dayOfMonth | json}}, {{media.date.year | json}}  </p><br>
+    <!-- <p> First published on {{(media.date.month| json).replace("\"", "").replace("\"", "") | titlecase}} {{media.date.dayOfMonth | json}}, {{media.date.year | json}}  </p><br> -->
     <ng-container *ngFor="let name of tagNames; index as i">
             <p>
                 Tagged as "{{tagNames[i]}}" by {{tagCounts[i]}} users
