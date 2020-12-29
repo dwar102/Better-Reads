@@ -3,6 +3,7 @@ package dev.shrews.tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -31,17 +32,21 @@ class mediaQueryTest {
 	@Test
 	@Order(1)
 	void testFirstQuery() {
-		List<Integer>  list = mediaDao.getByTagAndAvgRatingAndNumberOfRatings("Science as Magic", 1L, 85.0);
+		ArrayList<Object[]>  list = (ArrayList<Object[]>) mediaDao.getByTagAndAvgRatingAndNumberOfRatings("Science as Magic", 1L, 85.0);
 		//System.out.println(list);
 		assertTrue(list != null);
 	}
 
 	@Test
-	@Order(1)
+	@Order(2)
 	void testSecondQuery() {
-		List<Integer>  list = mediaDao.getByTagAndAvgRatingAndNumberOfRatingsWithDateRange("Complex", 1L, 80.0, 
-				LocalDate.parse("1981-11-01"), LocalDate.parse("1983-01-01"));
+		ArrayList<Object[]>  list = (ArrayList<Object[]>) mediaDao.getByTagAndAvgRatingAndNumberOfRatingsWithDateRange("Complex", 1L, 80.0, 
+				LocalDate.parse("1981-11-01"), LocalDate.parse("1983-11-01"));
 		System.out.println(list);
+		for(int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i)[0]);
+			System.out.println(list.get(i)[1]);
+		}
 		assertTrue(list != null);
 	}
 
