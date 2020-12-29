@@ -15,8 +15,9 @@ import dev.shrews.data.ShelfHibernate;
 
 @Service
 public class ShelfServiceImpl implements ShelfService {
-	ShelfDAO sd;
-	ShelfAssignmentDAO sad;
+  
+	private ShelfDAO sd;
+	private ShelfAssignmentDAO sad;
 	
 	@Autowired
 	public ShelfServiceImpl(ShelfDAO s, ShelfAssignmentDAO sa) {
