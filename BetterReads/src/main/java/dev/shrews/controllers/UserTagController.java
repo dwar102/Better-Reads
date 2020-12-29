@@ -53,8 +53,9 @@ public class UserTagController {
         	ut.setMedia(m);
         	User u = userServ.getUserById(uid);
         	ut.setUser(u);
-        	ut.setTagName(name);userTagServ.addUserTag(ut);
-			return ResponseEntity.ok().build();
+        	ut.setTagName(name);
+        	ut.setId(userTagServ.addUserTag(ut));
+			return ResponseEntity.ok(ut);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(400).build();
