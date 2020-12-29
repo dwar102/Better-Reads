@@ -21,6 +21,7 @@ import { ViewmediaComponent } from './viewmedia/viewmedia.component';
 import { ViewmessagesComponent } from './viewmessages/viewmessages.component';
 import { WritemessageComponent } from './writemessage/writemessage.component';
 import { SearchComponent} from './search/search.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SearchComponent} from './search/search.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [
     UserService,

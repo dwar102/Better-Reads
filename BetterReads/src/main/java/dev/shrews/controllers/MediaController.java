@@ -126,11 +126,14 @@ public class MediaController {
         }
     }
     
-    @PutMapping(path="/search")
+    @PutMapping("/search")
     @ResponseBody
-    public ResponseEntity<List<Media>> searchMedia(HttpSession session, @RequestParam("type") String searchType, @RequestParam("content") String searchContent) {
-    	System.out.println("searchType");
-    	System.out.println("searchContent");
-    	return null;
+    public ResponseEntity<Set<Media>> searchMedia(HttpSession session, @RequestParam("type") String searchType, @RequestParam("content") String searchContent) {
+    	System.out.println("Searching...");
+    	try {
+    		return ResponseEntity.ok(mediaServ.getSearch(searchType, searchContent));
+    	} catch (Exception e) {
+    		return ResponseEntity.status(400).build();
+    	}
     }
 }

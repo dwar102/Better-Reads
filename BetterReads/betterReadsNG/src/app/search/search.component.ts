@@ -1,7 +1,9 @@
 import { Component, OnChanges, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { MediaService } from '../services/media.service';
 
 @Component({
   selector: 'app-search',
@@ -9,12 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.styl']
 })
 export class SearchComponent implements OnInit {
+  @Output() searchEvent: EventEmitter<any> = new EventEmitter();
   public loggedUser: User; 
   public searchContent: string;
   public searchActivated: boolean = false;
+  public searchResults: any;
   public searchType = 'title';
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private mediaService: MediaService, private router: Router) { }
 
   ngOnInit(): void {
     //this.checkLogin();
@@ -25,12 +29,13 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    if (this.searchType == 'title') {
-      console.log(' title: ' + this.searchContent);
-    } else {
-      console.log(' author: ' + this.searchContent);
-    }
-    this.searchActivated = true;
+    this.mediaService.getSearchResults(this.searchType, this.searchContent).subscribe(
+      resp => {
+        this.searchResults = resp;
+        console.log(this.searchResults);
+        this.searchActivated = true;
+      }
+    );
   }
 
   checkLogin() {
@@ -41,5 +46,9 @@ export class SearchComponent implements OnInit {
     );
     console.log(this.loggedUser);
   }
+
+  test() {
+    console.log(this.searchResults); 
+   }
   
 }
