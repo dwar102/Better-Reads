@@ -168,7 +168,7 @@ public class MediaHibernate implements MediaDAO{
 	public ArrayList<Object[]> getByTagAndAvgRatingAndNumberOfRatings(String tagName, Long minRatings,
 			Double minAvgRating) {
 		Session s = hu.getSession();
-		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+		String query = 	 " select distinct m.id, count(distinct r.rating), avg(r.rating), m.title FROM Media m "
 						+" join UserTag ut on ut.media.id = m.id "
 						+" join Genre g on g.id = m.genre.id "
 						+" join Review r on r.media.id = m.id "
@@ -182,7 +182,7 @@ public class MediaHibernate implements MediaDAO{
 		q.setParameter("tagName",  tagName);
 		q.setParameter("minRatings",  minRatings);
 		q.setParameter("minAvgRating",  minAvgRating);
-		//System.out.println(q.getResultList());
+		System.out.println(q.getResultList());
 		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
 		return list;
 	}
@@ -214,4 +214,171 @@ public class MediaHibernate implements MediaDAO{
 		return list;
 	}
 
+	@Override
+	public ArrayList<Object[]> getByGenreAndTagAndAvgRatingAndNumberOfRatings(Integer gid, String tagName,
+			Long minRatings, Double minAvgRating) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where ut.tagName = :tagName"
+						+" and g.id = :gid"
+						+" group by m.id"
+						+" having count(distinct r.id) > :minRatings"
+						+" and avg(r.rating) > :minAvgRating"
+						+" order by avg(r.rating) desc"
+						+" ";
+		Query<Object[]> q = s.createQuery(query, Object[].class);
+		q.setParameter("tagName",  tagName);
+		q.setParameter("gid", gid);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+		//System.out.println(q.getResultList());
+		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
+		return list;
+	}
+
+	@Override
+	public ArrayList<Object[]> getByGenreAndTagAndAvgRatingAndNumberOfRatingsWithDateRange(Integer gid, String tagName,
+			Long minRatings, Double minAvgRating, LocalDate minDate, LocalDate maxDate) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where ut.tagName = :tagName"
+						+" and g.id = :gid"
+						+" and m.date > :minDate"
+						+" and m.date < :maxDate"
+						+" group by m.id"
+						+" having count(distinct r.id) > :minRatings"
+						+" and avg(r.rating) > :minAvgRating"
+						+" order by avg(r.rating) desc"
+						+" ";
+		Query<Object[]> q = s.createQuery(query, Object[].class);
+		q.setParameter("tagName",  tagName);
+		q.setParameter("gid", gid);
+		q.setParameter("minDate",  minDate);
+		q.setParameter("maxDate",  maxDate);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+		//System.out.println(q.getResultList());
+		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
+		return list;
+	}
+
+	@Override
+	public ArrayList<Object[]> getByTagAndNotTagAndAvgRatingAndNumberOfRatings(String tagName, String notTagName,
+			Long minRatings, Double minAvgRating) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where m.id not in (select m2.id from Media m2 join UserTag ut2 on ut2.media.id = m2.id where ut2.tagName = :notTagName)"
+						+" and ut.tagName = :tagName"
+						+" group by m.id"
+						+" having count(distinct r.id) > :minRatings"
+						+" and avg(r.rating) > :minAvgRating"
+						+" order by avg(r.rating) desc"
+						+" ";
+		Query<Object[]> q = s.createQuery(query, Object[].class);
+		q.setParameter("tagName",  tagName);
+		q.setParameter("notTagName",  notTagName);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+
+		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
+		return list;
+	}
+
+	@Override
+	public ArrayList<Object[]> getByTagAndNotTagAndAvgRatingAndNumberOfRatingsWithDateRange(String tagName,
+			String notTagName, Long minRatings, Double minAvgRating, LocalDate minDate, LocalDate maxDate) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where m.id not in (select m2.id from Media m2 join UserTag ut2 on ut2.media.id = m2.id where ut2.tagName = :notTagName)"
+						+" and ut.tagName = :tagName"
+						+" and m.date > :minDate"
+						+" and m.date < :maxDate"
+						+" group by m.id"
+						+" having count(distinct r.id) > :minRatings"
+						+" and avg(r.rating) > :minAvgRating"
+						+" order by avg(r.rating) desc"
+						+" ";
+		Query<Object[]> q = s.createQuery(query, Object[].class);
+		q.setParameter("tagName",  tagName);
+		q.setParameter("notTagName",  notTagName);
+		q.setParameter("minDate",  minDate);
+		q.setParameter("maxDate",  maxDate);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+
+		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
+		return list;
+	}
+
+	@Override
+	public ArrayList<Object[]> getByGenreAndTagAndNotTagAndAvgRatingAndNumberOfRatings(Integer gid, String tagName,
+			String notTagName, Long minRatings, Double minAvgRating) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where m.id not in (select m2.id from Media m2 join UserTag ut2 on ut2.media.id = m2.id where ut2.tagName = :notTagName)"
+						+" and ut.tagName = :tagName"
+						+" and g.id = :gid"
+						+" group by m.id"
+						+" having count(distinct r.id) > :minRatings"
+						+" and avg(r.rating) > :minAvgRating"
+						+" order by avg(r.rating) desc"
+						+" ";
+		Query<Object[]> q = s.createQuery(query, Object[].class);
+		q.setParameter("gid", gid);
+		q.setParameter("tagName",  tagName);
+		q.setParameter("notTagName",  notTagName);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+
+		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
+		return list;
+	}
+
+	@Override
+	public ArrayList<Object[]> getByGenreAndTagAndNotTagAndAvgRatingAndNumberOfRatingsWithDateRange(Integer gid,
+			String tagName, String notTagName, Long minRatings, Double minAvgRating, LocalDate minDate,
+			LocalDate maxDate) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where m.id not in (select m2.id from Media m2 join UserTag ut2 on ut2.media.id = m2.id where ut2.tagName = :notTagName)"
+						+" and ut.tagName = :tagName"
+						+" and m.date > :minDate"
+						+" and m.date < :maxDate"
+						+" and g.id = :gid"
+						+" group by m.id"
+						+" having count(distinct r.id) > :minRatings"
+						+" and avg(r.rating) > :minAvgRating"
+						+" order by avg(r.rating) desc"
+						+" ";
+		Query<Object[]> q = s.createQuery(query, Object[].class);
+		q.setParameter("gid", gid);
+		q.setParameter("tagName",  tagName);
+		q.setParameter("notTagName",  notTagName);
+		q.setParameter("minDate",  minDate);
+		q.setParameter("maxDate",  maxDate);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+
+		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
+		return list;
+	}
+	
 }

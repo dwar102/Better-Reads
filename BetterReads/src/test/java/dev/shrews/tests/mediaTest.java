@@ -33,14 +33,14 @@ class mediaTest {
 		Media m = mediaDao.getById(1);
 		System.out.println(m);
 		assertTrue(m != null);
-		//System.out.println(g);
+		System.out.println(m);
 	}
 
 	@Test
 	@Order(2)
 	void testGetAll() {
 		Set<Media> ms = mediaDao.getAll();
-		//System.out.println(gs);
+		System.out.println(ms);
 		assertTrue(ms.size() > 0);
 	}
 
