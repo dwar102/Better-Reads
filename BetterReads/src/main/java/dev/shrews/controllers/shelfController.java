@@ -2,6 +2,7 @@ package dev.shrews.controllers;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -69,14 +70,20 @@ public class shelfController {
 	//BetterReads/shelves/assignments/?shelf=1
     @GetMapping("/assignments")
     @ResponseBody
-	public ResponseEntity<List<ShelfAssignment>> getShelfAssignments(HttpSession session, @RequestParam("shelf") String shelfId) {
-		//Integer loggedUserId = (Integer) session.getAttribute("user");
+	public ResponseEntity<Set<ShelfAssignment>> getShelfAssignments(HttpSession session, @RequestParam("shelf") String shelfId) {
+		System.out.println("reached /assignments handler");
+    	//Integer loggedUserId = (Integer) session.getAttribute("user");
 		Shelf s = new Shelf();
 		s.setId(Integer.parseInt(shelfId));
 		List<ShelfAssignment> shelfAssignments = shelfServ.getShelfAssignments(s);
 		if (shelfId == null)
 			return ResponseEntity.badRequest().build();
-		return ResponseEntity.ok(shelfAssignments);
+	    Set<ShelfAssignment> items = new HashSet<>();
+	    
+	    
+	    for (ShelfAssignment e : shelfAssignments)
+	        items.add(e);
+		return ResponseEntity.ok(items);
 	}  
 	
 public static Shelf addShelf() {
