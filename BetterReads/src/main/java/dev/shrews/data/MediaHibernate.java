@@ -162,4 +162,25 @@ public class MediaHibernate implements MediaDAO{
 		return tagList;
 	}
 
+	@Override
+	public List<Integer> getByTagAndAvgRatingAndNumberOfRatings(String tagName, Long minRatings,
+			Double minAvgRating) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where ut.tagName = :tagName"
+						+" group by m.id"
+						+" having count(distinct r.id) > :minRatings"
+						+" and avg(r.rating) > :minAvgRating";
+		Query<Integer> q = s.createQuery(query, Integer.class);
+		q.setParameter("tagName",  tagName);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+		//System.out.println(q.getResultList());
+		List<Integer> list = q.getResultList();
+		return list;
+	}
+
 }
