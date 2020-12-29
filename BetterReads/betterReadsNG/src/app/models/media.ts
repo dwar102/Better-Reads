@@ -7,5 +7,5 @@ export class Media {
     creator: String;
     mediaType: MediaType;
     genre: Genre;
-    publicationDate: Date;
+    date: Date;
 }

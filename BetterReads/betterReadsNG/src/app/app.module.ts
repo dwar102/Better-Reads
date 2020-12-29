@@ -18,6 +18,7 @@ import { MediaComponent } from './media/media.component';
 import { CommentsmediaComponent } from './commentsmedia/commentsmedia.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { ViewmediaComponent } from './viewmedia/viewmedia.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ViewmediaComponent } from './viewmedia/viewmedia.component';
   providers: [
     UserService,
     CookieService,
+    DatePipe,
     UrlService
   ],
   bootstrap: [AppComponent]
