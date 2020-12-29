@@ -18,11 +18,15 @@ newMessage: userMessage;
   constructor(private messageService:MessageService) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
     this.newMessage = new userMessage;
     this.newMessage.message = this.message;
     this.newMessage.sender = this.loggedUser; 
     this.newMessage.recipient = new User;
     this.newMessage.recipient.id = this.target;
+    this.messageService.writeMessage(this.newMessage).subscribe();
   }
 
 }
