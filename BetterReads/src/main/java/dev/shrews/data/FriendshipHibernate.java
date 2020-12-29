@@ -59,7 +59,7 @@ public class FriendshipHibernate implements FriendshipDAO{
 		String query = "FROM Friendships where user_id.id= :id";
 		System.out.println(query);
 		Query<Friendships> q = s.createQuery(query, Friendships.class);
-		System.out.println(q);
+		//System.out.println(q);
 		q.setParameter("id",  id);
 		List<Friendships> friendList = q.getResultList();
 		Set<Friendships> friendSet = new HashSet<>();
