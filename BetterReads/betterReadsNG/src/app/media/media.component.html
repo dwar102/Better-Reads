@@ -1,11 +1,19 @@
-<div class="card">
-    <div class="container">
-      <h4><b>Title of media</b></h4> 
-      <p>Creator:</p>
-      <p>Genre:</p>
-      <app-rating-widget [loggedUser]="loggedUser"></app-rating-widget>
-    </div>
+<!-- <h1>this is media component</h1>
+<p>media component's items has length:</p>
+<p> {{items.length}}</p> -->
+
+<!-- {{ item }} <br>. -->
+<div class="card" *ngFor="let item of items">
+    <p><b>Title:</b>  {{item.media.title}}</p>
+    <p><b>Creator:</b>  {{item.media.creator}}</p>
+    <p><b>Genre:</b>  {{item.media.genre.name}}</p>
+    <p><b>Shelf Assignment Id:</b>  {{item.id}}</p>
+    <p><b>Logged user Id:</b>  {{loggedUser.id}}</p>
+        
+    <app-rating-widget [loggedUser]="loggedUser" [mediaId] = "item.media.id"></app-rating-widget>
 </div>
+
+
 <!-- <ul>
   <li *ngFor="let item of users; index as i; first as isFirst">
     {{i}}/{{users.length}}. {{user}} <span *ngIf="isFirst">default</span>

@@ -9,7 +9,7 @@ import { User } from '../models/user';
 })
 export class MediaComponent implements OnInit {
   @Input() public loggedUser: User; 
-  @Input() public items: Media;
+  @Input() public items: [];
   constructor() { }
 
   ngOnInit(): void {

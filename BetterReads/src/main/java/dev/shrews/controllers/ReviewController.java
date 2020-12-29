@@ -25,7 +25,7 @@ import dev.shrews.services.UserService;
 import dev.shrews.services.MediaService;
 
 @RestController
-@RequestMapping(path="/reviews/")
+@RequestMapping(path="/reviews")
 @CrossOrigin(origins="http://localhost:4200", allowCredentials = "true")
 
 public class ReviewController {
@@ -42,7 +42,7 @@ public class ReviewController {
         mediaServ = n;
     }
 
-
+    //http://localhost:8080/BetterReads/reviews
 
     @GetMapping(path="{id}")
     @ResponseBody
@@ -57,11 +57,10 @@ public class ReviewController {
     }
     @PostMapping
     public ResponseEntity<Review> addComment(HttpSession session, @RequestBody Review review) {
-        System.out.println("Reached PutComment");
+        System.out.println("reached add review");
         Integer id = review.getMedia().getId();
         Media media = mediaServ.getByMediaId(id);
         if (media != null) {
-            reviewServ.addReview(review);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();

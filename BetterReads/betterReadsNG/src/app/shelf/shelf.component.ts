@@ -17,6 +17,7 @@ export class ShelfComponent implements OnInit, OnChanges {
   count: number;
   shelfAssignments: Media[];
   userShelves: Shelf[];
+  siblings = new Array<string>('Jane', 'Jack', 'Sophie');
 
   constructor(private router: Router, private shelfService: ShelfService){ }//  constructor(private mediaService: MediaService) { }
 
@@ -56,18 +57,18 @@ export class ShelfComponent implements OnInit, OnChanges {
       }
     );
   }
-  getShelfAssignments(shelfId : Number){
-    this.shelfService.getShelfAssignments(shelfId).subscribe(
-      resp => {
-        //2. assign count for each shelf
+  // getShelfAssignments(shelfId : Number){
+  //   this.shelfService.getShelfAssignments(shelfId).subscribe(
+  //     resp => {
+  //       //2. assign count for each shelf
 
-        console.log("got a response: " + resp);
-        this.shelfAssignments = resp;
-        this.shelfAssignments.forEach(function (s) {
-          console.log(s);
-        }); 
-        this.count = this.shelfAssignments.length;
-      }
-    );
-  } 
+  //       console.log("got a response: " + resp);
+  //       this.shelfAssignments = resp;
+  //       this.shelfAssignments.forEach(function (s) {
+  //         console.log(s);
+  //       }); 
+  //       this.count = this.shelfAssignments.length;
+  //     }
+  //   );
+  // } 
 }
