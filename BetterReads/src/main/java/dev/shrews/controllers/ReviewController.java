@@ -1,8 +1,5 @@
 package dev.shrews.controllers;
 
-public class ReviewController {
-    package dev.shrews.controllers;
-
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -23,8 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.shrews.beans.*;
-import dev.shrews.services.MediaService;
+import dev.shrews.services.ReviewService;
 import dev.shrews.services.UserService;
+import dev.shrews.services.MediaService;
 
 @RestController
 @RequestMapping(path="/reviews/")
@@ -34,37 +32,40 @@ public class ReviewController {
     private UserService userServ;
 
     private MediaService mediaServ;
+
+    private ReviewService reviewServ;
     
     @Autowired
-    public ReviewController(UserService u, ReviewService m) {
+    public ReviewController(UserService u, ReviewService m, MediaService n) {
         userServ = u;
         reviewServ = m;
+        mediaServ = n;
     }
 
 
 
     @GetMapping(path="{id}")
     @ResponseBody
-    public ResponseEntity<Set<User_Media_Comments>> getComments(HttpSession session, @PathVariable("id") Integer id)  {
+    public ResponseEntity<Set<Review>> getReviews(HttpSession session, @PathVariable("id") Integer id)  {
     	System.out.println("Reached");
-        Set<User_Media_Comments> mediaComments = userServ.getCommentsForMedia(id);
-        if (mediaComments != null) {
-            return ResponseEntity.ok(mediaComments);
+        Set<Review> reviews = reviewServ.getByMediaId(id);
+        if (reviews != null) {
+            return ResponseEntity.ok(reviews);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
     @PostMapping
-    public ResponseEntity<User_Media_Comments> addComment(HttpSession session, @RequestBody User_Media_Comments comment) {
+    public ResponseEntity<Review> addComment(HttpSession session, @RequestBody Review review) {
         System.out.println("Reached PutComment");
-        Integer id = comment.getMedia().getId();
+        Integer id = review.getMedia().getId();
         Media media = mediaServ.getByMediaId(id);
         if (media != null) {
-            userServ.placeCommentForMedia(comment);
+            reviewServ.addReview(review);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 }
-}
+
