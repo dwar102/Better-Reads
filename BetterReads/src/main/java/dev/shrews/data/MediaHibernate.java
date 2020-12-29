@@ -1,5 +1,6 @@
 package dev.shrews.data;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -176,6 +177,31 @@ public class MediaHibernate implements MediaDAO{
 						+" and avg(r.rating) > :minAvgRating";
 		Query<Integer> q = s.createQuery(query, Integer.class);
 		q.setParameter("tagName",  tagName);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+		//System.out.println(q.getResultList());
+		List<Integer> list = q.getResultList();
+		return list;
+	}
+
+	@Override
+	public List<Integer> getByTagAndAvgRatingAndNumberOfRatingsWithDateRange(String tagName, Long minRatings,
+			Double minAvgRating, LocalDate minDate, LocalDate maxDate) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where ut.tagName = :tagName"
+						+" and m.date > :minDate"
+						+" and m.date < :maxDate"
+						+" group by m.id"
+						+" having count(distinct r.id) > :minRatings"
+						+" and avg(r.rating) > :minAvgRating";
+		Query<Integer> q = s.createQuery(query, Integer.class);
+		q.setParameter("tagName",  tagName);
+		q.setParameter("minDate",  minDate);
+		q.setParameter("maxDate",  maxDate);
 		q.setParameter("minRatings",  minRatings);
 		q.setParameter("minAvgRating",  minAvgRating);
 		//System.out.println(q.getResultList());

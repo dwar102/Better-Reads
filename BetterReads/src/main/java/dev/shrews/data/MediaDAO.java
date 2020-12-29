@@ -1,5 +1,6 @@
 package dev.shrews.data;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -18,6 +19,8 @@ public interface MediaDAO extends GenericDAO<Media>{
 	public List<Long> getNumTagsById(Integer id);
 	public List<String> getTagnamesById(Integer id);
 	public List<Integer> getByTagAndAvgRatingAndNumberOfRatings(String tagName, Long minRatings, Double minAvgRating);
+	public List<Integer> getByTagAndAvgRatingAndNumberOfRatingsWithDateRange(String tagName, Long minRatings, Double minAvgRating,
+			LocalDate minDate, LocalDate maxDate);
 	//update
 	public void update(Media m);
 	//delete
