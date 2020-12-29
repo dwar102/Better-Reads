@@ -22,13 +22,12 @@ public class Friendships {
 		friendship_id = 0;
 		user_id = new User();
 		friend_id = new User();
-		message = "";
 	}
 	
 	@Override
 	public String toString() {
 		return "friendships [friendship_id=" + friendship_id + ", user_id=" + user_id + ", friend_id=" + friend_id
-				+ ", message=" + message + "]";
+				+ "]";
 	}
 	
 	@Override
@@ -37,7 +36,6 @@ public class Friendships {
 		int result = 1;
 		result = prime * result + ((friend_id == null) ? 0 : friend_id.hashCode());
 		result = prime * result + ((friendship_id == null) ? 0 : friendship_id.hashCode());
-		result = prime * result + ((message == null) ? 0 : message.hashCode());
 		result = prime * result + ((user_id == null) ? 0 : user_id.hashCode());
 		return result;
 	}
@@ -60,11 +58,6 @@ public class Friendships {
 			if (other.friendship_id != null)
 				return false;
 		} else if (!friendship_id.equals(other.friendship_id))
-			return false;
-		if (message == null) {
-			if (other.message != null)
-				return false;
-		} else if (!message.equals(other.message))
 			return false;
 		if (user_id == null) {
 			if (other.user_id != null)
@@ -92,12 +85,7 @@ public class Friendships {
 	public void setFriend_id(User friend_id) {
 		this.friend_id = friend_id;
 	}
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
+
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 private Integer friendship_id;
@@ -109,6 +97,5 @@ private User user_id;
 @JoinColumn(name="friend_id")
 @Autowired
 private User friend_id;
-@Column(name="message")
-private String message;
+
 }
