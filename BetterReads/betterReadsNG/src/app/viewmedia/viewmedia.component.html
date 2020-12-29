@@ -3,7 +3,7 @@
     <p> By {{media.creator}} </p> <br>
     <p> Average rating: {{avgRating}} </p><br>
     <p> Total number of ratings: {{numRatings}} </p><br>
-    <p> Publication date: {{media.date.month}} {{media.date.dayOfMonth}}, {{media.date.year}} </p><br>
+    <p> Publication date: {{media.date.month| json}} {{media.date.dayOfMonth | json}} </p><br>
 
 
 </ng-container>
