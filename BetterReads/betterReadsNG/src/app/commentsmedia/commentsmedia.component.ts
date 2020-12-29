@@ -12,13 +12,13 @@ import { User } from '../models/user';
 })
 export class CommentsmediaComponent implements OnInit {
   Comments: mediaComment[];
-  media: Media;
+  //media: Media;
 
 
   constructor(private commentService:CommentsmediaService) { }
 
   ngOnInit(): void {
-    this.commentService.getMediaComments(this.media.id).subscribe(
+    this.commentService.getMediaComments(1).subscribe( // Hardcoding for testing 
       resp => {
         this.Comments = resp;
       }

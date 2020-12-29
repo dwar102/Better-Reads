@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.shrews.beans.*;
@@ -35,6 +36,17 @@ public class MediaController {
         mediaServ = m;
     }
 
+    @GetMapping(path="{id}")
+    @ResponseBody
+    public ResponseEntity<Media> viewMedia(HttpSession session, @PathVariable("id") Integer id){
+    	System.out.println("enter /view handler");
+    	try {
+			return ResponseEntity.ok(mediaServ.getByMediaId(id));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
 
     @PostMapping("/add")
     public ResponseEntity<Media> addMedia(HttpSession session, @RequestParam("creator") String creator, @RequestParam("date") CharSequence date,
@@ -64,6 +76,7 @@ public class MediaController {
 
 
     @GetMapping("/totalratings")
+    @ResponseBody
     public ResponseEntity<Long> getTotalRatings(HttpSession session, @RequestParam("media_id") Integer id)  {
     	System.out.println("enter /totalratings handler");
         try {
@@ -76,8 +89,9 @@ public class MediaController {
 
 
     @GetMapping("/avgrating")
+    @ResponseBody
     public  ResponseEntity<Double> getAvgRating(HttpSession session, @RequestParam("media_id") Integer id)  {
-    	System.out.println("enter /totalratings handler");
+    	System.out.println("enter /avgratings handler");
         try {
     		return ResponseEntity.ok(mediaServ.getAvgRatingById(id));
         }
@@ -88,6 +102,7 @@ public class MediaController {
 
 
     @GetMapping("/tagnames")
+    @ResponseBody
     public ResponseEntity<List<String>> getTagnames(HttpSession session, @RequestParam("media_id") Integer id)  {
     	System.out.println("enter /tagnames handler");
         try {
@@ -100,6 +115,7 @@ public class MediaController {
 
 
     @GetMapping("/tagcount")
+    @ResponseBody
     public ResponseEntity<List<Long>> getTagCount(HttpSession session, @RequestParam("media_id") Integer id)  {
     	System.out.println("enter /tagcount handler");
         try {
