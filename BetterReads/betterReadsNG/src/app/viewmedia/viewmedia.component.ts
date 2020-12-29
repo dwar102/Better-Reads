@@ -1,4 +1,3 @@
-import { DatePipe, LocationChangeEvent } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Media } from '../models/media';
 import { MediaService } from '../services/media.service';
@@ -18,7 +17,7 @@ export class ViewmediaComponent implements OnInit {
   private tagNames: String[];
   private media: Media;
 
-  constructor(private mediaService: MediaService, public datePipe: DatePipe) { }
+  constructor(private mediaService: MediaService) { }
 
   ngOnInit(): void {
     this.viewMedia();
