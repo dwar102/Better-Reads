@@ -18,8 +18,12 @@ import { MediaComponent } from './media/media.component';
 import { CommentsmediaComponent } from './commentsmedia/commentsmedia.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { ViewmediaComponent } from './viewmedia/viewmedia.component';
+<<<<<<< HEAD
+import { DatePipe } from '@angular/common';
+=======
 import { ViewmessagesComponent } from './viewmessages/viewmessages.component';
 import { WritemessageComponent } from './writemessage/writemessage.component';
+>>>>>>> 18af200d9f114cb1c394485d82d3a79082588d83
 
 @NgModule({
   declarations: [

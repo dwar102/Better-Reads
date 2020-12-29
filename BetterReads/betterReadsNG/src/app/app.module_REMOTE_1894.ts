@@ -47,7 +47,6 @@ import { WritemessageComponent } from './writemessage/writemessage.component';
   providers: [
     UserService,
     CookieService,
-    DatePipe,
     UrlService
   ],
   bootstrap: [AppComponent]
