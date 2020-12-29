@@ -11,11 +11,11 @@ export class ViewmediaComponent implements OnInit {
   
   //@Input() mediaId: Number;
   mediaId = 3;
-  private numRatings: Number;
-  private avgRating: Number;
-  private tagCounts: Number[];
-  private tagNames: String[];
-  private media: Media;
+  public numRatings: Number;
+  public avgRating: Number;
+  public tagCounts: Number[];
+  public tagNames: String[];
+  public media: Media;
 
   constructor(private mediaService: MediaService) { }
 
