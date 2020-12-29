@@ -1,5 +1,5 @@
 <div>
-<ng-container *ngIf="!searchActivated">
+<ng-container *ngIf="!searchActivated; else searchResults">
     <div>
         <label for="searchBar">Search: </label>
         <input type="text" id="searchBar" name="searchBar" [(ngModel)]="searchContent" />
@@ -16,8 +16,8 @@
         </label>
     </div>
 </ng-container>
-<ng-container *ngIf="searchActivated">
+<ng-template #searchResults>
     <h2>Results:</h2>>
 
-</ng-container>
+</ng-template>
 </div>

@@ -20,6 +20,7 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
 import { ViewmediaComponent } from './viewmedia/viewmedia.component';
 import { ViewmessagesComponent } from './viewmessages/viewmessages.component';
 import { WritemessageComponent } from './writemessage/writemessage.component';
+import { SearchComponent} from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { WritemessageComponent } from './writemessage/writemessage.component';
     AddCommentComponent,
     ViewmediaComponent,
     ViewmessagesComponent,
-    WritemessageComponent
+    WritemessageComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
