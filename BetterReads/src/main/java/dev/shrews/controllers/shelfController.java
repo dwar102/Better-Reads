@@ -2,6 +2,7 @@ package dev.shrews.controllers;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.shrews.beans.Media;
 import dev.shrews.beans.Shelf;
+import dev.shrews.beans.ShelfAssignment;
 import dev.shrews.beans.User;
 import dev.shrews.services.MediaService;
 import dev.shrews.services.ShelfService;
@@ -67,11 +69,11 @@ public class shelfController {
 	//BetterReads/shelves/assignments/?shelf=1
     @GetMapping("/assignments")
     @ResponseBody
-	public ResponseEntity<Set<Media>> getShelfAssignments(HttpSession session, @RequestParam("shelf") String shelfId) {
+	public ResponseEntity<List<ShelfAssignment>> getShelfAssignments(HttpSession session, @RequestParam("shelf") String shelfId) {
 		//Integer loggedUserId = (Integer) session.getAttribute("user");
 		Shelf s = new Shelf();
 		s.setId(Integer.parseInt(shelfId));
-		Set<Media> shelfAssignments = shelfServ.getShelfAssignments(s);
+		List<ShelfAssignment> shelfAssignments = shelfServ.getShelfAssignments(s);
 		if (shelfId == null)
 			return ResponseEntity.badRequest().build();
 		return ResponseEntity.ok(shelfAssignments);
