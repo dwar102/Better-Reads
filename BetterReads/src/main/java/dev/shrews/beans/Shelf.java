@@ -43,6 +43,7 @@ public class Shelf {
 		this.id = id;
 		this.user = user;
 		this.name = name;
+	}
 //		this.shelfAssignments = shelfAssignments;
 
 	public Integer getId() {

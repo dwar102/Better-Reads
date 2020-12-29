@@ -1,5 +1,6 @@
 package dev.shrews.services;
 
+import java.util.List;
 import java.util.Set;
 
 import dev.shrews.beans.Media;
@@ -19,5 +20,5 @@ public interface ShelfService {
 //list
 	public Set<Shelf> getShelves();
 	public Set<Shelf>getUserShelves(User loggedUser);
-	public Set<ShelfAssignment> getShelfAssignments(Shelf s);
+	public List<ShelfAssignment> getShelfAssignments(Shelf s);
 }

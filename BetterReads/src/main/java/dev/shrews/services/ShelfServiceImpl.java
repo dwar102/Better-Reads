@@ -1,5 +1,6 @@
 package dev.shrews.services;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,18 +9,19 @@ import org.springframework.stereotype.Service;
 import dev.shrews.beans.Shelf;
 import dev.shrews.beans.ShelfAssignment;
 import dev.shrews.beans.User;
+import dev.shrews.data.ShelfAssignmentDAO;
 import dev.shrews.data.ShelfDAO;
 import dev.shrews.data.ShelfHibernate;
 
 @Service
 public class ShelfServiceImpl implements ShelfService {
-	ShelfDAO sd;
-	ShelfAssignmentDAO = sad;
+	private ShelfDAO sd;
+	private ShelfAssignmentDAO sad;
 	
 	@Autowired
-	public ShelfServiceImpl(ShelfDAO s, ShelfAssignmentDAO sad) {
+	public ShelfServiceImpl(ShelfDAO s, ShelfAssignmentDAO sa) {
 		sd = s;
-		
+		sad = sa;
 	}
 	
 	@Override
@@ -54,7 +56,7 @@ public class ShelfServiceImpl implements ShelfService {
 		return sd.getUserShelves(loggedUser);
 	}
 	
-	public Set<ShelfAssignment> getShelfAssignments(Shelf s){
-		
+	public List<ShelfAssignment> getShelfAssignments(Shelf s){
+		return sad.getByShelfId(s.getId());
 	}
 }
