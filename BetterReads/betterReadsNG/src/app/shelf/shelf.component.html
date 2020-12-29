@@ -18,22 +18,23 @@
 length: {{this.userShelves.length}}
 
 
-<div *ngFor="let s of this.userShelves; let i = index"> 
+<div class="shelf" *ngFor="let s of this.userShelves; let i = index"> 
       name: {{ s.name}}<br>
       id: {{s.id}}<br>
       count: {{s.count}}<br>
 
-      <div *ngIf="count > 0">
-        <div *ngIf="s.count == 1 "><img src="../../assets/shelf1.png"></div>
-        <div *ngIf="s.count == 2 "><img src="../../assets/shelf2.png"></div>
-        <div *ngIf="s.count == 3 "><img src="../../assets/shelf3.png"></div>
-        <div *ngIf="s.count == 4 "><img src="../../assets/shelf4.png"></div>
-        <div *ngIf="s.count == 5 "><img src="../../assets/shelf5.png"></div>
-        <div *ngIf="s.count == 6 "><img src="../../assets/shelf6.png"></div>
-        <div *ngIf="s.count == 7 "><img src="../../assets/shelf7.png"></div>
-        <div *ngIf="s.count == 8 "><img src="../../assets/shelf8.png"></div>
-        <div *ngIf="s.count == 9 "><img src="../../assets/shelf9.png"></div>
-        <div *ngIf="s.count == 10 "><img src="../../assets/shelf10.png"></div>
-        <div *ngIf="s.count > 10 "><img src="../../assets/shelf10.png"></div>  
-    </div>
+      <div *ngIf="s.count > 0">
+            <div *ngIf="s.count == 1 "><img src="../../assets/shelf1.png"></div>
+            <div *ngIf="s.count == 2 "><img src="../../assets/shelf2.png"></div>
+            <div *ngIf="s.count == 3 "><img src="../../assets/shelf3.png"></div>
+            <div *ngIf="s.count == 4 "><img src="../../assets/shelf4.png"></div>
+            <div *ngIf="s.count == 5 "><img src="../../assets/shelf5.png"></div>
+            <div *ngIf="s.count == 6 "><img src="../../assets/shelf6.png"></div>
+            <div *ngIf="s.count == 7 "><img src="../../assets/shelf7.png"></div>
+            <div *ngIf="s.count == 8 "><img src="../../assets/shelf8.png"></div>
+            <div *ngIf="s.count == 9 "><img src="../../assets/shelf9.png"></div>
+            <div *ngIf="s.count == 10 "><img src="../../assets/shelf10.png"></div>
+            <div *ngIf="s.count > 10 "><img src="../../assets/shelf10.png"></div>  
+      </div>
+      <app-media [items] = "s.shelfAssignments"></app-media>
 </div>
