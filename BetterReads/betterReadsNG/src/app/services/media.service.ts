@@ -63,6 +63,11 @@ export class MediaService {
     );
   }
 
-
+  getSearchResults(searchType: string, searchContent: string) {
+    const url = 'http://localhost:8080/BetterReads/media/search?type=' + searchType + '&content=' + searchContent;
+    return this.http.put(url, {headers:this.formHeaders, withCredentials:true}).pipe(
+      map(resp => resp as String[])
+    );
+  }
 
 }

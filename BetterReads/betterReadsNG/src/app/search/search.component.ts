@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.styl']
 })
 export class SearchComponent implements OnInit {
-  loggedUser: User; 
-  searchContent: string;
-  searchActivated = false;
-  searchType = 'title';
+  public loggedUser: User; 
+  public searchContent: string;
+  public searchActivated: boolean = false;
+  public searchType = 'title';
 
   constructor(private userService: UserService, private router: Router) { }
 
