@@ -25,7 +25,7 @@ public class ShelfAssignment {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="shelf_assignment_id")
 	private Integer id;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="shelf_id")
 	@Autowired
 	private Shelf shelf;

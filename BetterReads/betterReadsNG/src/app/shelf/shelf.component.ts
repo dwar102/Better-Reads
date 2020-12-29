@@ -34,24 +34,25 @@ export class ShelfComponent implements OnInit, OnChanges {
         // this.shelfAssignments = resp;
         // this.count = this.shelfAssignments.length;
         this.userShelves = resp;
-        for (var i = 0; i < this.userShelves.length; i++) {
-          console.log("inside for loop: " + this.userShelves[i].id);
+       // for (var i = 0; i < 1/*this.userShelves.length*/; i++) {
+         // console.log("inside for loop: " + this.userShelves[i].id);
           //1. run getshelfassignments
           //this.getShelfAssignments(this.userShelves[i].id);
-          this.shelfService.getShelfAssignments(this.userShelves[i].id).subscribe(
+          this.shelfService.getShelfAssignments(this.userShelves[0].id).subscribe(
             resp => {
-              //2. assign count for each shelf
               
-              console.log("got a response: " + resp);
+              //2. assign count for each shelf
+              console.log(`got a response (an array with ${resp.length} items)`);
               // this.shelfAssignments = resp;
               // this.shelfAssignments.forEach(function (s) {
               //   console.log(s);
               // }); 
-              this.userShelves[i].shelfAssignments = resp;
-              this.userShelves[i].count = this.userShelves[i].shelfAssignments.length;
+
+              this.userShelves[0].count = resp.length;
+              this.userShelves[0].shelfAssignments = resp;
             }
           );
-        }
+       // }
       }
     );
   }
