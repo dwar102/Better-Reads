@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Media } from '../models/media';
+import { User } from '../models/user';
 import { MediaService } from '../services/media.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { MediaService } from '../services/media.service';
   styleUrls: ['./viewmedia.component.styl']
 })
 export class ViewmediaComponent implements OnInit {
-  
+  @Input() public loggedUser: User;
   //@Input() mediaId: Number;
   mediaId = 3;
   public numRatings: Number;
