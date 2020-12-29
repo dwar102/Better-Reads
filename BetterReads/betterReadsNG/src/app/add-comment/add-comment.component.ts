@@ -4,6 +4,7 @@ import { CommentsmediaService } from '../services/commentsmedia.service';
 import { Router } from '@angular/router';
 import { Media } from '../models/media';
 import { User } from '../models/user';
+import { UserService } from '../services/user.service'
 
 @Component({
   selector: 'app-add-comment',
@@ -12,12 +13,15 @@ import { User } from '../models/user';
 })
 export class AddCommentComponent implements OnInit {
 message: string;
-newComment: mediaComment;
+newComment: mediaComment; 
 @Input() public loggedUser: User;
 @Input() public media: Media;
-constructor(private commentService:CommentsmediaService, private router: Router) { }
+constructor(private commentService:CommentsmediaService, private router: Router, private userService:UserService) { 
+  console.log(userService.getLoggedUser())
+}
 
   ngOnInit(): void {
+    
   }
 
   onSubmit() {
