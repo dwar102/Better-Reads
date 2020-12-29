@@ -1,0 +1,23 @@
+<div>
+<ng-container *ngIf="!searchActivated">
+    <div>
+        <label for="searchBar">Search: </label>
+        <input type="text" id="searchBar" name="searchBar" [(ngModel)]="searchContent" />
+        <button type="button" id="searchButton" (click)="search()">Search!</button>
+    </div>
+    <div>
+        <label>
+            <input type="radio" name="searchType" value="title" (click)="setType('title')" [checked]="true" ngModel />
+            Title
+        </label>
+        <label>
+            <input type="radio" name="searchType" value="author" (click)="setType('author')" ngModel />
+            Author
+        </label>
+    </div>
+</ng-container>
+<ng-container *ngIf="searchActivated">
+    <h2>Results:</h2>>
+
+</ng-container>
+</div>
