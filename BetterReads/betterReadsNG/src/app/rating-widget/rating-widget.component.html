@@ -1,16 +1,16 @@
 
       <div class="rating">
-        <input type="radio" name="rating" id="rating-5">
-        <label for="rating-5"></label>
-        <input type="radio" name="rating" id="rating-4">
-        <label for="rating-4"></label>
-        <input type="radio" name="rating" id="rating-3">
-        <label for="rating-3"></label>
-        <input type="radio" name="rating" id="rating-2">
-        <label for="rating-2"></label>
-        <input type="radio" name="rating" id="rating-1">
-        <label for="rating-1"></label>
-            <svg class="rating-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <input type="radio" name="rating" id="rating-5-{{loggedUser.id}}-{{mediaId}}" (click)="clickEvent(100)">
+        <label for="rating-5-{{loggedUser.id}}-{{mediaId}}"></label>
+        <input type="radio" name="rating" id="rating-4-{{loggedUser.id}}-{{mediaId}}" (click)="clickEvent(80)">
+        <label for="rating-4-{{loggedUser.id}}-{{mediaId}}"></label>
+        <input type="radio" name="rating" id="rating-3-{{loggedUser.id}}-{{mediaId}}" (click)="clickEvent(60)">
+        <label for="rating-3-{{loggedUser.id}}-{{mediaId}}"></label>
+        <input type="radio" name="rating" id="rating-2-{{loggedUser.id}}-{{mediaId}}" (click)="clickEvent(40)">
+        <label for="rating-2-{{loggedUser.id}}-{{mediaId}}"></label>
+        <input type="radio" name="rating" id="rating-1-{{loggedUser.id}}-{{mediaId}}" (click)="clickEvent(20)">
+        <label for="rating-1-{{loggedUser.id}}-{{mediaId}}"></label>
+            <svg class="rating-1-{{loggedUser.id}}-{{mediaId}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
             <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
             <path d="M328.4 428a92.8 92.8 0 0 0-145-.1 6.8 6.8 0 0 1-12-5.8 86.6 86.6 0 0 1 84.5-69 86.6 86.6 0 0 1 84.7 69.8c1.3 6.9-7.7 10.6-12.2 5.1z" fill="#3e4347"/>
@@ -23,7 +23,7 @@
             <path d="M115.8 246.1a38.5 38.5 0 0 0 38.7 38.6 38.5 38.5 0 0 0 38.6-38.6 38.6 38.6 0 1 0-77.3 0z" fill="#3e4347"/>
             <path d="M131.6 241.1c3.2 3.2 9.9 1.7 14.9-3.2 4.8-4.8 6.2-11.5 3-14.7-3.3-3.4-10-2-14.9 2.9-4.9 5-6.4 11.7-3 15z" fill="#fff"/>
           </svg>
-            <svg class="rating-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <svg class="rating-2-{{loggedUser.id}}-{{mediaId}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
             <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
             <path d="M336.6 403.2c-6.5 8-16 10-25.5 5.2a117.6 117.6 0 0 0-110.2 0c-9.4 4.9-19 3.3-25.6-4.6-6.5-7.7-4.7-21.1 8.4-28 45.1-24 99.5-24 144.6 0 13 7 14.8 19.7 8.3 27.4z" fill="#3e4347"/>
@@ -36,7 +36,7 @@
             <circle cx="168.5" cy="260.4" r="36.2" fill="#3e4347"/>
             <ellipse transform="rotate(-135 182.1 246.7)" cx="182.1" cy="246.7" rx="10" ry="6.5" fill="#fff"/>
           </svg>
-            <svg class="rating-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <svg class="rating-3-{{loggedUser.id}}-{{mediaId}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
       <path d="M407.7 352.8a163.9 163.9 0 0 1-303.5 0c-2.3-5.5 1.5-12 7.5-13.2a780.8 780.8 0 0 1 288.4 0c6 1.2 9.9 7.7 7.6 13.2z" fill="#3e4347"/>
       <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
@@ -52,7 +52,7 @@
       <ellipse cx="155.6" cy="205.3" rx="44.2" ry="44.2" fill="#3e4347"/>
       <ellipse transform="scale(-1) rotate(45 454 -421.3)" cx="174.5" cy="188" rx="12" ry="8.1" fill="#fff"/>
     </svg>
-            <svg class="rating-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <svg class="rating-4-{{loggedUser.id}}-{{mediaId}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
             <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
             <path d="M232.3 201.3c0 49.2-74.3 94.2-74.3 94.2s-74.4-45-74.4-94.2a38 38 0 0 1 74.4-11.1 38 38 0 0 1 74.3 11.1z" fill="#e24b4b"/>
@@ -64,7 +64,7 @@
             <path d="M381.7 374.1c-30.2 35.9-75.3 64.4-125.7 64.4s-95.4-28.5-125.8-64.2a17.6 17.6 0 0 1 16.5-28.7 627.7 627.7 0 0 0 218.7-.1c16.2-2.7 27 16.1 16.3 28.6z" fill="#3e4347"/>
             <path d="M256 438.5c25.7 0 50-7.5 71.7-19.5-9-33.7-40.7-43.3-62.6-31.7-29.7 15.8-62.8-4.7-75.6 34.3 20.3 10.4 42.8 17 66.5 17z" fill="#e24b4b"/>
           </svg>
-            <svg class="rating-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <svg class="rating-5-{{loggedUser.id}}-{{mediaId}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <g fill="#ffd93b">
               <circle cx="256" cy="256" r="256"/>
               <path d="M512 256A256 256 0 0 1 56.8 416.7a256 256 0 0 0 360-360c58 47 95.2 118.8 95.2 199.3z"/>

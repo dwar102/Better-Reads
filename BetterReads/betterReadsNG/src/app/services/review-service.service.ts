@@ -16,7 +16,7 @@ private formHeaders = new HttpHeaders({'Cookie':this.cookieService.get('JSESSION
 private regHeaders = new HttpHeaders({'Cookie':this.cookieService.get('JSESSIONID'),
 'Content-Type':'application/json'});
   constructor(private http: HttpClient, private urlService: UrlService, private cookieService: CookieService) { 
-    this.reviewUrl = this.urlService.getUrl() + 'review';
+    this.reviewUrl = this.urlService.getUrl() + 'reviews';
   }
   getReviews(id: Number): Observable<Review[]> {
     return this.http.get(this.reviewUrl + id, {withCredentials:true}).pipe(

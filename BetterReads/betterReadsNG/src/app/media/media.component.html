@@ -7,7 +7,10 @@
     <p><b>Title:</b>  {{item.media.title}}</p>
     <p><b>Creator:</b>  {{item.media.creator}}</p>
     <p><b>Genre:</b>  {{item.media.genre.name}}</p>
-    <app-rating-widget [loggedUser]="loggedUser"></app-rating-widget>
+    <p><b>Shelf Assignment Id:</b>  {{item.id}}</p>
+    <p><b>Logged user Id:</b>  {{loggedUser.id}}</p>
+        
+    <app-rating-widget [loggedUser]="loggedUser" [mediaId] = "item.media.id"></app-rating-widget>
 </div>
 
 
