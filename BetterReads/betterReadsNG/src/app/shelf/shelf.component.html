@@ -1,4 +1,4 @@
-<h1>{{this.loggedUser.username}}'s shelf</h1>
+
 <!-- <form>
     <input id="count" name="count" type="text" [(ngModel)]="count" />Book Count
     <div *ngIf="count > 0">
@@ -19,9 +19,10 @@ length: {{this.userShelves.length}}
 
 
 <div class="shelf" *ngFor="let s of this.userShelves; let i = index"> 
-      name: {{ s.name}}<br>
+    <h1>{{this.loggedUser.username}}'s "{{ s.name}}" shelf</h1>
+      <!-- name: <br>
       id: {{s.id}}<br>
-      count: {{s.count}}<br>
+      count: {{s.count}}<br> -->
 
       <div *ngIf="s.count > 0">
             <div *ngIf="s.count == 1 "><img src="../../assets/shelf1.png"></div>
@@ -36,5 +37,5 @@ length: {{this.userShelves.length}}
             <div *ngIf="s.count == 10 "><img src="../../assets/shelf10.png"></div>
             <div *ngIf="s.count > 10 "><img src="../../assets/shelf10.png"></div>  
       </div>
-      <app-media [items] = "s.shelfAssignments"></app-media>
+      <app-media [items] = "s.shelfAssignments" [loggedUser]="loggedUser"></app-media>
 </div>
