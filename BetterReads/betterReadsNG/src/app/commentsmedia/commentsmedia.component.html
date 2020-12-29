@@ -2,17 +2,15 @@
     <h3>Comments</h3>
     <table>
         <tr>
-            <th>ID</th>
-            <th>Commenter ID</th>
-            <th></th>
-            <th>Reply to</th>
+            <th>Comment ID</th>
+            <th>User</th>
+            <th>Comment</th>
         </tr>
         <tr *ngFor="let Comment of Comments">
-            <td>{{ Comment.id }}</td>
+            <td>{{ Comment.comment_id | json }}</td>
         <!-- <td>{{ Comment.comment_date | json }}</td>-->
-            <td>{{ Comment.user.id | json }}</td>
+            <td>{{(Comment.user.username | json).replace("\"", "").replace("\"", "")  }}</td>
             <td>{{ Comment.message }}</td>
-            <td>{{ Comment.parent  }}</td>
         </tr>
     </table>
 </div>
