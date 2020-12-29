@@ -1,5 +1,7 @@
 package dev.shrews.data;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -160,6 +162,56 @@ public class MediaHibernate implements MediaDAO{
 		q.setParameter("id",  id);
 		List<String> tagList = q.getResultList();
 		return tagList;
+	}
+
+	@Override
+	public ArrayList<Object[]> getByTagAndAvgRatingAndNumberOfRatings(String tagName, Long minRatings,
+			Double minAvgRating) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where ut.tagName = :tagName"
+						+" group by m.id"
+						+" having count(distinct r.id) > :minRatings"
+						+" and avg(r.rating) > :minAvgRating"
+						+" order by avg(r.rating) desc"
+						+" ";
+		Query<Object[]> q = s.createQuery(query, Object[].class);
+		q.setParameter("tagName",  tagName);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+		//System.out.println(q.getResultList());
+		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
+		return list;
+	}
+
+	@Override
+	public ArrayList<Object[]> getByTagAndAvgRatingAndNumberOfRatingsWithDateRange(String tagName, Long minRatings,
+			Double minAvgRating, LocalDate minDate, LocalDate maxDate) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where ut.tagName = :tagName"
+						+" and m.date > :minDate"
+						+" and m.date < :maxDate"
+						+" group by m.id"
+						+" having count(distinct r.id) > :minRatings"
+						+" and avg(r.rating) > :minAvgRating"
+						+" order by avg(r.rating) desc"
+						+" ";
+		Query<Object[]> q = s.createQuery(query, Object[].class);
+		q.setParameter("tagName",  tagName);
+		q.setParameter("minDate",  minDate);
+		q.setParameter("maxDate",  maxDate);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+		//System.out.println(q.getResultList());
+		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
+		return list;
 	}
 
 }
