@@ -76,6 +76,7 @@ public class MediaController {
 
 
     @GetMapping("/totalratings")
+    @ResponseBody
     public ResponseEntity<Long> getTotalRatings(HttpSession session, @RequestParam("media_id") Integer id)  {
     	System.out.println("enter /totalratings handler");
         try {
@@ -88,6 +89,7 @@ public class MediaController {
 
 
     @GetMapping("/avgrating")
+    @ResponseBody
     public  ResponseEntity<Double> getAvgRating(HttpSession session, @RequestParam("media_id") Integer id)  {
     	System.out.println("enter /avgratings handler");
         try {
@@ -100,6 +102,7 @@ public class MediaController {
 
 
     @GetMapping("/tagnames")
+    @ResponseBody
     public ResponseEntity<List<String>> getTagnames(HttpSession session, @RequestParam("media_id") Integer id)  {
     	System.out.println("enter /tagnames handler");
         try {
@@ -112,6 +115,7 @@ public class MediaController {
 
 
     @GetMapping("/tagcount")
+    @ResponseBody
     public ResponseEntity<List<Long>> getTagCount(HttpSession session, @RequestParam("media_id") Integer id)  {
     	System.out.println("enter /tagcount handler");
         try {
