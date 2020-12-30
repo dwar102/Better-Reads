@@ -250,4 +250,32 @@ public class MediaController {
 		}
     }
     
+    @GetMapping("/searchByGenreAvgRatingNumRating")
+    @ResponseBody
+    public ResponseEntity<Media[]> searchfilter(HttpSession session, @RequestParam("genre") Integer gid,
+    		@RequestParam("minAvgRating") Double minAvgRating,  @RequestParam("minNumRatings") Long minNumRatings){
+    	try {
+			Media[] marray = mediaServ.getByGenreAvgRatingNumRating(gid, minNumRatings, minAvgRating);
+			return ResponseEntity.ok(marray);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
+    
+    @GetMapping("/searchByGenreAvgRatingNumRatingDates")
+    @ResponseBody
+    public ResponseEntity<Media[]> searchfilter(HttpSession session, @RequestParam("genre") Integer gid,
+    		@RequestParam("minAvgRating") Double minAvgRating,  @RequestParam("minNumRatings") Long minNumRatings,
+   		 @RequestParam("minDate") CharSequence minDate, @RequestParam("maxDate") CharSequence maxDate){
+    	try {
+			Media[] marray = mediaServ.getByGenreAvgRatingNumRatingWithDates(gid, minNumRatings, minAvgRating, 
+					LocalDate.parse(minDate), LocalDate.parse(maxDate));
+			return ResponseEntity.ok(marray);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
+    
 }

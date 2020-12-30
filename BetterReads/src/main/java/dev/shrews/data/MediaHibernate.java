@@ -367,8 +367,8 @@ public class MediaHibernate implements MediaDAO{
 						+" and m.date <= :maxDate"
 						+" and g.id = :gid"
 						+" group by m.id"
-						+" having count(distinct r.id) > :minRatings"
-						+" and avg(r.rating) > :minAvgRating"
+						+" having count(distinct r.id) >= :minRatings"
+						+" and avg(r.rating) >= :minAvgRating"
 						+" order by avg(r.rating) desc"
 						+" ";
 		Query<Object[]> q = s.createQuery(query, Object[].class);
@@ -383,5 +383,56 @@ public class MediaHibernate implements MediaDAO{
 		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
 		return list;
 	}
+
+	@Override
+	public ArrayList<Object[]> getByGenreAndAvgRatingAndNumberOfRatingsWithDateRange(Integer gid, Long minRatings,
+			Double minAvgRating, LocalDate minDate, LocalDate maxDate) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where g.id = :gid"
+						+" and m.date >= :minDate"
+						+" and m.date <= :maxDate"
+						+" group by m.id"
+						+" having count(distinct r.id) >= :minRatings"
+						+" and avg(r.rating) >= :minAvgRating"
+						+" order by avg(r.rating) desc"
+						+" ";
+		Query<Object[]> q = s.createQuery(query, Object[].class);
+		q.setParameter("gid",  gid);
+		q.setParameter("minDate",  minDate);
+		q.setParameter("maxDate",  maxDate);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+		//System.out.println(q.getResultList());
+		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
+		return list;
+	}
+
+	@Override
+	public ArrayList<Object[]> getByGenreAndAvgRatingAndNumberOfRatings(Integer gid, Long minRatings,
+			Double minAvgRating) {
+		Session s = hu.getSession();
+		String query = 	 " select distinct m.id, avg(r.rating) FROM Media m "
+						+" join UserTag ut on ut.media.id = m.id "
+						+" join Genre g on g.id = m.genre.id "
+						+" join Review r on r.media.id = m.id "
+						+" where g.id = :gid"
+						+" group by m.id"
+						+" having count(distinct r.id) >= :minRatings"
+						+" and avg(r.rating) >= :minAvgRating"
+						+" order by avg(r.rating) desc"
+						+" ";
+		Query<Object[]> q = s.createQuery(query, Object[].class);
+		q.setParameter("gid",  gid);
+		q.setParameter("minRatings",  minRatings);
+		q.setParameter("minAvgRating",  minAvgRating);
+		System.out.println(q.getResultList());
+		ArrayList<Object[]> list = (ArrayList<Object[]>) q.getResultList();
+		return list;
+	}
+
 	
 }

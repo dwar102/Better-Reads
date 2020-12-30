@@ -174,4 +174,27 @@ public class MediaServiceImpl implements MediaService{
   
 	}
 
+	@Override
+	public Media[] getByGenreAvgRatingNumRating(Integer gid, Long minRating, Double minAvgRating) {
+		ArrayList<Object[]> oList = mediaDao.getByGenreAndAvgRatingAndNumberOfRatings(gid, minRating, 
+				minAvgRating);
+		Media[] mList = new Media[oList.size()];
+		for(int i = 0; i < oList.size(); i++) {
+			mList[i] = mediaDao.getById((Integer) oList.get(i)[0]);
+		}
+		return mList;
+	}
+
+	@Override
+	public Media[] getByGenreAvgRatingNumRatingWithDates(Integer gid, Long minRating, Double minAvgRating,
+			LocalDate minDate, LocalDate maxDate) {
+		ArrayList<Object[]> oList = mediaDao.getByGenreAndAvgRatingAndNumberOfRatingsWithDateRange(gid, minRating, 
+				minAvgRating, minDate, maxDate);
+		Media[] mList = new Media[oList.size()];
+		for(int i = 0; i < oList.size(); i++) {
+			mList[i] = mediaDao.getById((Integer) oList.get(i)[0]);
+		}
+		return mList;
+	}
+
 }
