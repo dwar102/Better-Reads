@@ -16,7 +16,10 @@ export class SearchComponent implements OnInit {
   public loggedUser: User; 
   public searchContent: string;
   public searchActivated: boolean = false;
+  public showResults: boolean = false;
   public searchResults: Media[];
+  public mediaView: boolean = false;
+  public mediaViewId: Number;
   public searchType = 'title';
 
   constructor(private userService: UserService, private mediaService: MediaService, private router: Router) { }
@@ -35,6 +38,7 @@ export class SearchComponent implements OnInit {
         this.searchResults = resp;
         console.log(this.searchResults);
         this.searchActivated = true;
+        this.showResults = true;
       }
     );
   }
@@ -72,8 +76,10 @@ export class SearchComponent implements OnInit {
     )});
   }
 
-  viewMedia(id: Number): any {
-    console.log("here" + id);
+  viewMedia(id: Number) {
+    this.mediaViewId = id;
+    this.showResults = false;
+    this.mediaView = true;
   }
   
 }
