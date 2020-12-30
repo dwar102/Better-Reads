@@ -53,7 +53,6 @@ public class MediaHibernate implements MediaDAO{
 	
 	@Override
 	public Media getByTitle(String title) {
-		System.out.println("Preparing query...");
 		Session s = hu.getSession();
 		CriteriaBuilder cb = s.getCriteriaBuilder();
 		CriteriaQuery<Media> criteria = cb.createQuery(Media.class);
@@ -62,14 +61,21 @@ public class MediaHibernate implements MediaDAO{
 		Predicate predicateForTitle = cb.equal(root.get("title"), title);
 		criteria.select(root).where(predicateForTitle);
 		Media m = s.createQuery(criteria).getSingleResult();
-		System.out.println(m.getTitle());
+		s.close();
 		return m;
 	}
 	
 	@Override
 	public Set<Media> getByAuthor(String author) {
-		return new HashSet<Media>();
-		
+		Session s = hu.getSession();
+		String query = "FROM Media WHERE creator = :author";
+		Query<Media> q = s.createQuery(query, Media.class);
+		q.setParameter("author", author);
+		List<Media> resultList = q.getResultList();
+		Set<Media> resultSet = new HashSet<>();
+		resultSet.addAll(resultList);
+		s.close();
+		return resultSet;
 	}
 
 	@Override

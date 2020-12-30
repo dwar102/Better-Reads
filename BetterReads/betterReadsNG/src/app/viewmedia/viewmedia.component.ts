@@ -11,8 +11,8 @@ import { UsertagService } from '../services/usertag.service';
 })
 export class ViewmediaComponent implements OnInit {
   @Input() public loggedUser: User;
-  //@Input() mediaId: Number;
-  mediaId = 2;
+  @Input() mediaId: Number = 2;
+  
   public numRatings: Number;
   public avgRating: Number;
   public tagCounts: Number[];

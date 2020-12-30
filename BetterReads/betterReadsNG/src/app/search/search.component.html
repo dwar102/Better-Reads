@@ -12,16 +12,22 @@
         </label>
         <label>
             <input type="radio" name="searchType" value="author" (click)="setType('author')" ngModel />
-            Author
+            Creator
         </label>
     </div>
 </ng-container>
-<ng-container *ngIf="searchActivated">
+<ng-container *ngIf="showResults">
     <ul *ngFor="let result of searchResults">
         <li>
-            Title: {{result.title}}<br>
-            
+            <strong>Title:</strong> {{result.title}}<br>
+            <strong>Creator:</strong> {{result.creator}}<br>
+            <strong>Type:</strong> {{result.mediaType.name}}<br>
+            <strong>Genre:</strong> {{result.genre.name}}<br>
+            <button type="button" (click)="viewMedia(result.id)">View</button>
         </li>
     </ul>
+</ng-container>
+<ng-container *ngIf="mediaView">
+    <app-viewmedia [loggedUser]="loggedUser" [mediaId]="mediaViewId"></app-viewmedia>
 </ng-container>
 </div>
