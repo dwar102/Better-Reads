@@ -70,4 +70,8 @@ export class MediaService {
     );
   }
 
+  filteredSearch(minDate: Date, maxDate: Date, minAvgRating: number, genre: number, includeTag: string, excludeTag: string) {
+    
+  }
+
 }
