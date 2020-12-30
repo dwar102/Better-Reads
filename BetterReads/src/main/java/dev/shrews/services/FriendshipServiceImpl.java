@@ -25,7 +25,6 @@ public class FriendshipServiceImpl implements FriendshipService{
 	public Integer addFriendships(Friendships f) {
 		// adds two entries with user_id and friend_id swapped for faster, easier querying of the database
 		Friendships f2 = new Friendships();
-		f2.setMessage(f.getMessage());
 		f2.setFriend_id(f.getUser_id());
 		f2.setUser_id(f.getFriend_id());
 		friendshipDao.addFriendship(f2).getFriendship_id();

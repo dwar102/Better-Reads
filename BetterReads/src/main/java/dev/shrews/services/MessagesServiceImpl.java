@@ -31,5 +31,5 @@ public class MessagesServiceImpl implements MessagesService {
 	public void delete(Messages m) {
 		messageDAO.delete(m);
 	}
-
+	
 }

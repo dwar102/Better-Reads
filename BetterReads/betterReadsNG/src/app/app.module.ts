@@ -22,6 +22,7 @@ import { ViewmessagesComponent } from './viewmessages/viewmessages.component';
 import { WritemessageComponent } from './writemessage/writemessage.component';
 import { SearchComponent} from './search/search.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HttpClientModule,
     FormsModule,
     FontAwesomeModule
+    CommonModule
   ],
   providers: [
     UserService,

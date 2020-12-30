@@ -15,7 +15,7 @@ export class AddCommentComponent implements OnInit {
 message: string;
 newComment: mediaComment; 
 @Input() public loggedUser: User;
-@Input() public media: Media;
+@Input() mediaId: Number;
 constructor(private commentService:CommentsmediaService, private router: Router, private userService:UserService) { 
   console.log(userService.getLoggedUser())
 }
@@ -28,7 +28,7 @@ constructor(private commentService:CommentsmediaService, private router: Router,
     this.newComment = new mediaComment;
     this.newComment.message = this.message;
     this.newComment.media= new Media;
-    this.newComment.media.id= 2; // Hardcoded for testing, will be retrieved from button onClick in final state
+    this.newComment.media.id= this.mediaId;
     console.log(this.loggedUser);
     this.newComment.user = new User;
     this.newComment.user.id = this.loggedUser.id;
