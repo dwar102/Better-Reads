@@ -4,11 +4,13 @@
         <tr>
             <th>Comment ID</th>
             <th>User</th>
+            <th>Username</th>
             <th>Comment</th>
         </tr>
         <tr *ngFor="let Comment of Comments">
             <td>{{ Comment.comment_id | json }}</td>
         <!-- <td>{{ Comment.comment_date | json }}</td>-->
+            <td>{{Comment.user.id | json }} </td>
             <td>{{(Comment.user.username | json).replace("\"", "").replace("\"", "")  }}</td>
             <td>{{ Comment.message }}</td>
         </tr>
