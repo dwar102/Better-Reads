@@ -17,6 +17,8 @@ export class SearchComponent implements OnInit {
   public searchContent: string;
   public searchActivated: boolean = false;
   public showResults: boolean = false;
+  public basicSearch: boolean = false;
+  public advancedSearch: boolean = false;
   public searchResults: Media[];
   public mediaView: boolean = false;
   public mediaViewId: Number;
@@ -25,7 +27,7 @@ export class SearchComponent implements OnInit {
   constructor(private userService: UserService, private mediaService: MediaService, private router: Router) { }
 
   ngOnInit(): void {
-    //this.checkLogin();
+    this.basicSearch = true;
   }
 
   setType(type: string) {
@@ -33,14 +35,18 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    this.mediaService.getSearchResults(this.searchType, this.searchContent).subscribe(
-      resp => {
-        this.searchResults = resp;
-        console.log(this.searchResults);
-        this.searchActivated = true;
-        this.showResults = true;
-      }
-    );
+    if (this.basicSearch) {
+      this.mediaService.getSearchResults(this.searchType, this.searchContent).subscribe(
+        resp => {
+          this.searchResults = resp;
+          console.log(this.searchResults);
+          this.searchActivated = true;
+          this.showResults = true;
+        }
+      );
+    } else {
+
+    }
   }
 
   checkLogin() {
@@ -80,6 +86,22 @@ export class SearchComponent implements OnInit {
     this.mediaViewId = id;
     this.showResults = false;
     this.mediaView = true;
+  }
+
+  switchSearchComplexity() {
+    if (this.basicSearch) {
+      this.basicSearch = false;
+      this.advancedSearch = true;
+    } else {
+      this.advancedSearch = false;
+      this.basicSearch = true;
+    }
+  }
+
+  reset() {
+    this.mediaView = false;
+    this.searchActivated = false;
+    this.showResults = false;
   }
   
 }
