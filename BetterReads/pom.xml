@@ -96,7 +96,6 @@
 	    <scope>test</scope>
 	</dependency>
 <dependency>
-<dependency>
   		<groupId>org.seleniumhq.selenium</groupId>
   		<artifactId>selenium-java</artifactId>
   		<version>3.8.1</version>
@@ -107,6 +106,7 @@
   		<artifactId>selenium-chrome-driver</artifactId>
   		<version>3.8.1</version>
   	</dependency>
+  	<dependency>
           <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
         <version>3.0.0</version>
@@ -139,7 +139,10 @@
     <artifactId>javassist</artifactId>
     <version>3.25.0-GA</version>
 </dependency>
-
-
+  	<dependency>
+  		<groupId>org.seleniumhq.selenium</groupId>
+  		<artifactId>selenium-chrome-driver</artifactId>
+  		<version>3.8.1</version>
+  	</dependency>
   </dependencies>
 </project>
