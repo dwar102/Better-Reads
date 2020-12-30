@@ -13,21 +13,19 @@
     </ng-container>
     <ng-template #loggedIn>
         <span>
-            <button type="button" id="loginBtn" (click)="logOut()">Log Out</button>
+            <button type="button" id="logoutBtn" (click)="logOut()">Log Out</button>
             <div class="collapse navbar-collapse">    
                 <ul class="navbar-nav mr-auto">    
                   <li class="nav-item active">    
-                    <a class="nav-link" routerLink="" routerLinkActive="active">Home</a>    
+                    <a class="nav-link" href="#">Home</a>    
                   </li>    
                   <!-- <li class="nav-item">    
                     <a class="nav-link " routerLink="profile" routerLinkActive="active">Profile</a>    
                   </li>     -->
-                  <li class="nav-item active">
-                    <a class="nav-link" routerLink="search" routerLinkActive="active">Search</a>
-                  </li>
               </ul>    
             </div> 
         </span>
-        <app-profile [loggedUser]="loggedUser"></app-profile>
+        <app-search [loggedUser]="loggedUser" (searchEvent)="hideProfile()" (newSearchEvent)="viewProfile()"></app-search>
+        <app-profile [loggedUser]="loggedUser" *ngIf="showProfile"></app-profile>
     </ng-template>
 </div>

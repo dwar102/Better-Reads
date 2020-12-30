@@ -41,11 +41,16 @@ export class ViewmediaComponent implements OnInit {
   }
 
   addTag(){
-    //console.log(this.replaceSpaces(this.newTag));
-    this.userTagService.addTag(this.replaceSpaces(this.newTag), this.mediaId, 1).subscribe(
-      resp => {
-      }
-    );
+    if(this.loggedUser){
+      //console.log(this.replaceSpaces(this.newTag));
+      this.userTagService.addTag(this.replaceSpaces(this.newTag), this.mediaId, this.loggedUser.id).subscribe(
+        resp => {
+        }
+      );
+    }
+    else{
+      alert("You must be logged in to add a tag");
+    }
   }
 
   replaceSpaces(str: String){
