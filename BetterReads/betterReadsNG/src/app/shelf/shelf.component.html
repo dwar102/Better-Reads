@@ -36,5 +36,5 @@ length: {{this.userShelves.length}}
             <div *ngIf="s.shelfAssignments.length == 10 "><img src="../../assets/shelf10.png"></div>
             <div *ngIf="s.shelfAssignments.length > 10 "><img src="../../assets/shelf10.png"></div>  
       </div>
-      <app-media [items] = "s.shelfAssignments" [loggedUser]="loggedUser"></app-media>
+      <app-media [items] = "s.shelfAssignments" [shelfId] = "s.id" [loggedUser]="loggedUser"></app-media>
 </div>
