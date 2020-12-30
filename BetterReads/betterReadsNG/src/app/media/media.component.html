@@ -6,10 +6,12 @@
 
 
 <div class="card">
-  <!-- <span (click)=`\"removeShelfAssignment(${document.getElementById("mediaIdInput").value})"` title="Add an item to shelf." onmouseover="" style="cursor: pointer;"><fa-icon [icon]="faPlusSquare" size="3x"></fa-icon></span> -->
+  <!-- (click)=`\"removeShelfAssignment(${document.getElementById("mediaIdInput").value})"` -->
+  <span (click)="addShelfAssignment()" title="Add an item to shelf." onmouseover="" style="cursor: pointer;"><fa-icon [icon]="faPlusSquare" size="3x"></fa-icon></span>
   <br>
   <label for="mediaIdInput">Media ID:</label> 
-  <input type="number" id = "mediaIdInput">
+  <input type="number" id = "mediaIdInput" [(ngModel)]="addMediaId">
+  <!-- <input id="user" name="user" type="text" [(ngModel)]="user" /> -->
 </div>
 
 <div class="card" *ngFor="let item of items">
