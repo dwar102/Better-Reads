@@ -2,6 +2,6 @@ import { User } from "./user";
 
 export class Friendships {
     id: number;
-    user: User;
-    friend: User;
+    user_id: User;
+    friend_id: User;
 }

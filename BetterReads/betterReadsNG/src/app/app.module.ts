@@ -24,6 +24,7 @@ import { SearchComponent} from './search/search.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
+import { FriendshipsComponent } from './friendships/friendships.component';
 
 @NgModule({
   declarations: [
@@ -41,14 +42,15 @@ import { DatePipe } from '@angular/common';
     ViewmediaComponent,
     ViewmessagesComponent,
     WritemessageComponent,
-    SearchComponent
+    SearchComponent,
+    FriendshipsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
     CommonModule
   ],
   providers: [
