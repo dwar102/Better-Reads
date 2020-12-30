@@ -23,6 +23,7 @@ import { WritemessageComponent } from './writemessage/writemessage.component';
 import { SearchComponent} from './search/search.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CommonModule } from '@angular/common';
   providers: [
     UserService,
     CookieService,
-    UrlService
+    UrlService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

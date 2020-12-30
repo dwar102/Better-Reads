@@ -4,6 +4,7 @@ import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { MediaService } from '../services/media.service';
+import { Media } from '../models/media';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +16,7 @@ export class SearchComponent implements OnInit {
   public loggedUser: User; 
   public searchContent: string;
   public searchActivated: boolean = false;
-  public searchResults: any;
+  public searchResults: Media[];
   public searchType = 'title';
 
   constructor(private userService: UserService, private mediaService: MediaService, private router: Router) { }
@@ -48,7 +49,31 @@ export class SearchComponent implements OnInit {
   }
 
   test() {
-    console.log(this.searchResults); 
-   }
+    let baseElement = document.getElementById('results');
+    let list = document.createElement("ul");
+
+    this.searchResults.forEach((result) => {
+      let listItem = document.createElement("li");
+      listItem.innerHTML = `Title:  ${result.title}<br>
+        Creator: ${result.creator}<br>
+        Type:    ${result.mediaType.name}<br>
+        Genre:   ${result.genre.name}<br>
+        <button type="button" id="${result.id}" >View</button>
+      `;
+      list.appendChild(listItem);
+    });
+
+    baseElement.appendChild(list);
+
+    this.searchResults.forEach((result) => {
+      document.getElementById(`${result.id}`).addEventListener('click', function() {
+        
+      }
+    )});
+  }
+
+  viewMedia(id: Number): any {
+    console.log("here" + id);
+  }
   
 }

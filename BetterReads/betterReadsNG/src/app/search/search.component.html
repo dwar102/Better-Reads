@@ -17,10 +17,11 @@
     </div>
 </ng-container>
 <ng-container *ngIf="searchActivated">
-    <h2>Results:</h2>>
-    <button type="button" id="testButtong" (click)="test()">Test</button>
-    <ul>
-        <li *ngFor="let result in searchResults" >{{ search.title }}</li>
+    <ul *ngFor="let result of searchResults">
+        <li>
+            Title: {{result.title}}<br>
+            
+        </li>
     </ul>
 </ng-container>
 </div>
