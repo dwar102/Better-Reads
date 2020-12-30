@@ -88,19 +88,23 @@ public class shelfController {
     @DeleteMapping("/assignments")
     @ResponseBody
 	public ResponseEntity<Set<ShelfAssignment>> deleteShelfAssignments(HttpSession session, @RequestParam("assgn") String assgn) {
-		System.out.println("reached /assignments handler");
+		System.out.println("reached /assignments delete handler");
     	//Integer loggedUserId = (Integer) session.getAttribute("user");
-		Shelf s = new Shelf();
-		s.setId(Integer.parseInt(shelfId));
-		List<ShelfAssignment> shelfAssignments = shelfServ.getShelfAssignments(s);
-		if (shelfId == null)
+		ShelfAssignment s = new ShelfAssignment();
+		s.setId(Integer.parseInt(assgn));
+		ShelfAssignment sa = shelfServ.getShelfAssignmentById(s);
+		
+		if (sa == null)
 			return ResponseEntity.badRequest().build();
-	    Set<ShelfAssignment> items = new HashSet<>();
+	    //Set<ShelfAssignment> items = new HashSet<>();
 	    
 	    
-	    for (ShelfAssignment e : shelfAssignments)
-	        items.add(e);
-		return ResponseEntity.ok(items);
+	    //for (ShelfAssignment e : shelfAssignments)
+	       // items.add(e);
+		else {
+			shelfServ.deleteShelfAssignment(sa);
+			return ResponseEntity.ok().build();
+		}
 	}  
     
 	//BetterReads/shelves/assignments/?shelf=1

@@ -70,7 +70,14 @@ public class ShelfServiceImpl implements ShelfService {
 	
 	@Override
 	public void deleteShelfAssignment(ShelfAssignment sa) {
-		// TODO Auto-generated method stub
 		
+		sad.delete(sa);
+		
+	}
+
+	@Override
+	public ShelfAssignment getShelfAssignmentById(ShelfAssignment sa) {
+		return sad.getByShelfAssignmentId(sa.getId());
+
 	}
 }

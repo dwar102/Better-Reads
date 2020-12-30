@@ -6,11 +6,14 @@
 
 
 <div class="card">
-  <span title="Add an item to shelf." onmouseover="" style="cursor: pointer;"><fa-icon [icon]="faPlusSquare" size="3x"></fa-icon></span>
+  <!-- <span (click)=`\"removeShelfAssignment(${document.getElementById("mediaIdInput").value})"` title="Add an item to shelf." onmouseover="" style="cursor: pointer;"><fa-icon [icon]="faPlusSquare" size="3x"></fa-icon></span> -->
+  <br>
+  <label for="mediaIdInput">Media ID:</label> 
+  <input type="number" id = "mediaIdInput">
 </div>
 
 <div class="card" *ngFor="let item of items">
-  <span title="Remove this item from shelf." onmouseover="" style="cursor: pointer;"><fa-icon [icon]="faTrash" size="lg"></fa-icon></span>
+  <span (click)="removeShelfAssignment(item)" title="Remove this item from shelf." onmouseover="" style="cursor: pointer;"><fa-icon [icon]="faTrash" size="lg"></fa-icon></span>
     <p><b>Title:</b>  {{item.media.title}}</p>
     <p><b>Creator:</b>  {{item.media.creator}}</p>
     <p><b>Genre:</b>  {{item.media.genre.name}}</p>

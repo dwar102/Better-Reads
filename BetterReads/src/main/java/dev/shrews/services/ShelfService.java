@@ -23,4 +23,5 @@ public interface ShelfService {
 	public List<ShelfAssignment> getShelfAssignments(Shelf s);
 	public ShelfAssignment addShelfAssignment(ShelfAssignment sa);
 	public void deleteShelfAssignment(ShelfAssignment sa);
+	public ShelfAssignment getShelfAssignmentById(ShelfAssignment sa);
 }

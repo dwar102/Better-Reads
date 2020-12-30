@@ -24,17 +24,17 @@ length: {{this.userShelves.length}}
       id: {{s.id}}<br>
       count: {{s.count}}<br> -->
       <div *ngIf="s.count > 0">
-            <div *ngIf="s.count == 1 "><img src="../../assets/shelf1.png"></div>
-            <div *ngIf="s.count == 2 "><img src="../../assets/shelf2.png"></div>
-            <div *ngIf="s.count == 3 "><img src="../../assets/shelf3.png"></div>
-            <div *ngIf="s.count == 4 "><img src="../../assets/shelf4.png"></div>
-            <div *ngIf="s.count == 5 "><img src="../../assets/shelf5.png"></div>
-            <div *ngIf="s.count == 6 "><img src="../../assets/shelf6.png"></div>
-            <div *ngIf="s.count == 7 "><img src="../../assets/shelf7.png"></div>
-            <div *ngIf="s.count == 8 "><img src="../../assets/shelf8.png"></div>
-            <div *ngIf="s.count == 9 "><img src="../../assets/shelf9.png"></div>
-            <div *ngIf="s.count == 10 "><img src="../../assets/shelf10.png"></div>
-            <div *ngIf="s.count > 10 "><img src="../../assets/shelf10.png"></div>  
+            <div *ngIf="s.shelfAssignments.length == 1 "><img src="../../assets/shelf1.png"></div>
+            <div *ngIf="s.shelfAssignments.length == 2 "><img src="../../assets/shelf2.png"></div>
+            <div *ngIf="s.shelfAssignments.length == 3 "><img src="../../assets/shelf3.png"></div>
+            <div *ngIf="s.shelfAssignments.length == 4 "><img src="../../assets/shelf4.png"></div>
+            <div *ngIf="s.shelfAssignments.length == 5 "><img src="../../assets/shelf5.png"></div>
+            <div *ngIf="s.shelfAssignments.length == 6 "><img src="../../assets/shelf6.png"></div>
+            <div *ngIf="s.shelfAssignments.length == 7 "><img src="../../assets/shelf7.png"></div>
+            <div *ngIf="s.shelfAssignments.length == 8 "><img src="../../assets/shelf8.png"></div>
+            <div *ngIf="s.shelfAssignments.length == 9 "><img src="../../assets/shelf9.png"></div>
+            <div *ngIf="s.shelfAssignments.length == 10 "><img src="../../assets/shelf10.png"></div>
+            <div *ngIf="s.shelfAssignments.length > 10 "><img src="../../assets/shelf10.png"></div>  
       </div>
       <app-media [items] = "s.shelfAssignments" [loggedUser]="loggedUser"></app-media>
 </div>
