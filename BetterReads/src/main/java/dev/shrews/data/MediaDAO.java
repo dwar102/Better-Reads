@@ -32,6 +32,9 @@ public interface MediaDAO extends GenericDAO<Media>{
 			Double minAvgRating, LocalDate minDate, LocalDate maxDate);
 	public ArrayList<Object[]> getByGenreAndTagAndNotTagAndAvgRatingAndNumberOfRatingsWithDateRange(Integer gid, String tagName, String notTagName,
 			Long minRatings, Double minAvgRating, LocalDate minDate, LocalDate maxDate);
+	public ArrayList<Object[]> getByGenreAndAvgRatingAndNumberOfRatingsWithDateRange(Integer gid, Long minRatings,
+			Double minAvgRating, LocalDate minDate, LocalDate maxDate);
+	public ArrayList<Object[]> getByGenreAndAvgRatingAndNumberOfRatings(Integer gid, Long minRatings, Double minAvgRating);
 	//update
 	public void update(Media m);
 	//delete

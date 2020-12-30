@@ -48,7 +48,7 @@ import { DatePipe } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
     CommonModule
   ],
   providers: [
