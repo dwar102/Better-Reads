@@ -1,0 +1,12 @@
+<div>
+<tr *ngFor="let Friendship of FriendshipSet">
+    <td>{{ Friendship.friend_id.id | json}}</td>
+    <td>{{(Friendship.friend_id.username | json).replace("\"", "").replace("\"", "")   }}</td>
+</tr>
+<form>
+<div class="field">
+    <textarea class="textarea" name="target" placeholder="Enter recipient id" [(ngModel)]="target"></textarea>
+</div>
+</form>
+<button type="submit" class="button is-danger is-large" (click)=onSubmit()>Submit</button>
+</div>
