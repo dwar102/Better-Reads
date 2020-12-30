@@ -25,6 +25,12 @@ export class SearchComponent implements OnInit {
   public mediaView: boolean = false;
   public mediaViewId: Number;
   public searchType = 'title';
+  public minDate: Date;
+  public maxDate: Date;
+  public minAvgRating: number;
+  public genre: number;
+  public includeTag: string;
+  public excludeTag: string;
   faSearch = faSearch;
 
   constructor(private userService: UserService, private mediaService: MediaService, private router: Router) { }
@@ -49,7 +55,7 @@ export class SearchComponent implements OnInit {
         }
       );
     } else {
-
+      console.log(this.minDate + " " + this.maxDate + " " + this.minAvgRating + " " + this.genre + " " + this.includeTag + " " + this.excludeTag);
     }
   }
 

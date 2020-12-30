@@ -21,7 +21,7 @@ export class MediaComponent implements OnInit {
   ngOnInit(): void {
   }
   removeShelfAssignment(sa : ShelfAssignment) {
-    //alert("removeShelfAssignment: " + sa.id + " " + sa.name + " " + sa.shelf.id + " " + sa.user.username);
+    //alert("removeShelfAssignment: " + sa.id + " " + sa.nang me + " " + sa.shelf.id + " " + sa.user.username);
     this.shelfService.removeShelfAssignment(sa).subscribe(
       resp => {
         console.log("before delete");

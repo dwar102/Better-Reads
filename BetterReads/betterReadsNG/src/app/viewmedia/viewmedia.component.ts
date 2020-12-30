@@ -58,4 +58,8 @@ export class ViewmediaComponent implements OnInit {
     return str.split(" ").join("%20");
   }
 
+  returnSearch() {
+    this.returnToSearch.emit();
+  }
+
 }
