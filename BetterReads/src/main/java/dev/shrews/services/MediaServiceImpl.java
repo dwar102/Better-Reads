@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import dev.shrews.beans.Media;
 import dev.shrews.data.MediaDAO;
@@ -161,11 +162,15 @@ public class MediaServiceImpl implements MediaService{
 	public Set<Media> getSearch(String searchType, String searchContent) {
 		if (searchType.equals("title")) {
 			System.out.println("Checking for title...");
-			Media m = mediaDao.getByTitle(searchContent);
-			if (m == null)
-				return null;
+			Set<Media> titleSet1 = mediaDao.getLikeTitle(searchContent.toLowerCase());
+			Set<Media> titleSet2 = mediaDao.getLikeTitle(StringUtils.capitalize(searchContent));
+			
 			Set<Media> titleSet = new HashSet<Media>();
-			titleSet.add(m);
+			titleSet.addAll(titleSet1);
+			titleSet.addAll(titleSet2);
+			if (titleSet.size() == 0) {
+				return null;
+			}
 			return titleSet;
 		} else {
 			System.out.println("Checking for author...");
