@@ -20,7 +20,47 @@
         </div>
     </div>
     <div *ngIf="advancedSearch">
-
+        <div>
+            <label for="minDate">Earliest Date: 
+                <input type="date" name="minDate" [(ngModel)]="minDate">
+            </label>
+            <label for="maxDate">Latest Date:
+                <input type="date" name="maxDate" [(ngModel)]="maxDate">
+            </label>
+        </div>
+        <div>
+            <label for="minAvgRating">Minimum Average Review:
+                <input type="number" name="minAvgRating" [(ngModel)]="minAvgRating">
+            </label>
+            <label for="genre">Genre:
+                <select [(ngModel)]="genre">
+                    <option value=1>Science Fantasy</option>
+                    <option value=2>Biography</option>
+                    <option value=3>Science and Technology</option>
+                    <option value=5>Poetry</option>
+                    <option value=6>Non-Fiction</option>
+                    <option value=7>Contemporary Fiction</option>
+                    <option value=8>Historical Fiction</option>
+                    <option value=9>Juvenile Fiction</option>
+                    <option value=10>History</option>
+                    <option value=11>Mystery</option>
+                    <option value=12>Thriller</option>
+                    <option value=13>Horror</option>
+                  </select>
+            </label>
+        </div>
+        <div>
+            <label for="includeTag">Include Tag:
+                <input type="text" name="includeTag" [(ngModel)]="includeTag">
+            </label>
+            <label for="excludeTag">Exclude Tag:
+                <input type="text" name="excludeTag" [(ngModel)]="excludeTag">
+            </label>
+        </div>
+        <div>
+            <button type="button" (click)="search()">Search</button>
+            <button type="button" (click)="switchSearchComplexity()">Basic Search</button>
+        </div>
     </div>
 </ng-container>
 <ng-container *ngIf="showResults">
