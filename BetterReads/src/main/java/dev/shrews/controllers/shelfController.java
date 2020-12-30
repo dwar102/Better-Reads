@@ -73,12 +73,15 @@ public class shelfController {
     
     
     @PostMapping("/assignments/add")
-    public ResponseEntity<Messages> addMessage(HttpSession session, @RequestBody ShelfAssignment sa) {
+    public ResponseEntity<ShelfAssignment> addMessage(HttpSession session, @RequestBody ShelfAssignment sa) {
     	System.out.println("reached PostMapping /assignments/add)");
         Shelf shelf = shelfServ.getShelf(sa.getShelf());
+        
         if (shelf != null) {
+        	sa.setUser(shelf.getUser());
+        	sa.setMedia(mediaServ.getByMediaId(sa.getMedia().getId()));
             shelfServ.addShelfAssignment(sa);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok(sa);
         } else {
             return ResponseEntity.notFound().build();
         }

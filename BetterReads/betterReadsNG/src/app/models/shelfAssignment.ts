@@ -7,4 +7,5 @@ export class ShelfAssignment {
     name: String;
     user: User;
     shelf: Shelf;
+    media: Media;
 }

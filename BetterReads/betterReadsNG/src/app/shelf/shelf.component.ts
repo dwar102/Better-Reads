@@ -60,11 +60,11 @@ export class ShelfComponent implements OnInit, OnChanges {
       }
     );
   }
-  addShelfAssignment(sa : ShelfAssignment) {
-    this.shelfService.addShelfAssignment(sa.shelf.id).subscribe(
-      resp => {
-      }
-    );
-  }
+  // addShelfAssignment(sa : ShelfAssignment) {
+  //   this.shelfService.addShelfAssignment(sa).subscribe(
+  //     resp => {
+  //     }
+  //   );
+  // }
 
 }

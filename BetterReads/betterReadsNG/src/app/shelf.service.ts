@@ -42,9 +42,9 @@ export class ShelfService {
       map(resp => resp as Media[])
     );
   }
-  addShelfAssignment(ShelfId: Number): Observable<ShelfAssignment>{
+  addShelfAssignment(sa: ShelfAssignment): Observable<ShelfAssignment>{
     const addmediaurl = 'http://localhost:8080/BetterReads/shelves/assignments/add';
-    return this.http.post(addmediaurl, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+    return this.http.post(addmediaurl, sa).pipe(
       map(resp => resp as ShelfAssignment)
     );
   }
