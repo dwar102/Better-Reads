@@ -29,6 +29,9 @@ public interface MediaService {
 			Double minAvgRating, LocalDate minDate, LocalDate maxDate);
 	public Media[] getByGenreTagnameAvgRatingNumRatingWithDates(Integer gid, String tagName, Long minRating, Double minAvgRating,
 			LocalDate minDate, LocalDate maxDate);
+	public Media[] getByGenreAvgRatingNumRating(Integer gid, Long minRating, Double minAvgRating);
+	public Media[] getByGenreAvgRatingNumRatingWithDates(Integer gid, Long minRating, Double minAvgRating,
+			LocalDate minDate, LocalDate maxDate);
 	
 	//update
 	void updateMedia(Media m);
