@@ -15,7 +15,7 @@ export class MediaComponent implements OnInit {
   faTrash = faTrash;
   faPlusSquare = faPlusSquare;
   @Input() public loggedUser: User; 
-  @Input() public items: [];
+  @Input() public items: Media[];
   constructor(private shelfService: ShelfService) { }
 
   ngOnInit(): void {
