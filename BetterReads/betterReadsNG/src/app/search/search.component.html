@@ -25,6 +25,7 @@
 <ng-container *ngIf="showResults">
     <ul *ngFor="let result of searchResults">
         <li>
+            <strong>ID:</strong> {{result.id }}<br>
             <strong>Title:</strong> {{result.title}}<br>
             <strong>Creator:</strong> {{result.creator}}<br>
             <strong>Type:</strong> {{result.mediaType.name}}<br>
