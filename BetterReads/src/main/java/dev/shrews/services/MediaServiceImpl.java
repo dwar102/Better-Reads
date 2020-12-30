@@ -156,6 +156,7 @@ public class MediaServiceImpl implements MediaService{
 			mList[i] = mediaDao.getById((Integer) oList.get(i)[0]);
 		}
 		return mList;
+	}
 
 	public Set<Media> getSearch(String searchType, String searchContent) {
 		if (searchType.equals("title")) {

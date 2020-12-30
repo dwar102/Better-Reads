@@ -22,6 +22,7 @@ import { ViewmessagesComponent } from './viewmessages/viewmessages.component';
 import { WritemessageComponent } from './writemessage/writemessage.component';
 import { SearchComponent} from './search/search.component';
 import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { CommonModule } from '@angular/common';
   providers: [
     UserService,
     CookieService,
-    UrlService
+    UrlService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
