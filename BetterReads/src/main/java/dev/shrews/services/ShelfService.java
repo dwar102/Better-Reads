@@ -21,4 +21,5 @@ public interface ShelfService {
 	public Set<Shelf> getShelves();
 	public Set<Shelf>getUserShelves(User loggedUser);
 	public List<ShelfAssignment> getShelfAssignments(Shelf s);
+	public ShelfAssignment addShelfAssignment(ShelfAssignment sa);
 }

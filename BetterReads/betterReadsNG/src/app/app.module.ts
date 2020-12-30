@@ -21,6 +21,7 @@ import { ViewmediaComponent } from './viewmedia/viewmedia.component';
 import { ViewmessagesComponent } from './viewmessages/viewmessages.component';
 import { WritemessageComponent } from './writemessage/writemessage.component';
 import { SearchComponent} from './search/search.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -46,6 +47,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FontAwesomeModule
     CommonModule
   ],
   providers: [

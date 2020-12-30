@@ -60,4 +60,10 @@ public class ShelfServiceImpl implements ShelfService {
 	public List<ShelfAssignment> getShelfAssignments(Shelf s){
 		return sad.getByShelfId(s.getId());
 	}
+
+	@Override
+	public ShelfAssignment addShelfAssignment(ShelfAssignment sa) {
+		return sad.addShelfAssignment(sa);
+		
+	}
 }

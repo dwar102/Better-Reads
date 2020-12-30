@@ -3,7 +3,14 @@
 <p> {{items.length}}</p> -->
 
 <!-- {{ item }} <br>. -->
+
+
+<div class="card">
+  <span title="Add an item to shelf." onmouseover="" style="cursor: pointer;"><fa-icon [icon]="faPlusSquare" size="3x"></fa-icon></span>
+</div>
+
 <div class="card" *ngFor="let item of items">
+  <span title="Remove this item from shelf." onmouseover="" style="cursor: pointer;"><fa-icon [icon]="faTrash" size="lg"></fa-icon></span>
     <p><b>Title:</b>  {{item.media.title}}</p>
     <p><b>Creator:</b>  {{item.media.creator}}</p>
     <p><b>Genre:</b>  {{item.media.genre.name}}</p>
