@@ -1,6 +1,7 @@
 package dev.shrews.controllers;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -133,4 +134,117 @@ public class MediaController {
     	System.out.println("searchContent");
     	return null;
     }
+    
+    @GetMapping("/searchByGenreTagNotTagAvgRatingNumRatingDates")
+    @ResponseBody
+    public ResponseEntity<Media[]> searchfilter(HttpSession session, @RequestParam("genre") Integer gid, @RequestParam("tagName") String tagName,
+    		 @RequestParam("notTagName") String notTagName, @RequestParam("minAvgRating") Double minAvgRating, @RequestParam("minNumRatings") Long minNumRatings,
+    		 @RequestParam("minDate") CharSequence minDate, @RequestParam("maxDate") CharSequence maxDate){
+    	try {
+			Media[] marray = mediaServ.getByGenreTagnAndNotTagAndAvgRatingAndNumRatingWithDates(gid, tagName, notTagName, minNumRatings, minAvgRating, 
+					LocalDate.parse(minDate), LocalDate.parse(maxDate));
+			return ResponseEntity.ok(marray);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
+    
+    @GetMapping("/searchByGenreTagAvgRatingNumRatingDates")
+    @ResponseBody
+    public ResponseEntity<Media[]> searchfilter(HttpSession session, @RequestParam("genre") Integer gid, @RequestParam("tagName") String tagName,
+    		 @RequestParam("minAvgRating") Double minAvgRating, @RequestParam("minNumRatings") Long minNumRatings,
+    		 @RequestParam("minDate") CharSequence minDate, @RequestParam("maxDate") CharSequence maxDate){
+    	try {
+			Media[] marray = mediaServ.getByGenreTagnameAvgRatingNumRatingWithDates(gid, tagName, minNumRatings, minAvgRating, 
+					LocalDate.parse(minDate), LocalDate.parse(maxDate));
+			return ResponseEntity.ok(marray);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
+    
+    @GetMapping("/searchByGenreTagAvgRatingNumRating")
+    @ResponseBody
+    public ResponseEntity<Media[]> searchfilter(HttpSession session, @RequestParam("genre") Integer gid, @RequestParam("tagName") String tagName,
+    		 @RequestParam("minAvgRating") Double minAvgRating, @RequestParam("minNumRatings") Long minNumRatings){
+    	try {
+			Media[] marray = mediaServ.getByGenreTagnameAvgRatingNumRating(gid, tagName, minNumRatings, minAvgRating);
+			return ResponseEntity.ok(marray);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
+    
+    @GetMapping("/searchByGenreTagNotTagAvgRatingNumRating")
+    @ResponseBody
+    public ResponseEntity<Media[]> searchfilter(HttpSession session, @RequestParam("genre") Integer gid, @RequestParam("tagName") String tagName,
+    		 @RequestParam("notTagName") String notTagName, @RequestParam("minAvgRating") Double minAvgRating, @RequestParam("minNumRatings") Long minNumRatings){
+    	try {
+			Media[] marray = mediaServ.getByGenreTagnAndNotTagAndAvgRatingAndNumRating(gid, tagName, notTagName, minNumRatings, minAvgRating);
+			return ResponseEntity.ok(marray);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
+    
+    @GetMapping("/searchByTagNotTagAvgRatingNumRatingDates")
+    @ResponseBody
+    public ResponseEntity<Media[]> searchfilter(HttpSession session, @RequestParam("tagName") String tagName,
+    		 @RequestParam("notTagName") String notTagName, @RequestParam("minAvgRating") Double minAvgRating, @RequestParam("minNumRatings") Long minNumRatings,
+    		 @RequestParam("minDate") CharSequence minDate, @RequestParam("maxDate") CharSequence maxDate){
+    	try {
+			Media[] marray = mediaServ.getByTagnAndNotTagAndAvgRatingAndNumRatingWithDates(tagName, notTagName, minNumRatings, minAvgRating, 
+					LocalDate.parse(minDate), LocalDate.parse(maxDate));
+			return ResponseEntity.ok(marray);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
+    
+    @GetMapping("/searchByTagAvgRatingNumRatingDates")
+    @ResponseBody
+    public ResponseEntity<Media[]> searchfilter(HttpSession session,  @RequestParam("tagName") String tagName,
+    		 @RequestParam("minAvgRating") Double minAvgRating, @RequestParam("minNumRatings") Long minNumRatings,
+    		 @RequestParam("minDate") CharSequence minDate, @RequestParam("maxDate") CharSequence maxDate){
+    	try {
+			Media[] marray = mediaServ.getByTagnameAvgRatingNumRatingWithDates(tagName, minNumRatings, minAvgRating, 
+					LocalDate.parse(minDate), LocalDate.parse(maxDate));
+			return ResponseEntity.ok(marray);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
+    
+    @GetMapping("/searchByTagAvgRatingNumRating")
+    @ResponseBody
+    public ResponseEntity<Media[]> searchfilter(HttpSession session,  @RequestParam("tagName") String tagName,
+    		 @RequestParam("minAvgRating") Double minAvgRating, @RequestParam("minNumRatings") Long minNumRatings){
+    	try {
+			Media[] marray = mediaServ.getByTagnameAvgRatingNumRating(tagName, minNumRatings, minAvgRating);
+			return ResponseEntity.ok(marray);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
+    
+    @GetMapping("/searchByTagNotTagAvgRatingNumRating")
+    @ResponseBody
+    public ResponseEntity<Media[]> searchfilter(HttpSession session,  @RequestParam("tagName") String tagName,
+    		 @RequestParam("notTagName") String notTagName, @RequestParam("minAvgRating") Double minAvgRating, @RequestParam("minNumRatings") Long minNumRatings){
+    	try {
+			Media[] marray = mediaServ.getByTagnAndNotTagAndAvgRatingAndNumRating(tagName, notTagName, minNumRatings, minAvgRating);
+			return ResponseEntity.ok(marray);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(400).build();
+		}
+    }
+    
 }
