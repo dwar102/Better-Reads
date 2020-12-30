@@ -43,7 +43,7 @@ export class ViewmediaComponent implements OnInit {
   addTag(){
     if(this.loggedUser){
       //console.log(this.replaceSpaces(this.newTag));
-      this.userTagService.addTag(this.replaceSpaces(this.newTag), this.mediaId, 1).subscribe(
+      this.userTagService.addTag(this.replaceSpaces(this.newTag), this.mediaId, this.loggedUser.id).subscribe(
         resp => {
         }
       );
