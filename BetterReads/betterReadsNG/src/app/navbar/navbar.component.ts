@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   loggedUser: User;
   user: string;
   pass: string;
+  showProfile: boolean = true;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -50,6 +51,14 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   signUp() {
     this.router.navigateByUrl('register');
+  }
+
+  viewProfile() {
+    this.showProfile = true;
+  }
+
+  hideProfile() {
+    this.showProfile = false;
   }
 
 }
