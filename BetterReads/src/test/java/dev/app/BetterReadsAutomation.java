@@ -24,7 +24,9 @@ public class BetterReadsAutomation {
 		readHome.getUsername().sendKeys("hey");
 		readHome.getPassword().sendKeys("joe");
 		readHome.getLogin().click();
-		
+		readHome.getWriteMessage().sendKeys("Hello there");
+		readHome.getRecId().sendKeys("68");
+		readHome.getSubmitMessage().click();
 		driver.quit();
 	}
 }
