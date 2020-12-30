@@ -7,6 +7,7 @@ import { Shelf } from './models/shelf';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ShelfAssignment } from './models/shelfAssignment';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,13 @@ export class ShelfService {
       map(resp => resp as Media)
     );
   }
+  removeShelfAssignment(assgn: ShelfAssignment): Observable<ShelfAssignment>{
+    const addmediaurl = 'http://localhost:8080/BetterReads/shelves/assignments?assgn=' + assgn.id;
+    return this.http.delete(addmediaurl, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+      map(resp => resp as ShelfAssignment)
+    );
+  }
+
 
   // addMedia(newCreator: String, newDate: Date, newGenre: Number, newMediaType: Number, newTitle: String): Observable<Media>{
   //   let genre = new Genre();

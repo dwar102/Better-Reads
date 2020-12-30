@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -82,6 +83,25 @@ public class shelfController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    //'http://localhost:8080/BetterReads/shelves/assignments';
+    @DeleteMapping("/assignments")
+    @ResponseBody
+	public ResponseEntity<Set<ShelfAssignment>> deleteShelfAssignments(HttpSession session, @RequestParam("assgn") String assgn) {
+		System.out.println("reached /assignments handler");
+    	//Integer loggedUserId = (Integer) session.getAttribute("user");
+		Shelf s = new Shelf();
+		s.setId(Integer.parseInt(shelfId));
+		List<ShelfAssignment> shelfAssignments = shelfServ.getShelfAssignments(s);
+		if (shelfId == null)
+			return ResponseEntity.badRequest().build();
+	    Set<ShelfAssignment> items = new HashSet<>();
+	    
+	    
+	    for (ShelfAssignment e : shelfAssignments)
+	        items.add(e);
+		return ResponseEntity.ok(items);
+	}  
     
 	//BetterReads/shelves/assignments/?shelf=1
     @GetMapping("/assignments")

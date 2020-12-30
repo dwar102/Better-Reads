@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { MediaService } from '../services/media.service';
 import { Media } from '../models/media';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-search',
@@ -23,6 +24,7 @@ export class SearchComponent implements OnInit {
   public mediaView: boolean = false;
   public mediaViewId: Number;
   public searchType = 'title';
+  faSearch = faSearch;
 
   constructor(private userService: UserService, private mediaService: MediaService, private router: Router) { }
 
