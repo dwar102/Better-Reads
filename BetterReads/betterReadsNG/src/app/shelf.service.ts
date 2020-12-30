@@ -41,7 +41,12 @@ export class ShelfService {
       map(resp => resp as Media[])
     );
   }
-
+  addShelfAssignment(ShelfId: Number): Observable<Media>{
+    const addmediaurl = 'http://localhost:8080/BetterReads/shelves/assignments/add';
+    return this.http.post(addmediaurl, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+      map(resp => resp as Media)
+    );
+  }
 
   // addMedia(newCreator: String, newDate: Date, newGenre: Number, newMediaType: Number, newTitle: String): Observable<Media>{
   //   let genre = new Genre();

@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.shrews.beans.Media;
+import dev.shrews.beans.Messages;
 import dev.shrews.beans.Shelf;
 import dev.shrews.beans.ShelfAssignment;
 import dev.shrews.beans.User;
@@ -35,7 +37,7 @@ public class shelfController {
     private ShelfService shelfServ;
 
     private MediaService mediaServ;
-
+    
     @Autowired
     public shelfController(ShelfService u, MediaService m) {
         shelfServ = u;
@@ -67,6 +69,20 @@ public class shelfController {
 			return ResponseEntity.badRequest().build();
 		return ResponseEntity.ok(shelves);
 	}
+    
+    
+    @PostMapping("/assignments/add")
+    public ResponseEntity<Messages> addMessage(HttpSession session, @RequestBody ShelfAssignment sa) {
+    	System.out.println("reached PostMapping /assignments/add)");
+        Shelf shelf = shelfServ.getShelf(sa.getShelf());
+        if (shelf != null) {
+            shelfServ.addShelfAssignment(sa);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
 	//BetterReads/shelves/assignments/?shelf=1
     @GetMapping("/assignments")
     @ResponseBody
