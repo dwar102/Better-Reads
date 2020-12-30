@@ -52,7 +52,6 @@ class friendshipTest {
 	@Order(4)
 	void testAddAndDelete() {
 		Friendships f = new Friendships();
-		f.setMessage("Test");
 		f = friendshipDao.addFriendship(f);
 		//System.out.println(f);
 		assertTrue(f.getFriendship_id() != 0);
