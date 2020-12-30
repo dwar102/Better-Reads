@@ -32,6 +32,7 @@ export class AddmediaComponent implements OnInit {
                     resp => {
                     }
                   );
+                  alert("Successfully added")
             }
             else{
               alert("You must enter a genre")
