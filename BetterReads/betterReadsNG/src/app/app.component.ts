@@ -7,8 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'betterReadsNG';
+  notLoggedIn: boolean = true;
 
   setLogin() {
     console.log('user logged in');
   }
+
+  logIn() {
+    this.notLoggedIn = false;
+  }
+
+  logOut() {
+    this.notLoggedIn = true;
+  }
+
 }

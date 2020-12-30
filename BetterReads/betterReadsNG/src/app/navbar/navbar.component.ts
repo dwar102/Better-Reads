@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit, OnChanges {
   @Output() logInEvent: EventEmitter<any> = new EventEmitter();
+  @Output() logOutEvent: EventEmitter<any> = new EventEmitter();
   loggedUser: User;
   user: string;
   pass: string;
@@ -42,7 +43,7 @@ export class NavbarComponent implements OnInit, OnChanges {
     this.userService.logoutUser().subscribe(
       resp => {
         this.loggedUser = null;
-        this.router.navigate(['home']);
+        this.logOutEvent.emit();
       }
     );
   }
