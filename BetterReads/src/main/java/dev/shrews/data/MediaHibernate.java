@@ -66,6 +66,19 @@ public class MediaHibernate implements MediaDAO{
 	}
 	
 	@Override
+	public Set<Media> getLikeTitle(String likeTitle) {
+		Session s = hu.getSession();
+		String query = "FROM Media WHERE title like :likeTitle";
+		Query<Media> q = s.createQuery(query, Media.class);
+		q.setParameter("likeTitle", "%"+likeTitle+"%");
+		List<Media> resultList = q.getResultList();
+		Set<Media> resultSet = new HashSet<>();
+		resultSet.addAll(resultList);
+		s.close();
+		return resultSet;
+	}
+	
+	@Override
 	public Set<Media> getByAuthor(String author) {
 		Session s = hu.getSession();
 		String query = "FROM Media WHERE creator = :author";

@@ -35,10 +35,11 @@ public interface MediaDAO extends GenericDAO<Media>{
 	public ArrayList<Object[]> getByGenreAndAvgRatingAndNumberOfRatingsWithDateRange(Integer gid, Long minRatings,
 			Double minAvgRating, LocalDate minDate, LocalDate maxDate);
 	public ArrayList<Object[]> getByGenreAndAvgRatingAndNumberOfRatings(Integer gid, Long minRatings, Double minAvgRating);
+	public Media getByTitle(String title);
+	public Set<Media> getByAuthor(String author);
+	public Set<Media> getLikeTitle(String likeTitle);
 	//update
 	public void update(Media m);
 	//delete
 	public void delete(Media m);
-	public Media getByTitle(String title);
-	public Set<Media> getByAuthor(String author);
 }
