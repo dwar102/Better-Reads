@@ -66,11 +66,5 @@ export class ShelfComponent implements OnInit, OnChanges {
       }
     );
   }
-  removeShelfAssignment(sa : ShelfAssignment) {
-    this.shelfService.removeShelfAssignment(sa).subscribe(
-      resp => {
-      }
-    );
-  }
-  
+
 }

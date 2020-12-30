@@ -42,10 +42,10 @@ export class ShelfService {
       map(resp => resp as Media[])
     );
   }
-  addShelfAssignment(ShelfId: Number): Observable<Media>{
+  addShelfAssignment(ShelfId: Number): Observable<ShelfAssignment>{
     const addmediaurl = 'http://localhost:8080/BetterReads/shelves/assignments/add';
     return this.http.post(addmediaurl, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
-      map(resp => resp as Media)
+      map(resp => resp as ShelfAssignment)
     );
   }
   removeShelfAssignment(assgn: ShelfAssignment): Observable<ShelfAssignment>{
