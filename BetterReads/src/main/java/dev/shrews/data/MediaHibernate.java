@@ -177,8 +177,8 @@ public class MediaHibernate implements MediaDAO{
 						+" join Review r on r.media.id = m.id "
 						+" where ut.tagName = :tagName"
 						+" group by m.id"
-						+" having count(distinct r.id) > :minRatings"
-						+" and avg(r.rating) > :minAvgRating"
+						+" having count(distinct r.id) >= :minRatings"
+						+" and avg(r.rating) >= :minAvgRating"
 						+" order by avg(r.rating) desc"
 						+" ";
 		Query<Object[]> q = s.createQuery(query, Object[].class);
@@ -199,11 +199,11 @@ public class MediaHibernate implements MediaDAO{
 						+" join Genre g on g.id = m.genre.id "
 						+" join Review r on r.media.id = m.id "
 						+" where ut.tagName = :tagName"
-						+" and m.date > :minDate"
-						+" and m.date < :maxDate"
+						+" and m.date >= :minDate"
+						+" and m.date <= :maxDate"
 						+" group by m.id"
-						+" having count(distinct r.id) > :minRatings"
-						+" and avg(r.rating) > :minAvgRating"
+						+" having count(distinct r.id) >= :minRatings"
+						+" and avg(r.rating) >= :minAvgRating"
 						+" order by avg(r.rating) desc"
 						+" ";
 		Query<Object[]> q = s.createQuery(query, Object[].class);
@@ -228,8 +228,8 @@ public class MediaHibernate implements MediaDAO{
 						+" where ut.tagName = :tagName"
 						+" and g.id = :gid"
 						+" group by m.id"
-						+" having count(distinct r.id) > :minRatings"
-						+" and avg(r.rating) > :minAvgRating"
+						+" having count(distinct r.id) >= :minRatings"
+						+" and avg(r.rating) >= :minAvgRating"
 						+" order by avg(r.rating) desc"
 						+" ";
 		Query<Object[]> q = s.createQuery(query, Object[].class);
@@ -252,11 +252,11 @@ public class MediaHibernate implements MediaDAO{
 						+" join Review r on r.media.id = m.id "
 						+" where ut.tagName = :tagName"
 						+" and g.id = :gid"
-						+" and m.date > :minDate"
-						+" and m.date < :maxDate"
+						+" and m.date >= :minDate"
+						+" and m.date <= :maxDate"
 						+" group by m.id"
-						+" having count(distinct r.id) > :minRatings"
-						+" and avg(r.rating) > :minAvgRating"
+						+" having count(distinct r.id) >= :minRatings"
+						+" and avg(r.rating) >= :minAvgRating"
 						+" order by avg(r.rating) desc"
 						+" ";
 		Query<Object[]> q = s.createQuery(query, Object[].class);
@@ -282,8 +282,8 @@ public class MediaHibernate implements MediaDAO{
 						+" where m.id not in (select m2.id from Media m2 join UserTag ut2 on ut2.media.id = m2.id where ut2.tagName = :notTagName)"
 						+" and ut.tagName = :tagName"
 						+" group by m.id"
-						+" having count(distinct r.id) > :minRatings"
-						+" and avg(r.rating) > :minAvgRating"
+						+" having count(distinct r.id) >= :minRatings"
+						+" and avg(r.rating) >= :minAvgRating"
 						+" order by avg(r.rating) desc"
 						+" ";
 		Query<Object[]> q = s.createQuery(query, Object[].class);
@@ -306,8 +306,8 @@ public class MediaHibernate implements MediaDAO{
 						+" join Review r on r.media.id = m.id "
 						+" where m.id not in (select m2.id from Media m2 join UserTag ut2 on ut2.media.id = m2.id where ut2.tagName = :notTagName)"
 						+" and ut.tagName = :tagName"
-						+" and m.date > :minDate"
-						+" and m.date < :maxDate"
+						+" and m.date >= :minDate"
+						+" and m.date <= :maxDate"
 						+" group by m.id"
 						+" having count(distinct r.id) > :minRatings"
 						+" and avg(r.rating) > :minAvgRating"
@@ -337,8 +337,8 @@ public class MediaHibernate implements MediaDAO{
 						+" and ut.tagName = :tagName"
 						+" and g.id = :gid"
 						+" group by m.id"
-						+" having count(distinct r.id) > :minRatings"
-						+" and avg(r.rating) > :minAvgRating"
+						+" having count(distinct r.id) >= :minRatings"
+						+" and avg(r.rating) >= :minAvgRating"
 						+" order by avg(r.rating) desc"
 						+" ";
 		Query<Object[]> q = s.createQuery(query, Object[].class);
@@ -363,8 +363,8 @@ public class MediaHibernate implements MediaDAO{
 						+" join Review r on r.media.id = m.id "
 						+" where m.id not in (select m2.id from Media m2 join UserTag ut2 on ut2.media.id = m2.id where ut2.tagName = :notTagName)"
 						+" and ut.tagName = :tagName"
-						+" and m.date > :minDate"
-						+" and m.date < :maxDate"
+						+" and m.date >= :minDate"
+						+" and m.date <= :maxDate"
 						+" and g.id = :gid"
 						+" group by m.id"
 						+" having count(distinct r.id) > :minRatings"
