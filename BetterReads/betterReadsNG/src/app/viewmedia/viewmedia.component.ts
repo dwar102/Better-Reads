@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Media } from '../models/media';
 import { User } from '../models/user';
 import { MediaService } from '../services/media.service';
@@ -10,6 +10,7 @@ import { UsertagService } from '../services/usertag.service';
   styleUrls: ['./viewmedia.component.styl']
 })
 export class ViewmediaComponent implements OnInit {
+  @Output() returnToSearch: EventEmitter<any> = new EventEmitter();
   @Input() public loggedUser: User;
   @Input() mediaId: Number = 2;
   
