@@ -34,5 +34,6 @@ public interface MediaService {
 	void updateMedia(Media m);
 	//delete
 	void deleteMedia(Media m);
+	public Set<Media> getSearch(String searchType, String searchContent);
 	
 }

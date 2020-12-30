@@ -1,5 +1,4 @@
 package dev.shrews.controllers;
-
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -20,51 +19,43 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.shrews.beans.*;
-import dev.shrews.services.ReviewService;
+import dev.shrews.services.FriendshipService;
 import dev.shrews.services.UserService;
-import dev.shrews.services.MediaService;
 
 @RestController
-@RequestMapping(path="/reviews")
+@RequestMapping(path="/friendships")
 @CrossOrigin(origins="http://localhost:4200", allowCredentials = "true")
-
-public class ReviewController {
+public class FriendshipsController {
+    private FriendshipService friendServ;
     private UserService userServ;
 
-    private MediaService mediaServ;
-
-    private ReviewService reviewServ;
-    
     @Autowired
-    public ReviewController(UserService u, ReviewService m, MediaService n) {
+    public FriendshipsController(UserService u, FriendshipService f) {
+        friendServ = f;
         userServ = u;
-        reviewServ = m;
-        mediaServ = n;
     }
-
-    //http://localhost:8080/BetterReads/reviews
 
     @GetMapping(path="{id}")
     @ResponseBody
-    public ResponseEntity<Set<Review>> getReviews(HttpSession session, @PathVariable("id") Integer id)  {
-    	System.out.println("Reached");
-        Set<Review> reviews = reviewServ.getByMediaId(id);
-        if (reviews != null) {
-            return ResponseEntity.ok(reviews);
+    public ResponseEntity<Set<Friendships>> addFriendship(HttpSession session, @PathVariable("id") Integer id) {
+        System.out.println("Reach get friendship");
+        Set<Friendships> friendship = friendServ.getFriendshipsByUserId(id);
+        if (friendship != null) {
+            return ResponseEntity.ok(friendship);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
     @PostMapping
-    public ResponseEntity<Review> addComment(HttpSession session, @RequestBody Review review) {
-        System.out.println("reached add review");
-        Integer id = review.getMedia().getId();
-        Media media = mediaServ.getByMediaId(id);
-        if (media != null) {
+    public ResponseEntity<Friendships> addFriendship(HttpSession session, @RequestBody Friendships friendship) {
+        System.out.println("Reached PostFriendships");
+        Integer id = friendship.getFriend_id().getId();
+        User user = userServ.getUserById(id);
+        if (user != null) {
+            friendServ.addFriendships(friendship);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 }
-

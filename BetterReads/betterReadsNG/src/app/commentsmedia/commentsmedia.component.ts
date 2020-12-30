@@ -18,7 +18,8 @@ export class CommentsmediaComponent implements OnInit {
   constructor(private commentService:CommentsmediaService) { }
 
   ngOnInit(): void {
-    this.commentService.getMediaComments(1).subscribe( // Hardcoding for testing 
+    console.log(this.mediaId)
+    this.commentService.getMediaComments(this.mediaId).subscribe( 
       resp => {
         this.Comments = resp;
       }

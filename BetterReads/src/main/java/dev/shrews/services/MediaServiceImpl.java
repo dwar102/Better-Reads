@@ -2,6 +2,7 @@ package dev.shrews.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -155,6 +156,21 @@ public class MediaServiceImpl implements MediaService{
 			mList[i] = mediaDao.getById((Integer) oList.get(i)[0]);
 		}
 		return mList;
+
+	public Set<Media> getSearch(String searchType, String searchContent) {
+		if (searchType.equals("title")) {
+			System.out.println("Checking for title...");
+			Media m = mediaDao.getByTitle(searchContent);
+			if (m == null)
+				return null;
+			Set<Media> titleSet = new HashSet<Media>();
+			titleSet.add(m);
+			return titleSet;
+		} else {
+			System.out.println("Checking for author...");
+			return mediaDao.getByAuthor(searchContent);
+		}
+  
 	}
 
 }
