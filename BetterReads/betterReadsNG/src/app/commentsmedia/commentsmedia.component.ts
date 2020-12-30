@@ -19,7 +19,7 @@ export class CommentsmediaComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.mediaId)
-    this.commentService.getMediaComments(this.mediaId).subscribe( // Hardcoding for testing 
+    this.commentService.getMediaComments(this.mediaId).subscribe( 
       resp => {
         this.Comments = resp;
       }
