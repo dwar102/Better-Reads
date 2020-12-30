@@ -1,4 +1,6 @@
 <div>
+    <h2> Your friends!
+    </h2>
 <tr *ngFor="let Friendship of FriendshipSet">
     <td>{{ Friendship.friend_id.id | json}}</td>
     <td>{{(Friendship.friend_id.username | json).replace("\"", "").replace("\"", "")   }}</td>
