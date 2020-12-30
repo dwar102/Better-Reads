@@ -14,7 +14,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class SearchComponent implements OnInit {
   @Output() searchEvent: EventEmitter<any> = new EventEmitter();
-  public loggedUser: User; 
+  @Output() newSearchEvent: EventEmitter<any> = new EventEmitter();
+  @Input() public loggedUser: User; 
   public searchContent: string;
   public searchActivated: boolean = false;
   public showResults: boolean = false;
@@ -42,6 +43,7 @@ export class SearchComponent implements OnInit {
         resp => {
           this.searchResults = resp;
           console.log(this.searchResults);
+          this.searchEvent.emit();
           this.searchActivated = true;
           this.showResults = true;
         }
@@ -104,6 +106,7 @@ export class SearchComponent implements OnInit {
     this.mediaView = false;
     this.searchActivated = false;
     this.showResults = false;
+    this.newSearchEvent.emit();
   }
   
 }
