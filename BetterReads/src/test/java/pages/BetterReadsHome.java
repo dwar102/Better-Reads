@@ -38,6 +38,18 @@ public class BetterReadsHome {
 	public WebElement getSearchType() {
 		return driver.findElement(By.xpath("//input[@value='author']"));
 	}
+	public WebElement getWriteMessage() {
+		waitForElementByName("message");
+		return driver.findElement(By.name("message"));
+	}
+	public WebElement getRecId() {
+		waitForElementByName("target");
+		return driver.findElement(By.name("target"));
+	}
+	public WebElement getSubmitMessage() {
+		waitForElementByXpath("/html/body/app-root/app-navbar/div/app-profile/div/app-writemessage/div/button");
+		return driver.findElement(By.xpath("/html/body/app-root/app-navbar/div/app-profile/div/app-writemessage/div/button"));
+	}
 	public void waitForElementByXpath(String xpath) {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
 				.withTimeout(5, TimeUnit.SECONDS)
@@ -45,6 +57,14 @@ public class BetterReadsHome {
 				.ignoring(NoSuchElementException.class);
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+	}
+	public void waitForElementByName(String name) {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(5, TimeUnit.SECONDS)
+				.pollingEvery(100, TimeUnit.MILLISECONDS)
+				.ignoring(NoSuchElementException.class);
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(name)));
 	}
 	public WebElement getView() {
 		waitForElementByXpath("/html/body/app-root/app-search/div/ul[1]/li/button");
