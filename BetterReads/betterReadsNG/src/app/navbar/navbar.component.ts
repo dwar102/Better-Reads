@@ -61,4 +61,8 @@ export class NavbarComponent implements OnInit, OnChanges {
     this.showProfile = false;
   }
 
+  home() {
+    
+  }
+
 }

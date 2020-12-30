@@ -39,6 +39,6 @@
     </div>
 </ng-container>
 <ng-container *ngIf="mediaView">
-    <app-viewmedia [loggedUser]="loggedUser" [mediaId]="mediaViewId"></app-viewmedia>
+    <app-viewmedia [loggedUser]="loggedUser" [mediaId]="mediaViewId" (returnToSearch)="reset()"></app-viewmedia>
 </ng-container>
 </div>
