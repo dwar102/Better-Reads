@@ -1,19 +1,25 @@
 <div>
 <ng-container *ngIf="!searchActivated">
-    <div>
-        <label for="searchBar">Search: </label>
-        <input type="text" id="searchBar" name="searchBar" [(ngModel)]="searchContent" />
-        <button type="button" id="searchButton" (click)="search()">Search!</button>
+    <div *ngIf="basicSearch">
+        <div>
+            <label for="searchBar">Search: </label>
+            <input type="text" id="searchBar" name="searchBar" [(ngModel)]="searchContent" />
+            <button type="button" id="basicSearchButton" (click)="search()">Search!</button>
+            <button type="button" id="switchToAdvancedSearch" (click)="switchSearchComplexity()">Advanced Search</button>
+        </div>
+        <div *ngIf="basicSearch">
+            <label>
+                <input type="radio" name="searchType" value="title" (click)="setType('title')" [checked]="true" ngModel />
+                Title
+            </label>
+            <label>
+                <input type="radio" name="searchType" value="author" (click)="setType('author')" ngModel />
+                Creator
+            </label>
+        </div>
     </div>
-    <div>
-        <label>
-            <input type="radio" name="searchType" value="title" (click)="setType('title')" [checked]="true" ngModel />
-            Title
-        </label>
-        <label>
-            <input type="radio" name="searchType" value="author" (click)="setType('author')" ngModel />
-            Creator
-        </label>
+    <div *ngIf="advancedSearch">
+
     </div>
 </ng-container>
 <ng-container *ngIf="showResults">
@@ -26,6 +32,9 @@
             <button type="button" (click)="viewMedia(result.id)">View</button>
         </li>
     </ul>
+    <div>
+        <button type="button" (click)="reset()">Search Again</button>
+    </div>
 </ng-container>
 <ng-container *ngIf="mediaView">
     <app-viewmedia [loggedUser]="loggedUser" [mediaId]="mediaViewId"></app-viewmedia>
