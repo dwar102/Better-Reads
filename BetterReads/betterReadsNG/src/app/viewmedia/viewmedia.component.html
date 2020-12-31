@@ -20,7 +20,7 @@
      Tag as: <input name="tag" type="text" placeholder = "Tag" size = 30 [(ngModel)] ="newTag"><br>
     <button type="button" (click) = "addTag()" id="submitBtn">Add Tag</button>
     </ng-container> <br><br>
-    <app-add-comment [loggedUser]="loggedUser"></app-add-comment>
+    <app-add-comment [mediaId]="mediaId" [loggedUser]="loggedUser"></app-add-comment>
     <app-commentsmedia [mediaId]="mediaId"></app-commentsmedia>
     <button type="button" (click)="returnSearch()">Return to Search</button>
 </ng-container>
