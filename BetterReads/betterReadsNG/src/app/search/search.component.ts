@@ -56,6 +56,15 @@ export class SearchComponent implements OnInit {
         }
       );
     } else {
+      /*this.mediaService.filteredSearch(this.minDate, this.maxDate, this.minAvgRating, this.genre, this.includeTag, this.excludeTag).subscribe(
+        resp => {
+          this.searchResults = resp;
+          console.log(this.searchResults);
+          this.searchEvent.emit();
+          this.searchActivated = true;
+          this.showResults;
+        }
+      );*/
       //console.log(this.minDate + " " + this.maxDate + " " + this.minAvgRating + " " + this.genre + " " + this.includeTag + " " + this.excludeTag);
       let minAvgRatingParam = 0;
         let minNumRatingsParam = 0;
