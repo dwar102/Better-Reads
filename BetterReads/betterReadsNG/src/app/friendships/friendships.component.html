@@ -7,8 +7,9 @@
 </tr>
 <form>
 <div class="field">
-    <textarea class="textarea" name="target" placeholder="Enter recipient id" [(ngModel)]="target"></textarea>
+    <textarea class="textarea" name="target" placeholder="Enter friend id" [(ngModel)]="target"></textarea>
 </div>
+<button type="submit" class="button" (click)=onSubmit()>Submit</button>
 </form>
-<button type="submit" class="button is-danger is-large" (click)=onSubmit()>Submit</button>
+
 </div>
