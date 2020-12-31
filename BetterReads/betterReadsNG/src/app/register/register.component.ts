@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.styl']
 })
 export class RegisterComponent implements OnInit {
+  @Output() registerEvent: EventEmitter<any> = new EventEmitter();
   @Output() logInEvent: EventEmitter<any> = new EventEmitter();
   loggedUser: User;
   userInput: string;
   passInput: string;
+  confirm: string;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -21,18 +23,32 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    if (this.userInput && this.passInput) {
-      console.log('Registering ' + this.userInput);
-      this.userService.registerUser(this.userInput, this.passInput).subscribe();
-      //Log in after registered
-      /*this.userService.loginUser(this.userInput, this.passInput).subscribe(
-        resp => {
-          this.loggedUser = resp;
-          this.logInEvent.emit();
-        }
-      );*/
+    if (this.userInput && this.passInput && this.confirm) {
+      console.log(this.userInput + " " + this.passInput + " " + this.confirm);
+      if (this.passInput == this.confirm) {
+        console.log('Registering ' + this.userInput);
+        this.userService.registerUser(this.userInput, this.passInput).subscribe(
+          resp => {
+            this.userService.loginUser(this.userInput, this.passInput).subscribe(
+              resp => {
+                this.loggedUser = resp;
+                this.logInEvent.emit();
+              }
+            );
+          }
+        );
+        //Log in after registered
+        /*this.userService.loginUser(this.userInput, this.passInput).subscribe(
+          resp => {
+            this.loggedUser = resp;
+            this.logInEvent.emit();
+          }
+        );*/
+      } else {
+        alert('Password and confirmation do not match');
+      }
     } else {
-      alert('Please fill out both fields');
+      alert('Please fill all fields');
     }
   }
 

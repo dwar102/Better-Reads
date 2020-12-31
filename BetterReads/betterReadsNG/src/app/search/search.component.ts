@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
   public minDate: Date;
   public maxDate: Date;
   public minAvgRating: number;
+  public minNumRatings: number;
   public genre: number;
   public includeTag: string;
   public excludeTag: string;
@@ -55,9 +56,167 @@ export class SearchComponent implements OnInit {
         }
       );
     } else {
-      console.log(this.minDate + " " + this.maxDate + " " + this.minAvgRating + " " + this.genre + " " + this.includeTag + " " + this.excludeTag);
+      /*this.mediaService.filteredSearch(this.minDate, this.maxDate, this.minAvgRating, this.genre, this.includeTag, this.excludeTag).subscribe(
+        resp => {
+          this.searchResults = resp;
+          console.log(this.searchResults);
+          this.searchEvent.emit();
+          this.searchActivated = true;
+          this.showResults;
+        }
+      );*/
+      //console.log(this.minDate + " " + this.maxDate + " " + this.minAvgRating + " " + this.genre + " " + this.includeTag + " " + this.excludeTag);
+      let minAvgRatingParam = 0;
+        let minNumRatingsParam = 0;
+        if(this.minAvgRating){
+          minAvgRatingParam = this.minAvgRating;
+        } 
+        if(this.minNumRatings){
+          minNumRatingsParam = this.minNumRatings;
+        } 
+      if(this.genre && this.includeTag && this.excludeTag && this.minDate && this.maxDate){
+        this.mediaService.searchByGenreTagNotTagAvgRatingNumRatingsDates(this.genre, this.includeTag, this.excludeTag,
+            minAvgRatingParam, minNumRatingsParam, this.minDate, this.maxDate).subscribe(
+          resp => {
+            this.searchResults = resp;
+            console.log(this.searchResults);
+            this.searchEvent.emit();
+            this.searchActivated = true;
+            this.showResults = true;
+          }
+        );
+    }
+    else{
+      if(this.genre && this.includeTag && this.excludeTag){
+        this.mediaService.searchByGenreTagNotTagAvgRatingNumRatings(this.genre, this.includeTag, this.excludeTag,
+            minAvgRatingParam, minNumRatingsParam).subscribe(
+          resp => {
+            this.searchResults = resp;
+            console.log(this.searchResults);
+            this.searchEvent.emit();
+            this.searchActivated = true;
+            this.showResults = true;
+          }
+        );
+      }
+      else{
+        if(this.includeTag && this.excludeTag && this.minDate && this.maxDate){
+          this.mediaService.searchByTagNotTagAvgRatingNumRatingsDates(this.includeTag, this.excludeTag,
+              minAvgRatingParam, minNumRatingsParam, this.minDate, this.maxDate).subscribe(
+            resp => {
+              this.searchResults = resp;
+              console.log(this.searchResults);
+              this.searchEvent.emit();
+              this.searchActivated = true;
+              this.showResults = true;
+            }
+          );
+        }
+        else{
+          if(this.genre && this.includeTag && this.minDate && this.maxDate){
+            this.mediaService.searchByGenreTagAvgRatingNumRatingsDates(this.genre, this.includeTag, 
+                minAvgRatingParam, minNumRatingsParam, this.minDate, this.maxDate).subscribe(
+              resp => {
+                this.searchResults = resp;
+                console.log(this.searchResults);
+                this.searchEvent.emit();
+                this.searchActivated = true;
+                this.showResults = true;
+              }
+            );
+          }
+          else{
+            if(this.includeTag && this.excludeTag){
+              this.mediaService.searchByTagNotTagAvgRatingNumRatings(this.includeTag, this.excludeTag,
+                  minAvgRatingParam, minNumRatingsParam).subscribe(
+                resp => {
+                  this.searchResults = resp;
+                  console.log(this.searchResults);
+                  this.searchEvent.emit();
+                  this.searchActivated = true;
+                  this.showResults = true;
+                }
+              );
+          }
+          else{
+            if(this.genre && this.minDate && this.maxDate){
+              this.mediaService.searchByGenreAvgRatingNumRatingsDates(this.genre,
+                  minAvgRatingParam, minNumRatingsParam, this.minDate, this.maxDate).subscribe(
+                resp => {
+                  this.searchResults = resp;
+                  console.log(this.searchResults);
+                  this.searchEvent.emit();
+                  this.searchActivated = true;
+                  this.showResults = true;
+                }
+              );
+          }
+          else{
+            if(this.genre && this.includeTag){
+              this.mediaService.searchByGenreTagAvgRatingNumRatings(this.genre, this.includeTag,
+                  minAvgRatingParam, minNumRatingsParam).subscribe(
+                resp => {
+                  this.searchResults = resp;
+                  console.log(this.searchResults);
+                  this.searchEvent.emit();
+                  this.searchActivated = true;
+                  this.showResults = true;
+                }
+              );
+          }
+          else{
+            if(this.includeTag && this.minDate && this.maxDate){
+              this.mediaService.searchByTagAvgRatingNumRatingsDates(this.includeTag,
+                  minAvgRatingParam, minNumRatingsParam, this.minDate, this.maxDate).subscribe(
+                resp => {
+                  this.searchResults = resp;
+                  console.log(this.searchResults);
+                  this.searchEvent.emit();
+                  this.searchActivated = true;
+                  this.showResults = true;
+                }
+              );
+          }
+          else{
+            if(this.includeTag){
+              this.mediaService.searchByTagAvgRatingNumRatings(this.includeTag,
+                  minAvgRatingParam, minNumRatingsParam).subscribe(
+                resp => {
+                  this.searchResults = resp;
+                  console.log(this.searchResults);
+                  this.searchEvent.emit();
+                  this.searchActivated = true;
+                  this.showResults = true;
+                }
+              );
+          }
+          else{
+            if(this.genre){
+              this.mediaService.searchByGenreAvgRatingNumRatings(this.genre,
+                  minAvgRatingParam, minNumRatingsParam).subscribe(
+                resp => {
+                  this.searchResults = resp;
+                  console.log(this.searchResults);
+                  this.searchEvent.emit();
+                  this.searchActivated = true;
+                  this.showResults = true;
+                }
+              );
+          }
+          else{
+            alert("Search could not complete - make sure all fields are filled in correctly");
+          }
+          }
+          }
+          }
+          }
+          }
+          }
+        }
+      }
     }
   }
+}
 
   checkLogin() {
     this.userService.loginUser(undefined, undefined).subscribe(

@@ -7,18 +7,29 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'betterReadsNG';
-  notLoggedIn: boolean = true;
+  showSearch: boolean = true;
+  showRegister: boolean = false;
 
   setLogin() {
     console.log('user logged in');
   }
 
   logIn() {
-    this.notLoggedIn = false;
+    this.showSearch = false;
   }
 
   logOut() {
-    this.notLoggedIn = true;
+    this.showSearch = true;
+  }
+
+  registrationComplete() {
+    this.showRegister = false;
+    this.showSearch = true;
+  }
+
+  registrationStart() {
+    this.showRegister = true;
+    this.showSearch = false;
   }
 
 }
