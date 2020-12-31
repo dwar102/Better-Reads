@@ -27,5 +27,6 @@
         <app-search [loggedUser]="loggedUser" (searchEvent)="hideProfile()" (newSearchEvent)="viewProfile()"></app-search>
         <app-profile [loggedUser]="loggedUser" *ngIf="showProfile"></app-profile>
     </ng-template>
-    <a href="addmedia"><strong>Add New Book</strong></a>
+    <a href="#" (click)="addSomeMedia()"><strong>Add New Book</strong></a>
+    <app-addmedia *ngIf="addMedia" (addMediaEvent)="mediaAdded()"></app-addmedia>
 </div>
