@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MediaService } from '../services/media.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { MediaService } from '../services/media.service';
   styleUrls: ['./addmedia.component.styl']
 })
 export class AddmediaComponent implements OnInit {
+  @Output() addMediaEvent: EventEmitter<any> = new EventEmitter();
   newCreator: String;
   newMediatype: Number;
   newGenre: Number;
@@ -29,6 +30,7 @@ export class AddmediaComponent implements OnInit {
               console.log(this.newTitle)
                 this.mediaService.addMedia(this.newCreator, this.newDate, this.newGenre, 1, this.newTitle).subscribe(
                     resp => {
+                      this.addMediaEvent.emit();
                     }
                   );
                   alert("Successfully added")
