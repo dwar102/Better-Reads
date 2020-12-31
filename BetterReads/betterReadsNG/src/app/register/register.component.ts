@@ -29,21 +29,9 @@ export class RegisterComponent implements OnInit {
         console.log('Registering ' + this.userInput);
         this.userService.registerUser(this.userInput, this.passInput).subscribe(
           resp => {
-            this.userService.loginUser(this.userInput, this.passInput).subscribe(
-              resp => {
-                this.loggedUser = resp;
-                this.logInEvent.emit();
-              }
-            );
+                this.registerEvent.emit();
           }
         );
-        //Log in after registered
-        /*this.userService.loginUser(this.userInput, this.passInput).subscribe(
-          resp => {
-            this.loggedUser = resp;
-            this.logInEvent.emit();
-          }
-        );*/
       } else {
         alert('Password and confirmation do not match');
       }

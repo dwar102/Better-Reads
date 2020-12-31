@@ -30,6 +30,7 @@ constructor(private commentService:CommentsmediaService, private router: Router,
     this.newComment.media= new Media;
     this.newComment.media.id= this.mediaId;
     console.log(this.loggedUser);
+    console.log(this.newComment);
     this.newComment.user = new User;
     this.newComment.user.id = this.loggedUser.id;
     this.commentService.placeMediaComment(this.newComment).subscribe();

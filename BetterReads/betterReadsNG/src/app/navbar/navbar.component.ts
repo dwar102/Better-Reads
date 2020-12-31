@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   user: string;
   pass: string;
   showProfile: boolean = true;
+  addMedia: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -64,6 +65,14 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   register() {
     this.registerEvent.emit();
+  }
+
+  addSomeMedia() {
+    this.addMedia = true;
+  }
+
+  mediaAdded() {
+    this.addMedia = false;
   }
 
   home() {
