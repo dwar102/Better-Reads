@@ -16,6 +16,7 @@ export class AppComponent {
 
   logIn() {
     this.showSearch = false;
+    this.showRegister = false;
   }
 
   logOut() {

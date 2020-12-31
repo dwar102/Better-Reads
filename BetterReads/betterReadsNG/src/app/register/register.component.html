@@ -10,25 +10,17 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 
-<div class="testbox">
+<div class="regBox">
   <h1>Registration</h1>
 
   <form>
-  <hr>
-    <div class="accounttype">
-      <input type="radio" value="None" id="radioOne" name="account" checked/>
-      <label for="radioOne" class="radio" chec>Personal</label>
-      <input type="radio" value="None" id="radioTwo" name="account" />
-      <label for="radioTwo" class="radio">Company</label>
-    </div>
-  <hr>
-  <label id="icon" for="name"><i class="icon-user"></i></label>
-  <input type="text" name="name" id="name" placeholder="Name" required [(ngModel)]="userInput"/>
-  <label id="icon" for="name"><i class="icon-shield"></i></label>
-  <input type="password" name="name" id="name" placeholder="Password" required [(ngModel)]="passInput"/>
-  <label id="icon" for="name"><i class="icon-shield"></i></label>
-  <input type="password" name="name" id="name" placeholder="Confirm Password" required [(ngModel)]="confirm"/>
-   <p>By clicking Register, you agree to be nice to others.</p>
-   <a href="#" class="button" (click)="register()">Register</a>
+    <label id="icon" for="name"><i class="icon-user"></i></label>
+    <input type="text" name="name" id="username" placeholder="Name" required [(ngModel)]="userInput"/>
+    <label id="icon" for="name"><i class="icon-shield"></i></label>
+    <input type="password" name="name" id="pass" placeholder="Password" required [(ngModel)]="passInput"/>
+    <label id="icon" for="name"><i class="icon-shield"></i></label>
+    <input type="password" name="name" id="confirmPass" placeholder="Confirm Password" required [(ngModel)]="confirm"/>
+    <p>By clicking Register, you agree to be nice to others.</p>
+    <a href="#" class="button" (click)="register()">Register</a>
   </form>
 </div>
