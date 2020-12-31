@@ -20,21 +20,45 @@
         </div>
     </div>
     <div *ngIf="advancedSearch">
-        <div>
+        <table>
+        <tr>
+        <td>
             <label for="minDate">Earliest Date: 
                 <input type="date" name="minDate" [(ngModel)]="minDate">
             </label>
+        </td>
+        <td>
             <label for="maxDate">Latest Date:
                 <input type="date" name="maxDate" [(ngModel)]="maxDate">
             </label>
-        </div>
-        <div>
+        </td>
+        </tr>
+        <tr>
+        <td>
             <label for="minAvgRating">Minimum Average Rating:
                 <input type="number" name="minAvgRating" placeholder = "0 to 100" [(ngModel)]="minAvgRating">
             </label>
+        </td>
+        <td>
             <label for="minNumRatings">Minimum Number of Ratings:
                 <input type="number" name="minNumRatings" [(ngModel)]="minNumRatings">
             </label>
+        </td>
+        </tr>
+        <tr>
+        <td>
+            <label for="includeTag">Include Tag:
+                <input type="text" name="includeTag" [(ngModel)]="includeTag">
+            </label>
+        </td>
+        <td>
+            <label for="excludeTag">Exclude Tag:
+                <input type="text" name="excludeTag" [(ngModel)]="excludeTag">
+            </label>
+        </td>
+        </tr>
+        <tr>
+        <td>
             <label for="genre">Genre:
                 <select [(ngModel)]="genre">
                     <option value=1>Science Fiction/Fantasy</option>
@@ -51,19 +75,13 @@
                     <option value=13>Horror</option>
                   </select>
             </label>
-        </div>
-        <div>
-            <label for="includeTag">Include Tag:
-                <input type="text" name="includeTag" [(ngModel)]="includeTag">
-            </label>
-            <label for="excludeTag">Exclude Tag:
-                <input type="text" name="excludeTag" [(ngModel)]="excludeTag">
-            </label>
-        </div>
-        <div>
+        </td>
+        <td>
             <button type="button" (click)="search()">Search</button>
             <button type="button" (click)="switchSearchComplexity()">Basic Search</button>
-        </div>
+        </td>
+        </tr>
+        </table>
     </div>
 </ng-container>
 <ng-container *ngIf="showResults">

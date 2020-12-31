@@ -1,5 +1,5 @@
 <div>
-    <a href="home"><strong>Better Reads</strong></a>
+    <h3 id="betterReads">Better Reads</h3>
     <ng-container *ngIf="!loggedUser; else loggedIn">
         <form id="login">
             <label for="user">Username: </label>
@@ -9,24 +9,25 @@
             <button type="button" id="loginBtn" (click)="logIn()">Log In</button>
             <button type="button" id="registerBtn" (click)="signUp()">Sign Up!</button>
         </form>
+        <a href="#" (click)="addSomeMedia()"><strong>Add New Book</strong></a>
     </ng-container>
     <ng-template #loggedIn>
         <span>
             <button type="button" id="logoutBtn" (click)="logOut()">Log Out</button>
             <div class="collapse navbar-collapse">    
                 <ul class="navbar-nav mr-auto">    
-                  <li class="nav-item active">    
+                  <!-- <li class="nav-item active">    
                     <a class="nav-link" href="#" (click)="home()">Home</a>    
                   </li>    
-                  <!-- <li class="nav-item">    
+                  <li class="nav-item">    
                     <a class="nav-link " routerLink="profile" routerLinkActive="active">Profile</a>    
                   </li>     -->
               </ul>    
             </div> 
         </span>
+        <a href="#" (click)="addSomeMedia()"><strong>Add New Book</strong></a>
         <app-search [loggedUser]="loggedUser" (searchEvent)="hideProfile()" (newSearchEvent)="viewProfile()"></app-search>
         <app-profile [loggedUser]="loggedUser" *ngIf="showProfile"></app-profile>
     </ng-template>
-    <a href="#" (click)="addSomeMedia()"><strong>Add New Book</strong></a>
     <app-addmedia *ngIf="addMedia" (addMediaEvent)="mediaAdded()"></app-addmedia>
 </div>
