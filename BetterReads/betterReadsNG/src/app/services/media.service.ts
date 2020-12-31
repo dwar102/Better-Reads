@@ -183,7 +183,6 @@ export class MediaService {
       return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
         map(resp => resp as Media[])
       );
-
   }
 
 }
