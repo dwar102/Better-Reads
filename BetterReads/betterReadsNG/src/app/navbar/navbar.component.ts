@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit, OnChanges {
   @Output() logInEvent: EventEmitter<any> = new EventEmitter();
   @Output() logOutEvent: EventEmitter<any> = new EventEmitter();
+  @Output() registerEvent: EventEmitter<any> = new EventEmitter();
   loggedUser: User;
   user: string;
   pass: string;
@@ -50,7 +51,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
 
   signUp() {
-    this.router.navigateByUrl('register');
+    this.registerEvent.emit();
   }
 
   viewProfile() {
@@ -61,8 +62,12 @@ export class NavbarComponent implements OnInit, OnChanges {
     this.showProfile = false;
   }
 
+  register() {
+    this.registerEvent.emit();
+  }
+
   home() {
-    
+
   }
 
 }

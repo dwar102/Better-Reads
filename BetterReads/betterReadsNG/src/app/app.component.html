@@ -1,3 +1,4 @@
-<app-navbar (logInEvent)="logIn()" (logOutEvent)="logOut()"></app-navbar>
-<app-search *ngIf="notLoggedIn"></app-search>
+<app-navbar (logInEvent)="logIn()" (logOutEvent)="logOut()" (registerEvent)="registrationStart()"></app-navbar>
+<app-search *ngIf="showSearch"></app-search>
+<app-register (registerEvent)="registrationComplete()" (logInEvent)="login()" *ngIf="showRegister"></app-register>
 <router-outlet></router-outlet>
