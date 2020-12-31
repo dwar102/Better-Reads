@@ -12,7 +12,7 @@ import { UsertagService } from '../services/usertag.service';
 export class ViewmediaComponent implements OnInit {
   @Output() returnToSearch: EventEmitter<any> = new EventEmitter();
   @Input() public loggedUser: User;
-  @Input() mediaId: Number = 2;
+  @Input() mediaId: Number;
   
   public numRatings: Number;
   public avgRating: Number;
