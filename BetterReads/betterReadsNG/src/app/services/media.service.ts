@@ -70,4 +70,120 @@ export class MediaService {
     );
   }
 
+  searchByGenreTagNotTagAvgRatingNumRatingsDates(genre: Number, includeTag: String, excludeTag: String,
+    minAvgRating: Number, minNumRatings: Number, minDate: Date, maxDate: Date){
+      const url = 'http://localhost:8080/BetterReads/media/searchByGenreTagNotTagAvgRatingNumRatingDates?genre=' + genre + '&tagName=' 
+      + includeTag.split(" ").join("%20") + '&notTagName=' + excludeTag.split(" ").join("%20") + '&minAvgRating=' + minAvgRating + '&minNumRatings=' 
+      + minNumRatings + '&minDate='  + minDate + '&maxDate=' + maxDate;
+      console.log(url);
+      return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+        map(resp => resp as Media[])
+      );
+
+  }
+
+  searchByGenreTagNotTagAvgRatingNumRatings(genre: Number, includeTag: String, excludeTag: String,
+    minAvgRating: Number, minNumRatings: Number){
+      const url = 'http://localhost:8080/BetterReads/media/searchByGenreTagNotTagAvgRatingNumRating?genre=' + genre + '&tagName=' 
+      + includeTag.split(" ").join("%20") + '&notTagName=' + excludeTag.split(" ").join("%20") + '&minAvgRating=' + minAvgRating + '&minNumRatings=' 
+      + minNumRatings;
+      console.log(url);
+      return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+        map(resp => resp as Media[])
+      );
+
+  }
+
+  searchByTagNotTagAvgRatingNumRatingsDates(includeTag: String, excludeTag: String,
+    minAvgRating: Number, minNumRatings: Number, minDate: Date, maxDate: Date){
+      const url = 'http://localhost:8080/BetterReads/media/searchByTagNotTagAvgRatingNumRatingDates?tagName=' 
+      + includeTag.split(" ").join("%20") + '&notTagName=' + excludeTag.split(" ").join("%20") + '&minAvgRating=' + minAvgRating + '&minNumRatings=' 
+      + minNumRatings + '&minDate='  + minDate + '&maxDate=' + maxDate;
+      console.log(url);
+      return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+        map(resp => resp as Media[])
+      );
+
+  }
+  
+  searchByGenreTagAvgRatingNumRatingsDates(genre: Number, includeTag: String, 
+    minAvgRating: Number, minNumRatings: Number, minDate: Date, maxDate: Date){
+      const url = 'http://localhost:8080/BetterReads/media/searchByGenreTagAvgRatingNumRatingDates?genre=' + genre + '&tagName=' 
+      + includeTag.split(" ").join("%20") + '&minAvgRating=' + minAvgRating + '&minNumRatings=' 
+      + minNumRatings + '&minDate='  + minDate + '&maxDate=' + maxDate;
+      console.log(url);
+      return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+        map(resp => resp as Media[])
+      );
+
+  }
+
+  searchByTagNotTagAvgRatingNumRatings(includeTag: String, excludeTag: String,
+    minAvgRating: Number, minNumRatings: Number){
+      const url = 'http://localhost:8080/BetterReads/media/searchByTagNotTagAvgRatingNumRating?tagName=' 
+      + includeTag.split(" ").join("%20") + '&notTagName=' + excludeTag.split(" ").join("%20") + '&minAvgRating=' + minAvgRating + '&minNumRatings=' 
+      + minNumRatings;
+      console.log(url);
+      return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+        map(resp => resp as Media[])
+      );
+
+  }
+  
+  searchByGenreAvgRatingNumRatingsDates(genre: Number, 
+    minAvgRating: Number, minNumRatings: Number, minDate: Date, maxDate: Date){
+      const url = 'http://localhost:8080/BetterReads/media/searchByGenreAvgRatingNumRatingDates?genre=' + genre + '&minAvgRating=' 
+      + minAvgRating + '&minNumRatings='  + minNumRatings + '&minDate='  + minDate + '&maxDate=' + maxDate;
+      console.log(url);
+      return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+        map(resp => resp as Media[])
+      );
+
+  }
+
+  searchByGenreTagAvgRatingNumRatings(genre: Number, includeTag: String,
+    minAvgRating: Number, minNumRatings: Number){
+      const url = 'http://localhost:8080/BetterReads/media/searchByGenreTagAvgRatingNumRating?genre=' + genre + '&tagName=' 
+      + includeTag.split(" ").join("%20") + '&minAvgRating=' + minAvgRating + '&minNumRatings=' 
+      + minNumRatings;
+      console.log(url);
+      return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+        map(resp => resp as Media[])
+      );
+
+  }
+  
+  searchByTagAvgRatingNumRatingsDates(includeTag: String, 
+    minAvgRating: Number, minNumRatings: Number, minDate: Date, maxDate: Date){
+      const url = 'http://localhost:8080/BetterReads/media/searchByTagAvgRatingNumRatingDates?tagName=' + includeTag + '&minAvgRating=' 
+      + minAvgRating + '&minNumRatings='  + minNumRatings + '&minDate='  + minDate + '&maxDate=' + maxDate;
+      console.log(url);
+      return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+        map(resp => resp as Media[])
+      );
+
+  }
+  
+  searchByTagAvgRatingNumRatings(includeTag: String, 
+    minAvgRating: Number, minNumRatings: Number){
+      const url = 'http://localhost:8080/BetterReads/media/searchByTagAvgRatingNumRating?tagName=' + includeTag + '&minAvgRating=' 
+      + minAvgRating + '&minNumRatings='  + minNumRatings;
+      console.log(url);
+      return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+        map(resp => resp as Media[])
+      );
+
+  }
+  
+  searchByGenreAvgRatingNumRatings(genre: Number, 
+    minAvgRating: Number, minNumRatings: Number){
+      const url = 'http://localhost:8080/BetterReads/media/searchByGenreAvgRatingNumRating?genre=' + genre + '&minAvgRating=' 
+      + minAvgRating + '&minNumRatings='  + minNumRatings;
+      console.log(url);
+      return this.http.get(url, {/*headers:this.formHeaders, withCredentials:true*/}).pipe(
+        map(resp => resp as Media[])
+      );
+
+  }
+
 }

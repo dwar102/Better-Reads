@@ -29,8 +29,11 @@
             </label>
         </div>
         <div>
-            <label for="minAvgRating">Minimum Average Review:
-                <input type="number" name="minAvgRating" [(ngModel)]="minAvgRating">
+            <label for="minAvgRating">Minimum Average Rating:
+                <input type="number" name="minAvgRating" placeholder = "0 to 100" [(ngModel)]="minAvgRating">
+            </label>
+            <label for="minNumRatings">Minimum Number of Ratings:
+                <input type="number" name="minNumRatings" [(ngModel)]="minNumRatings">
             </label>
             <label for="genre">Genre:
                 <select [(ngModel)]="genre">
