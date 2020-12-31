@@ -32,6 +32,7 @@ export class ShelfComponent implements OnInit, OnChanges {
     this.getShelves();
   }
   getShelves() {
+    console.log(this.loggedUser);
     this.shelfService.getUserShelves(this.loggedUser.id).subscribe(
       resp => {
         // console.log("got a response: " + resp);
