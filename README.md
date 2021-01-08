@@ -52,12 +52,6 @@ Open the ngBetterReads folder in VS Code and run npm install and ng serve to sta
 Navigate to http://localhost:4200 to view the application
 
 
-> Be sure to include BOTH Windows and Unix command  
-> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
-
-- All the `code` required to get started
-- Images of what it should look like
-
 ## Usage
 
 New users can register for an account by clicking on the register button in the navbar, or proceed immediately to the search page.
