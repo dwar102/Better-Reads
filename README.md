@@ -61,8 +61,8 @@ Once logged in, users can tag and review books, add books to their personal shel
 
 ## Contributors
 
-David Warrington
-Mark Baehr
-Brian Conlon
-Kyle Williams
+* David Warrington
+* Mark Baehr
+* Brian Conlon
+* Kyle Williams
 
